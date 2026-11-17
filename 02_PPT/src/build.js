@@ -3,6 +3,7 @@
 const pptxgen = require("pptxgenjs");
 const path = require("path");
 const units = require("./units.js");
+const INDUSTRY = require("./industry.json");
 // Optional: set PPTX_SKILL to a folder containing scripts/apply_theme.js to write theme colours into the deck.
 let applyTheme = async () => {};
 try { if (process.env.PPTX_SKILL) applyTheme = require(process.env.PPTX_SKILL + "/scripts/apply_theme.js").applyTheme; } catch (e) {}
@@ -70,8 +71,42 @@ async function buildUnit(u, idx) {
     sl.addNotes(notesFor(sd));
   });
 
+  // ---------- Industry readiness ----------
+  const ind = INDUSTRY[u.num];
+  if (ind) {
+    pres.addSection({ title: "Industry readiness" });
+    let k1 = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Industry readiness" });
+    k1.addText("Top industry skills you gain", { placeholder: "title" });
+    ind.skills.forEach((t, i) => {
+      const x = 0.6 + (i % 3) * 4.1, y = 1.5 + Math.floor(i / 3) * 1.85, col = ACC[i % ACC.length];
+      k1.addShape(pres.shapes.ROUNDED_RECTANGLE, { x, y, w: 3.85, h: 1.6, rectRadius: 0.1, fill: { color: MIST }, line: { color: "D5DCE8" }, objectName: `anim${i + 1}_a` });
+      k1.addShape(pres.shapes.OVAL, { x: x + 0.2, y: y + 0.5, w: 0.6, h: 0.6, fill: { color: col }, line: { color: col }, objectName: `anim${i + 1}_b` });
+      k1.addText("✓", { x: x + 0.2, y: y + 0.5, w: 0.6, h: 0.6, fontFace: FONT, fontSize: 18, bold: true, color: WHITE, align: "center", valign: "middle", isTextBox: true, margin: 0, objectName: `anim${i + 1}_c` });
+      k1.addText(t, { x: x + 0.95, y, w: 2.75, h: 1.6, fontFace: FONT, fontSize: 15, color: INK, valign: "middle", isTextBox: true, margin: 0, objectName: `anim${i + 1}_d` });
+    });
+    k1.addShape(pres.shapes.ROUNDED_RECTANGLE, { x: 0.6, y: 5.35, w: 12.1, h: 1.4, rectRadius: 0.1, fill: { color: NAVY }, line: { color: GOLD, width: 1.5 }, objectName: "anim7_a" });
+    k1.addText([{ text: "Job roles  ", options: { bold: true, color: GOLD } }, { text: ind.roles.join("  •  "), options: { color: WHITE, breakLine: true } },
+                { text: "Tools  ", options: { bold: true, color: GOLD } }, { text: ind.tools.join("  •  "), options: { color: WHITE } }],
+      { x: 0.9, y: 5.4, w: 11.6, h: 1.3, fontFace: FONT, fontSize: 15, valign: "middle", paraSpaceAfter: 6, isTextBox: true, margin: 0, objectName: "anim7_b" });
+    k1.addNotes("Skills, tools and job roles this unit prepares you for. Portfolio output: " + ind.portfolio);
+
+    let k2 = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Industry readiness" });
+    k2.addText("Interview corner: top AI company style", { placeholder: "title" });
+    const RC = { Concept: TEAL, Coding: NAVY2, Design: CRIM, Scenario: LEAF };
+    ind.interview.forEach(([rnd, diff, track, q], i) => {
+      const y = 1.55 + i * 1.62, col = RC[rnd] || NAVY2;
+      k2.addShape(pres.shapes.ROUNDED_RECTANGLE, { x: 0.6, y, w: 12.1, h: 1.42, rectRadius: 0.1, fill: { color: i % 2 ? MIST : WHITE }, line: { color: col, width: 1.25 }, objectName: `anim${i + 1}_a` });
+      k2.addText(rnd.toUpperCase(), { x: 0.85, y: y + 0.2, w: 1.6, h: 0.42, fontFace: FONT, fontSize: 12, bold: true, color: WHITE, align: "center", valign: "middle",
+        shape: pres.shapes.ROUNDED_RECTANGLE, rectRadius: 0.06, fill: { color: col }, isTextBox: true, margin: 0, objectName: `anim${i + 1}_b` });
+      k2.addText(`${diff} • ${track}`, { x: 0.85, y: y + 0.75, w: 1.6, h: 0.5, fontFace: FONT, fontSize: 10, color: SLATE, align: "center", valign: "top", isTextBox: true, margin: 0, objectName: `anim${i + 1}_c` });
+      k2.addText(q, { x: 2.7, y, w: 9.8, h: 1.42, fontFace: FONT, fontSize: 17, color: INK, valign: "middle", isTextBox: true, margin: 0, objectName: `anim${i + 1}_d` });
+    });
+    k2.addText("Practice questions in common interview formats. Model answers: 07_Interview_Prep handbook.", { x: 0.6, y: 6.45, w: 12.1, h: 0.35, fontFace: FONT, fontSize: 12, italic: true, color: TEAL, isTextBox: true, margin: 0 });
+    k2.addNotes("Interview corner. " + ind.interview.map(q => q[3]).join(" "));
+  }
+
   // ---------- Closing ----------
-  s = pres.addSlide({ masterName: "DARK", sectionTitle: "Core concepts" });
+  s = pres.addSlide({ masterName: "DARK", sectionTitle: ind ? "Industry readiness" : "Core concepts" });
   s.addText("Further reading", { placeholder: "title" });
   const refs = ["Russell & Norvig, Artificial Intelligence: A Modern Approach, 4th ed., Pearson (2021)",
                 "Rich, Knight & Nair, Artificial Intelligence, 3rd ed., McGraw Hill (2017)",

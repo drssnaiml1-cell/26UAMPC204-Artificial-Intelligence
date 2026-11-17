@@ -1,0 +1,54 @@
+\section{Industry Readiness: Skills \& Interview Corner}
+\begin{tcolorbox}[enhanced,colback=navy,colframe=gold,boxrule=1.2pt,arc=2mm,coltext=white,
+ title={\textbf{Top industry skills you gain in Unit I}},fonttitle=\color{navy},colbacktitle=gold]
+\begin{itemize}\setlength\itemsep{1pt}
+\item Translating a vague business problem into an agent specification (PEAS)
+\item Classifying environments to pick a feasible AI approach
+\item Formulating problems as state spaces with clear actions, costs and goal tests
+\item Explaining AI history and limits clearly to non-technical stakeholders
+\item Comparing reflex, goal, utility and learning agent designs
+\item Reading problem statements critically before coding
+\end{itemize}
+\end{tcolorbox}
+\begin{tabularx}{\linewidth}{>{\bfseries\color{navy}}p{3.4cm}X}
+Tools to master & Python, NetworkX, Jupyter, Draw.io / Excalidraw for agent diagrams\\
+Job roles & AI Product Analyst, Junior ML Engineer, Solutions Engineer\\
+Portfolio output & A one-page PEAS + architecture design doc for a real campus or city problem, with a state-space prototype in a notebook.\\
+\end{tabularx}
+\subsection*{Interview corner --- top AI company style questions}
+{\small\color{slate}Practice questions modelled on common AI/ML interview formats; full set of 15 with model answers in \texttt{07\_Interview\_Prep}.}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=teal,arc=2mm,boxrule=0.8pt,left=3mm,right=3mm,
+ title={\textbf{QI.01}\quad What is a rational agent, and why is rational not the same as perfect?},fonttitle=\color{white}\small,colbacktitle=teal]
+\colorbox{teal!15}{\scriptsize\bfseries\color{teal} CONCEPT}\
+\colorbox{leaf!15}{\scriptsize\bfseries\color{leaf} EASY}\
+\colorbox{navy!8}{\scriptsize\bfseries\color{navy} Product / Big Tech}\par\smallskip
+\textbf{\color{navy}Model answer.} A rational agent picks the action with the highest expected performance given its percepts and knowledge. It can still get a bad outcome because it cannot see the future or the full state; rationality is judged on the decision, not on luck.
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=teal,arc=2mm,boxrule=0.8pt,left=3mm,right=3mm,
+ title={\textbf{QI.02}\quad Write the PEAS description for a food-delivery app's rider-assignment agent.},fonttitle=\color{white}\small,colbacktitle=teal]
+\colorbox{teal!15}{\scriptsize\bfseries\color{teal} CONCEPT}\
+\colorbox{leaf!15}{\scriptsize\bfseries\color{leaf} EASY}\
+\colorbox{navy!8}{\scriptsize\bfseries\color{navy} IT Services / GCC}\par\smallskip
+\textbf{\color{navy}Model answer.} Performance: delivery time, cost, rider utilisation, customer rating. Environment: city roads, traffic, restaurants, riders, customers. Actuators: assign order, re-route, notify. Sensors: GPS, order stream, traffic feed, rider status.
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=teal,arc=2mm,boxrule=0.8pt,left=3mm,right=3mm,
+ title={\textbf{QI.03}\quad Classify a warehouse robot's environment along the seven properties and say which property makes it hardest.},fonttitle=\color{white}\small,colbacktitle=teal]
+\colorbox{teal!15}{\scriptsize\bfseries\color{teal} CONCEPT}\
+\colorbox{gold!85!black!15}{\scriptsize\bfseries\color{gold!85!black} MEDIUM}\
+\colorbox{navy!8}{\scriptsize\bfseries\color{navy} Robotics / Autonomy}\par\smallskip
+\textbf{\color{navy}Model answer.} Partially observable, multi-agent, stochastic, sequential, dynamic, continuous, mostly known. Partial observability combined with other moving agents is hardest because the robot must track state it cannot see while others change it.
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=crimson,arc=2mm,boxrule=0.8pt,left=3mm,right=3mm,
+ title={\textbf{QI.09}\quad Design an agent that schedules campus classrooms. Give the state space and the performance measure.},fonttitle=\color{white}\small,colbacktitle=crimson]
+\colorbox{crimson!15}{\scriptsize\bfseries\color{crimson} DESIGN}\
+\colorbox{gold!85!black!15}{\scriptsize\bfseries\color{gold!85!black} MEDIUM}\
+\colorbox{navy!8}{\scriptsize\bfseries\color{navy} AI Startup}\par\smallskip
+\textbf{\color{navy}Model answer.} State: partial assignment of (course, room, slot). Actions: assign or move a course. Goal: all courses placed with no clash and capacity met. Performance: hard-constraint violations (must be 0) plus soft penalties such as gaps or room changes. Solve as a CSP with local repair.
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=crimson,arc=2mm,boxrule=0.8pt,left=3mm,right=3mm,
+ title={\textbf{QI.10}\quad Design a learning agent for an autonomous shuttle on a university campus. What are the critic and the problem generator?},fonttitle=\color{white}\small,colbacktitle=crimson]
+\colorbox{crimson!15}{\scriptsize\bfseries\color{crimson} DESIGN}\
+\colorbox{crimson!15}{\scriptsize\bfseries\color{crimson} HARD}\
+\colorbox{navy!8}{\scriptsize\bfseries\color{navy} Robotics / Autonomy}\par\smallskip
+\textbf{\color{navy}Model answer.} Performance element: perception + planning stack. Critic: compares behaviour against a safety and comfort standard (near-misses, jerk, delays). Learning element: updates policies or cost weights from logged drives. Problem generator: proposes safe exploratory scenarios in simulation, not on real roads.
+\end{tcolorbox}

@@ -1,0 +1,54 @@
+\section{Industry Readiness: Skills \& Interview Corner}
+\begin{tcolorbox}[enhanced,colback=navy,colframe=gold,boxrule=1.2pt,arc=2mm,coltext=white,
+ title={\textbf{Top industry skills you gain in Unit III}},fonttitle=\color{navy},colbacktitle=gold]
+\begin{itemize}\setlength\itemsep{1pt}
+\item Encoding domain rules as logic and knowledge graphs
+\item Implementing unification, forward and backward chaining
+\item Writing and debugging Prolog / rule-engine style programs
+\item Designing ontologies and querying them (RDF, SPARQL)
+\item Combining symbolic knowledge with LLMs (knowledge-grounded answers)
+\item Explaining why a system reached a conclusion (traceability)
+\end{itemize}
+\end{tcolorbox}
+\begin{tabularx}{\linewidth}{>{\bfseries\color{navy}}p{3.4cm}X}
+Tools to master & SWI-Prolog / PySwip, rdflib, Protégé, Neo4j (knowledge graphs)\\
+Job roles & Knowledge Engineer, Knowledge-Graph Engineer, Conversational AI Engineer, Compliance-tech Developer\\
+Portfolio output & A small knowledge graph (e.g. department courses and prerequisites) with SPARQL queries and a rule-based Q\&A layer.\\
+\end{tabularx}
+\subsection*{Interview corner --- top AI company style questions}
+{\small\color{slate}Practice questions modelled on common AI/ML interview formats; full set of 15 with model answers in \texttt{07\_Interview\_Prep}.}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=teal,arc=2mm,boxrule=0.8pt,left=3mm,right=3mm,
+ title={\textbf{QIII.01}\quad Differentiate propositional logic and first-order logic with an example.},fonttitle=\color{white}\small,colbacktitle=teal]
+\colorbox{teal!15}{\scriptsize\bfseries\color{teal} CONCEPT}\
+\colorbox{leaf!15}{\scriptsize\bfseries\color{leaf} EASY}\
+\colorbox{navy!8}{\scriptsize\bfseries\color{navy} IT Services / GCC}\par\smallskip
+\textbf{\color{navy}Model answer.} Propositional logic uses atomic true/false symbols (Rain $\to$ WetGround). FOL adds objects, predicates, functions and quantifiers ($\forall$x Student(x) $\Rightarrow$ Person(x)), so one sentence covers many cases.
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=teal,arc=2mm,boxrule=0.8pt,left=3mm,right=3mm,
+ title={\textbf{QIII.02}\quad What is unification? Unify Knows(John, x) with Knows(y, Mother(y)).},fonttitle=\color{white}\small,colbacktitle=teal]
+\colorbox{teal!15}{\scriptsize\bfseries\color{teal} CONCEPT}\
+\colorbox{gold!85!black!15}{\scriptsize\bfseries\color{gold!85!black} MEDIUM}\
+\colorbox{navy!8}{\scriptsize\bfseries\color{navy} Product / Big Tech}\par\smallskip
+\textbf{\color{navy}Model answer.} Unification finds a substitution that makes two expressions identical. Here $\theta$ = {y/John, x/Mother(John)}.
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=teal,arc=2mm,boxrule=0.8pt,left=3mm,right=3mm,
+ title={\textbf{QIII.03}\quad Forward vs backward chaining --- when do you prefer each?},fonttitle=\color{white}\small,colbacktitle=teal]
+\colorbox{teal!15}{\scriptsize\bfseries\color{teal} CONCEPT}\
+\colorbox{gold!85!black!15}{\scriptsize\bfseries\color{gold!85!black} MEDIUM}\
+\colorbox{navy!8}{\scriptsize\bfseries\color{navy} AI Research Lab}\par\smallskip
+\textbf{\color{navy}Model answer.} Forward chaining is data-driven and suits monitoring and alerts where new facts arrive. Backward chaining is goal-driven and suits answering specific queries or diagnosis, avoiding irrelevant derivations.
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=crimson,arc=2mm,boxrule=0.8pt,left=3mm,right=3mm,
+ title={\textbf{QIII.10}\quad Design a knowledge graph to power product search for an e-commerce site.},fonttitle=\color{white}\small,colbacktitle=crimson]
+\colorbox{crimson!15}{\scriptsize\bfseries\color{crimson} DESIGN}\
+\colorbox{crimson!15}{\scriptsize\bfseries\color{crimson} HARD}\
+\colorbox{navy!8}{\scriptsize\bfseries\color{navy} Product / Big Tech}\par\smallskip
+\textbf{\color{navy}Model answer.} Entities: product, brand, category, attribute, user intent; relations: is-a, has-attribute, compatible-with. Build from catalogue plus extraction; use it for query expansion and faceting; keep it fresh with pipelines and quality checks.
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=crimson,arc=2mm,boxrule=0.8pt,left=3mm,right=3mm,
+ title={\textbf{QIII.11}\quad How would you reduce hallucinations in an LLM chatbot for university regulations?},fonttitle=\color{white}\small,colbacktitle=crimson]
+\colorbox{crimson!15}{\scriptsize\bfseries\color{crimson} DESIGN}\
+\colorbox{crimson!15}{\scriptsize\bfseries\color{crimson} HARD}\
+\colorbox{navy!8}{\scriptsize\bfseries\color{navy} AI Startup}\par\smallskip
+\textbf{\color{navy}Model answer.} Retrieval-augmented generation over the official rule documents, plus a rule base / knowledge graph for hard facts (fees, dates), citations in answers, refusal when no source is found, and evaluation on a curated question set.
+\end{tcolorbox}

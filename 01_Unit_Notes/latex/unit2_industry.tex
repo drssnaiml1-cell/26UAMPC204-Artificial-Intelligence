@@ -1,0 +1,54 @@
+\section{Industry Readiness: Skills \& Interview Corner}
+\begin{tcolorbox}[enhanced,colback=navy,colframe=gold,boxrule=1.2pt,arc=2mm,coltext=white,
+ title={\textbf{Top industry skills you gain in Unit II}},fonttitle=\color{navy},colbacktitle=gold]
+\begin{itemize}\setlength\itemsep{1pt}
+\item Implementing BFS, DFS, UCS, IDS and A* from scratch with clean, tested code
+\item Designing admissible heuristics and reasoning about complexity
+\item Using priority queues, hash maps and visited sets correctly
+\item Applying local search / metaheuristics to optimisation problems
+\item Building game agents with Minimax and alpha--beta
+\item Modelling scheduling/allocation as CSPs and using solvers
+\end{itemize}
+\end{tcolorbox}
+\begin{tabularx}{\linewidth}{>{\bfseries\color{navy}}p{3.4cm}X}
+Tools to master & Python heapq / collections, NetworkX, Google OR-Tools, Pygame (visualisers)\\
+Job roles & Software Engineer (algorithms), Routing / Logistics Engineer, Game AI Developer, Operations Research Analyst\\
+Portfolio output & A path-finding visualiser (BFS / A*) and a Sudoku or timetable CSP solver on GitHub with benchmarks.\\
+\end{tabularx}
+\subsection*{Interview corner --- top AI company style questions}
+{\small\color{slate}Practice questions modelled on common AI/ML interview formats; full set of 15 with model answers in \texttt{07\_Interview\_Prep}.}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=teal,arc=2mm,boxrule=0.8pt,left=3mm,right=3mm,
+ title={\textbf{QII.01}\quad Compare BFS and DFS on time, space, completeness and optimality.},fonttitle=\color{white}\small,colbacktitle=teal]
+\colorbox{teal!15}{\scriptsize\bfseries\color{teal} CONCEPT}\
+\colorbox{leaf!15}{\scriptsize\bfseries\color{leaf} EASY}\
+\colorbox{navy!8}{\scriptsize\bfseries\color{navy} Product / Big Tech}\par\smallskip
+\textbf{\color{navy}Model answer.} BFS: O($b^{d}$) time and space, complete, optimal for unit costs. DFS: O($b^{m}$) time, O(bm) space, not complete in infinite or cyclic spaces without checks, not optimal.
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=teal,arc=2mm,boxrule=0.8pt,left=3mm,right=3mm,
+ title={\textbf{QII.02}\quad What makes a heuristic admissible and consistent? Give an example that is admissible but not consistent.},fonttitle=\color{white}\small,colbacktitle=teal]
+\colorbox{teal!15}{\scriptsize\bfseries\color{teal} CONCEPT}\
+\colorbox{gold!85!black!15}{\scriptsize\bfseries\color{gold!85!black} MEDIUM}\
+\colorbox{navy!8}{\scriptsize\bfseries\color{navy} Product / Big Tech}\par\smallskip
+\textbf{\color{navy}Model answer.} Admissible: never overestimates the true cost. Consistent: h(n) $\le$ c(n,n$'$) + h(n$'$). Example: on a path S$\to$A$\to$G with costs 1 and 1, h(S)=2, h(A)=0, h(G)=0 is admissible but violates consistency because h(S) > c(S,A) + h(A).
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=teal,arc=2mm,boxrule=0.8pt,left=3mm,right=3mm,
+ title={\textbf{QII.03}\quad Why is iterative deepening not much slower than BFS?},fonttitle=\color{white}\small,colbacktitle=teal]
+\colorbox{teal!15}{\scriptsize\bfseries\color{teal} CONCEPT}\
+\colorbox{gold!85!black!15}{\scriptsize\bfseries\color{gold!85!black} MEDIUM}\
+\colorbox{navy!8}{\scriptsize\bfseries\color{navy} AI Research Lab}\par\smallskip
+\textbf{\color{navy}Model answer.} Most nodes are at the deepest level; re-expanding shallower levels adds only a constant factor (about b/(b--1)). Total work stays O($b^{d}$) while memory is only O(bd).
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=crimson,arc=2mm,boxrule=0.8pt,left=3mm,right=3mm,
+ title={\textbf{QII.10}\quad Design the route engine for a ride-hailing app serving a city of 10 million people.},fonttitle=\color{white}\small,colbacktitle=crimson]
+\colorbox{crimson!15}{\scriptsize\bfseries\color{crimson} DESIGN}\
+\colorbox{crimson!15}{\scriptsize\bfseries\color{crimson} HARD}\
+\colorbox{navy!8}{\scriptsize\bfseries\color{navy} Product / Big Tech}\par\smallskip
+\textbf{\color{navy}Model answer.} Pre-process the road graph (contraction hierarchies or hub labels) for fast shortest paths, use live traffic as edge weights updated by stream, A* or bidirectional search for queries, caching for frequent pairs, and sharding by region. Measure p99 latency and ETA error.
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=crimson,arc=2mm,boxrule=0.8pt,left=3mm,right=3mm,
+ title={\textbf{QII.11}\quad Design an exam-timetabling system for a university.},fonttitle=\color{white}\small,colbacktitle=crimson]
+\colorbox{crimson!15}{\scriptsize\bfseries\color{crimson} DESIGN}\
+\colorbox{gold!85!black!15}{\scriptsize\bfseries\color{gold!85!black} MEDIUM}\
+\colorbox{navy!8}{\scriptsize\bfseries\color{navy} IT Services / GCC}\par\smallskip
+\textbf{\color{navy}Model answer.} Model as a CSP: variables are exams; domains are (slot, room) pairs; constraints cover student clashes, capacity and invigilators. Use MRV + forward checking, then local search (min-conflicts) to optimise soft constraints. Provide a manual override UI.
+\end{tcolorbox}

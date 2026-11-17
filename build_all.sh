@@ -5,6 +5,7 @@ ROOT="$(cd "$(dirname "$0")" && pwd)"; cd "$ROOT"
 tex() { (cd "$1" && xelatex -interaction=nonstopmode "$2.tex" >/dev/null && xelatex -interaction=nonstopmode "$2.tex" >/dev/null && rm -f *.aux *.log *.out *.toc && echo "  ✓ $1/$2.pdf"); }
 
 echo "1/5 Executing lab notebooks …";           python 06_Notebooks/src/build_notebooks.py
+echo "1b  Interview prep (notebook, handbook, unit inserts, PPT data) …"; python 07_Interview_Prep/src/build_interview.py; tex 07_Interview_Prep AI_Interview_Skills_Handbook
 echo "2/5 Building lab manual …";              python 05_Lab_Manual/src/build_lab_manual.py; tex 05_Lab_Manual AI_Lab_Manual_26UAMPC204
 echo "3/5 Building unit notes …"
 for f in Unit_1_Notes Unit_2_Notes Unit_3_Notes Unit_4_Notes Unit_5_Notes AI_Complete_Notes; do tex 01_Unit_Notes/latex $f; done

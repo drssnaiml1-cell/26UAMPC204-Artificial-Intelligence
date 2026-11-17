@@ -27,6 +27,7 @@
 | 4 | [**Project Portfolio**](04_Projects) | **10 projects per unit** (50 total), mini and major, with tools, deliverables and a rubric | `LaTeX` · `PDF` · `MD` |
 | 5 | [**Lab Manual**](05_Lab_Manual) | Handbook-style manual: aim, theory, algorithm, program, **real output**, figures, embedded animations, viva | `LaTeX` · `PDF` |
 | 6 | [**Lab Notebooks**](06_Notebooks) | 10 experiments, **executed with inputs and outputs**, plus plain Python scripts | `.ipynb` · `.py` |
+| 7 | [**Interview & Industry Skills**](07_Interview_Prep) | Per unit: top industry skills, tools, job roles, portfolio output and **15 interview questions with model answers** (75 total), plus **10 solved coding problems** | `LaTeX` · `PDF` · `MD` · `.ipynb` |
 
 All documents use **Times New Roman** with a consistent **navy-and-gold** colour scheme.
 
@@ -51,6 +52,22 @@ All documents use **Times New Roman** with a consistent **navy-and-gold** colour
 <td align="center"><img src="assets/animations/exp10_expert_system_firing.gif" width="260"><br><b>Exp 10</b> · Expert-system rule firing</td>
 </tr>
 </table>
+
+---
+
+## 💼 Interview & industry readiness
+
+Every unit ends with an **Industry Readiness** section, in the notes and as two extra slides in each deck: *Top industry skills you gain* and *Interview corner*. The full set lives in [`07_Interview_Prep`](07_Interview_Prep).
+
+| Unit | Top skill you walk away with | Job roles it prepares you for |
+|:-:|---|---|
+| I | Turning a vague business problem into an agent specification (PEAS) and state space | AI Product Analyst · Junior ML Engineer · Solutions Engineer |
+| II | Implementing BFS / UCS / A* from scratch with clean, tested code and heuristics | Software Engineer (algorithms) · Routing Engineer · Game AI Developer |
+| III | Encoding rules as logic and knowledge graphs; chaining and unification | Knowledge-Graph Engineer · Conversational AI Engineer |
+| IV | Bayesian reasoning, belief networks, planning and fuzzy control | Data Scientist · Robotics Planning Engineer · Risk / Fraud Analyst |
+| V | Training, interpreting and auditing ML models; expert systems and chatbots | ML Engineer · Data Scientist · Responsible-AI Analyst |
+
+Questions are tagged by **round** (Concept · Coding · Design · Scenario), **difficulty** and **company track** (Product / Big Tech, AI Research Lab, AI Startup, IT Services / GCC, Robotics, FinTech, HealthTech, Gaming). They are practice questions written for this course, modelled on common interview formats, not verbatim questions from any company.
 
 ---
 
@@ -114,7 +131,7 @@ Or open a notebook directly in Google Colab by replacing `github.com` with `gith
 ### Rebuild every document from source
 
 ```bash
-bash build_all.sh          # notebooks → lab manual → notes, QB, projects (XeLaTeX) → PPTs
+bash build_all.sh          # notebooks → interview prep → lab manual → notes, QB, projects (XeLaTeX) → PPTs
 ```
 
 Requirements for the full rebuild: XeLaTeX (TeX Live with `tcolorbox`, `tikz` and `animate`), Node.js with `pptxgenjs`, and LibreOffice (for PPT → PDF).
@@ -141,7 +158,11 @@ Requirements for the full rebuild: XeLaTeX (TeX Live with `tcolorbox`, `tikz` an
 │   ├── python/            the same experiments as .py scripts
 │   ├── outputs/           captured text outputs (used by the lab manual)
 │   └── src/               notebook definitions and builder
-├── assets/                banner, figures/, animations/ (GIF), logo slot
+├── 07_Interview_Prep/
+│   ├── AI_Interview_Skills_Handbook.{tex,pdf,md}   skills + 75 Q&A
+│   ├── Interview_Coding_Solutions.{ipynb,py}       10 tested solutions
+│   └── src/               question bank data + builder
+├── assets/                banner, logo, figures/, animations/ (GIF)
 ├── common/ai204.sty       shared LaTeX house style (navy & gold, Times)
 ├── build_all.sh
 └── requirements.txt

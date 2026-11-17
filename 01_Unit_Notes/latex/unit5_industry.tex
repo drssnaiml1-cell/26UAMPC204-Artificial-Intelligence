@@ -1,0 +1,54 @@
+\section{Industry Readiness: Skills \& Interview Corner}
+\begin{tcolorbox}[enhanced,colback=navy,colframe=gold,boxrule=1.2pt,arc=2mm,coltext=white,
+ title={\textbf{Top industry skills you gain in Unit V}},fonttitle=\color{navy},colbacktitle=gold]
+\begin{itemize}\setlength\itemsep{1pt}
+\item Training, evaluating and interpreting decision-tree models
+\item Explaining overfitting, bias--variance and validation strategy
+\item Building a perceptron / small neural network and debugging training
+\item Designing rule-based expert systems and chatbots with fallbacks
+\item Auditing models for bias, privacy and explainability
+\item Mapping NLP, vision and robotics problems to the right technique
+\end{itemize}
+\end{tcolorbox}
+\begin{tabularx}{\linewidth}{>{\bfseries\color{navy}}p{3.4cm}X}
+Tools to master & scikit-learn, PyTorch / Keras, SHAP / Fairlearn, Rasa or simple intent classifiers\\
+Job roles & ML Engineer, Data Scientist, Conversational AI Developer, Responsible-AI Analyst\\
+Portfolio output & An end-to-end classifier with a model card (data, metrics, fairness checks, limitations) and a deployed demo.\\
+\end{tabularx}
+\subsection*{Interview corner --- top AI company style questions}
+{\small\color{slate}Practice questions modelled on common AI/ML interview formats; full set of 15 with model answers in \texttt{07\_Interview\_Prep}.}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=teal,arc=2mm,boxrule=0.8pt,left=3mm,right=3mm,
+ title={\textbf{QV.01}\quad Explain supervised, unsupervised and reinforcement learning with one industry example each.},fonttitle=\color{white}\small,colbacktitle=teal]
+\colorbox{teal!15}{\scriptsize\bfseries\color{teal} CONCEPT}\
+\colorbox{leaf!15}{\scriptsize\bfseries\color{leaf} EASY}\
+\colorbox{navy!8}{\scriptsize\bfseries\color{navy} IT Services / GCC}\par\smallskip
+\textbf{\color{navy}Model answer.} Supervised: credit-risk scoring from labelled defaults. Unsupervised: customer segmentation by clustering. Reinforcement: dynamic pricing or robot control learned from rewards.
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=teal,arc=2mm,boxrule=0.8pt,left=3mm,right=3mm,
+ title={\textbf{QV.02}\quad How does a decision tree choose a split? Compare entropy and Gini.},fonttitle=\color{white}\small,colbacktitle=teal]
+\colorbox{teal!15}{\scriptsize\bfseries\color{teal} CONCEPT}\
+\colorbox{gold!85!black!15}{\scriptsize\bfseries\color{gold!85!black} MEDIUM}\
+\colorbox{navy!8}{\scriptsize\bfseries\color{navy} Product / Big Tech}\par\smallskip
+\textbf{\color{navy}Model answer.} It picks the split with the largest impurity reduction. Entropy uses --$\Sigma$p log p; Gini uses 1 -- $\Sigma$p$^2$. They usually give similar trees; Gini is slightly cheaper to compute.
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=teal,arc=2mm,boxrule=0.8pt,left=3mm,right=3mm,
+ title={\textbf{QV.03}\quad Why can't a single perceptron learn XOR?},fonttitle=\color{white}\small,colbacktitle=teal]
+\colorbox{teal!15}{\scriptsize\bfseries\color{teal} CONCEPT}\
+\colorbox{gold!85!black!15}{\scriptsize\bfseries\color{gold!85!black} MEDIUM}\
+\colorbox{navy!8}{\scriptsize\bfseries\color{navy} AI Research Lab}\par\smallskip
+\textbf{\color{navy}Model answer.} XOR is not linearly separable; a perceptron draws one line. A hidden layer creates a non-linear boundary, so a 2-layer MLP solves it.
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=crimson,arc=2mm,boxrule=0.8pt,left=3mm,right=3mm,
+ title={\textbf{QV.10}\quad Design a content-moderation system for a social platform in Indian languages.},fonttitle=\color{white}\small,colbacktitle=crimson]
+\colorbox{crimson!15}{\scriptsize\bfseries\color{crimson} DESIGN}\
+\colorbox{crimson!15}{\scriptsize\bfseries\color{crimson} HARD}\
+\colorbox{navy!8}{\scriptsize\bfseries\color{navy} Product / Big Tech}\par\smallskip
+\textbf{\color{navy}Model answer.} Multilingual text and image classifiers, policy taxonomy, thresholds per category, human review for borderline cases, appeal flow, feedback loop for retraining, and metrics per language to catch bias.
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=crimson,arc=2mm,boxrule=0.8pt,left=3mm,right=3mm,
+ title={\textbf{QV.11}\quad Design an expert-system-plus-ML assistant for rural primary-health workers.},fonttitle=\color{white}\small,colbacktitle=crimson]
+\colorbox{crimson!15}{\scriptsize\bfseries\color{crimson} DESIGN}\
+\colorbox{crimson!15}{\scriptsize\bfseries\color{crimson} HARD}\
+\colorbox{navy!8}{\scriptsize\bfseries\color{navy} HealthTech}\par\smallskip
+\textbf{\color{navy}Model answer.} Rule-based triage protocol for safety-critical decisions, an ML model for risk ranking, offline-first mobile app, local-language voice UI, escalation to doctors, and audit logs; validate with clinicians.
+\end{tcolorbox}
