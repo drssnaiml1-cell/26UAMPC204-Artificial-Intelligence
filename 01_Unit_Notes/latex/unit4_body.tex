@@ -1,0 +1,186 @@
+% ================== UNIT IV ==================
+\unitbanner{IV}{Planning and Reasoning under Uncertainty}{06 Hours \textbullet\ CO204.4}
+
+\begin{outcome}
+\begin{itemize}
+\item identify the components of a planning system and write STRIPS operators \btl{L2/L3}
+\item apply forward and backward state-space planning and partial-order planning \btl{L3}
+\item apply probability axioms and Bayes' theorem to diagnostic problems \btl{L3}
+\item construct a Bayesian network and compute simple inference by enumeration \btl{L3/L6}
+\item design fuzzy membership functions and a Mamdani fuzzy inference system \btl{L3/L6}
+\end{itemize}
+\end{outcome}
+
+\section{Classical Planning}
+\textbf{Planning} is devising a sequence (or partial order) of actions to achieve a goal. Classical planning assumes a fully observable, deterministic, static, discrete environment with a single agent.
+
+\subsection{Components of a Planning System}
+\begin{enumerate}
+\item \textbf{Choose the best rule/action} to apply next based on available heuristic information;
+\item \textbf{Apply the chosen rule} to compute the new problem state;
+\item \textbf{Detect when a solution} has been found;
+\item \textbf{Detect dead ends} so they can be abandoned;
+\item \textbf{Detect when an almost-correct solution} has been found and repair it.
+\end{enumerate}
+
+\subsection{STRIPS Representation}
+STRIPS (Stanford Research Institute Problem Solver, 1971) uses a \emph{factored} representation:
+\begin{itemize}
+\item \textbf{States}: conjunctions of ground, function-free positive literals (closed-world assumption).
+\item \textbf{Goals}: conjunctions of literals (may contain variables).
+\item \textbf{Action schema}: name + parameters, \textbf{Precondition} (PRE), \textbf{Effect} split into \textbf{Add list} and \textbf{Delete list}.
+\end{itemize}
+\[\textsc{Result}(s,a)=(s\ -\ \textsc{Del}(a))\ \cup\ \textsc{Add}(a)\]
+\begin{example}[Blocks World]
+\small
+\texttt{Stack(x,y)} \quad PRE: \textit{Holding(x)} $\wedge$ \textit{Clear(y)} \quad ADD: \textit{On(x,y)}, \textit{Clear(x)}, \textit{HandEmpty} \quad DEL: \textit{Holding(x)}, \textit{Clear(y)}\\
+\texttt{Unstack(x,y)} \quad PRE: \textit{On(x,y)} $\wedge$ \textit{Clear(x)} $\wedge$ \textit{HandEmpty} \quad ADD: \textit{Holding(x)}, \textit{Clear(y)} \quad DEL: \textit{On(x,y)}, \textit{Clear(x)}, \textit{HandEmpty}\\
+\texttt{PickUp(x)} \quad PRE: \textit{OnTable(x)} $\wedge$ \textit{Clear(x)} $\wedge$ \textit{HandEmpty} \quad ADD: \textit{Holding(x)} \quad DEL: \textit{OnTable(x)}, \textit{Clear(x)}, \textit{HandEmpty}\\
+\texttt{PutDown(x)} \quad PRE: \textit{Holding(x)} \quad ADD: \textit{OnTable(x)}, \textit{Clear(x)}, \textit{HandEmpty} \quad DEL: \textit{Holding(x)}\\[3pt]
+\begin{tikzpicture}[b/.style={draw=navy,thick,fill=#1,minimum size=0.8cm,font=\bfseries}]
+\node[font=\small\bfseries\color{navy}] at (1,2.8){Initial};
+\draw[very thick,slate](-0.3,0)--(2.6,0);
+\node[b=goldL,anchor=south] at (0.5,0) (A){A}; \node[b=tealL,anchor=south] at (0.5,0.8){C}; \node[b=leafL,anchor=south] at (1.8,0){B};
+\draw[-{Latex},ultra thick,gold] (3.2,1)--(5,1) node[midway,above,font=\scriptsize\color{navy}]{plan};
+\node[font=\small\bfseries\color{navy}] at (6.6,2.8){Goal};
+\draw[very thick,slate](5.6,0)--(7.6,0);
+\node[b=goldL,anchor=south] at (6.6,1.6){A}; \node[b=leafL,anchor=south] at (6.6,0.8){B}; \node[b=tealL,anchor=south] at (6.6,0){C};
+\node[text width=6.2cm,font=\scriptsize,anchor=west] at (8.2,1.2){\textbf{Plan:} Unstack(C,A), PutDown(C), PickUp(B), Stack(B,C), PickUp(A), Stack(A,B)};
+\end{tikzpicture}
+\end{example}
+\textbf{PDDL} (Planning Domain Definition Language) is the modern standard derived from STRIPS/ADL.
+
+\subsection{State-Space Search for Planning}
+\begin{itemize}
+\item \textbf{Forward (progression) search}: start at the initial state, apply applicable actions, search towards the goal. Large branching factor; needs good domain-independent heuristics (e.g.\ \emph{ignore preconditions}, \emph{ignore delete lists}).
+\item \textbf{Backward (regression) search}: start at the goal; choose \emph{relevant} and \emph{consistent} actions; regress: $g'=(g-\textsc{Add}(a))\cup\textsc{Pre}(a)$. Smaller branching factor.
+\end{itemize}
+\begin{caution}[Sussman anomaly]
+Linear (total-order) goal-stack planning that solves subgoals one at a time can undo previously achieved subgoals (e.g.\ achieving \textit{On(A,B)} then \textit{On(B,C)}). Interleaving of actions is needed $\Rightarrow$ partial-order planning.
+\end{caution}
+
+\subsection{Partial-Order Planning (POP)}
+Follows the \emph{least commitment} principle: order actions only when necessary. A partial-order plan consists of:
+\begin{itemize}
+\item \textbf{Actions} (including dummy \textit{Start} and \textit{Finish});
+\item \textbf{Ordering constraints} $A\prec B$;
+\item \textbf{Causal links} $A\xrightarrow{p}B$: $A$ achieves precondition $p$ of $B$;
+\item \textbf{Open preconditions}: not yet achieved.
+\end{itemize}
+A \textbf{threat} occurs when an action $C$ might delete $p$ between $A$ and $B$; resolved by \textbf{demotion} ($C\prec A$) or \textbf{promotion} ($B\prec C$). A plan is a solution when it is consistent and has no open preconditions; any \emph{linearisation} is a valid total-order plan.
+\begin{center}
+\begin{tikzpicture}[a/.style={draw=navy,thick,rounded corners,fill=#1,minimum width=2.6cm,minimum height=0.7cm,font=\small},>=Latex]
+\node[a=navy,text=white](st){Start};
+\node[a=goldL,above right=0.3cm and 1.2cm of st](l1){Left-Sock}; \node[a=goldL,right=1cm of l1](l2){Left-Shoe};
+\node[a=tealL,below right=0.3cm and 1.2cm of st](r1){Right-Sock}; \node[a=tealL,right=1cm of r1](r2){Right-Shoe};
+\node[a=navy,text=white,below right=0.3cm and 1.2cm of l2](fi){Finish};
+\draw[->,thick](st)--(l1); \draw[->,thick](st)--(r1);
+\draw[->,thick,gold!80!black](l1)--node[above,font=\scriptsize]{LeftSockOn}(l2);
+\draw[->,thick,gold!80!black](r1)--node[below,font=\scriptsize]{RightSockOn}(r2);
+\draw[->,thick](l2)--(fi); \draw[->,thick](r2)--(fi);
+\end{tikzpicture}\\{\small\color{slate}Partial-order plan for putting on shoes --- 6 valid linearisations.}
+\end{center}
+
+\section{Reasoning under Uncertainty}
+\subsection{Sources of Uncertainty}
+Partial observability; noisy sensors; stochastic action outcomes; incomplete domain knowledge; complexity (\emph{laziness} --- too much work to list all exceptions) and \emph{theoretical/practical ignorance}. Logic alone fails: $\textit{Toothache}\Rightarrow\textit{Cavity}$ is false (could be gum disease). Probability summarises uncertainty; \textbf{decision theory = probability theory + utility theory}.
+
+\subsection{Basics of Probability}
+\begin{itemize}
+\item Sample space $\Omega$; event; random variables (Boolean, discrete, continuous); \textbf{prior} $P(A)$.
+\item Axioms (Kolmogorov): $0\le P(\omega)\le1$; $\sum_{\omega}P(\omega)=1$; $P(A\vee B)=P(A)+P(B)-P(A\wedge B)$.
+\item \textbf{Conditional probability}: $P(A\mid B)=\dfrac{P(A\wedge B)}{P(B)}$; \ \textbf{product rule}: $P(A\wedge B)=P(A\mid B)P(B)$.
+\item \textbf{Full joint distribution} answers any query; \textbf{marginalisation}: $P(Y)=\sum_{z}P(Y,z)$.
+\item \textbf{Independence}: $P(A\mid B)=P(A)$; \textbf{conditional independence}: $P(X,Y\mid Z)=P(X\mid Z)P(Y\mid Z)$.
+\end{itemize}
+\begin{example}[Inference from a full joint distribution]
+\small
+\begin{tabular}{l|cc|cc}
+\rowcolor{navy}&\multicolumn{2}{c|}{\color{gold}toothache}&\multicolumn{2}{c}{\color{gold}$\neg$toothache}\\
+\rowcolor{navy}&\color{white}catch&\color{white}$\neg$catch&\color{white}catch&\color{white}$\neg$catch\\\hline
+cavity&0.108&0.012&0.072&0.008\\ $\neg$cavity&0.016&0.064&0.144&0.576\\
+\end{tabular}\quad
+\begin{minipage}{6.2cm}
+$P(\textit{toothache})=0.108+0.012+0.016+0.064=0.2$\\
+$P(\textit{cavity}\mid\textit{toothache})=\dfrac{0.108+0.012}{0.2}=0.6$
+\end{minipage}
+\end{example}
+
+\subsection{Bayes' Theorem}
+\[\boxed{\;P(H\mid E)=\frac{P(E\mid H)\,P(H)}{P(E)}=\frac{P(E\mid H)P(H)}{P(E\mid H)P(H)+P(E\mid\neg H)P(\neg H)}\;}\]
+$P(H)$ prior, $P(E\mid H)$ likelihood, $P(H\mid E)$ posterior, $P(E)$ evidence. Diagnostic knowledge $P(\text{cause}\mid\text{effect})$ is often derived from causal knowledge $P(\text{effect}\mid\text{cause})$.
+\begin{example}[Medical test --- the base-rate effect]
+\small A disease affects 1\% of people. A test detects it 90\% of the time (sensitivity) and gives a false positive 5\% of the time. If a patient tests positive:
+\[P(D\mid +)=\frac{0.9\times0.01}{0.9\times0.01+0.05\times0.99}=\frac{0.009}{0.0585}\approx\mathbf{0.154}\]
+Only 15.4\%! The low prior dominates. \textbf{Naïve Bayes}: $P(C\mid e_1..e_n)\propto P(C)\prod_iP(e_i\mid C)$.
+\end{example}
+
+\section{Bayesian (Belief) Networks}
+\subsection{Representation}
+A Bayesian network is a \textbf{directed acyclic graph} where each node is a random variable and each node $X_i$ has a \textbf{conditional probability table} $P(X_i\mid\textit{Parents}(X_i))$. It compactly encodes the full joint distribution:
+\[P(x_1,\dots,x_n)=\prod_{i=1}^{n}P\bigl(x_i\mid \textit{parents}(X_i)\bigr)\]
+Each node is conditionally independent of its non-descendants given its parents (\emph{local Markov property}); \emph{d-separation} reads independencies from the graph. A network with $n$ Boolean nodes and at most $k$ parents needs $O(n2^{k})$ numbers instead of $2^{n}$.
+\begin{center}
+\begin{tikzpicture}[v/.style={ellipse,draw=navy,thick,fill=#1,minimum width=2.4cm,minimum height=0.8cm,font=\small\bfseries},
+ t/.style={font=\scriptsize,draw=gold,fill=ivory,rounded corners,inner sep=2pt},>=Latex]
+\node[v=goldL](B) at (0,3){Burglary}; \node[v=goldL](E) at (5,3){Earthquake};
+\node[v=tealL](A) at (2.5,1.5){Alarm};
+\node[v=leafL](J) at (0,0){JohnCalls}; \node[v=leafL](M) at (5,0){MaryCalls};
+\draw[->,thick](B)--(A); \draw[->,thick](E)--(A); \draw[->,thick](A)--(J); \draw[->,thick](A)--(M);
+\node[t,left=0.2cm of B]{$P(B)=.001$}; \node[t,right=0.2cm of E]{$P(E)=.002$};
+\node[t,right=0.6cm of A,align=left]{\begin{tabular}{cc|c}B&E&$P(A)$\\\hline T&T&.95\\T&F&.94\\F&T&.29\\F&F&.001\end{tabular}};
+\node[t,left=0.2cm of J,align=left]{\begin{tabular}{c|c}A&$P(J)$\\\hline T&.90\\F&.05\end{tabular}};
+\node[t,right=0.2cm of M,align=left]{\begin{tabular}{c|c}A&$P(M)$\\\hline T&.70\\F&.01\end{tabular}};
+\end{tikzpicture}
+\end{center}
+\begin{example}[Joint probability]
+\small $P(j,m,a,\neg b,\neg e)=P(j\mid a)P(m\mid a)P(a\mid\neg b,\neg e)P(\neg b)P(\neg e)=0.90\times0.70\times0.001\times0.999\times0.998\approx\mathbf{0.000628}$.
+\end{example}
+\subsection{Simple Inference}
+\textbf{Inference by enumeration}: $P(X\mid e)=\alpha\sum_{y}P(X,e,y)$ summing over hidden variables $y$. For the burglary net, $P(B\mid j,m)=\alpha\,P(B)\sum_{e}P(e)\sum_{a}P(a\mid B,e)P(j\mid a)P(m\mid a)\approx\langle0.284,0.716\rangle$. Exact methods: enumeration, \emph{variable elimination}; approximate methods: \emph{rejection sampling}, \emph{likelihood weighting}, \emph{Gibbs sampling} (MCMC).
+
+\section{Introduction to Fuzzy Logic}
+Proposed by Lotfi Zadeh (1965) to model \emph{vagueness} (``tall'', ``hot'') rather than randomness. Truth is a degree in $[0,1]$.
+\subsection{Fuzzy Sets and Membership Functions}
+A fuzzy set $A$ on universe $X$ is $\{(x,\mu_A(x))\}$ with $\mu_A:X\to[0,1]$.
+\begin{itemize}
+\item \textbf{Triangular}: $\mu(x;a,b,c)=\max\!\bigl(\min(\tfrac{x-a}{b-a},\tfrac{c-x}{c-b}),0\bigr)$
+\item \textbf{Trapezoidal}: $\mu(x;a,b,c,d)=\max\!\bigl(\min(\tfrac{x-a}{b-a},1,\tfrac{d-x}{d-c}),0\bigr)$
+\item \textbf{Gaussian}: $\mu(x)=e^{-(x-c)^2/2\sigma^2}$; \ \textbf{sigmoid}, \textbf{bell}.
+\end{itemize}
+\begin{center}
+\begin{tikzpicture}[xscale=0.16,yscale=2]
+\draw[->,slate](0,0)--(52,0) node[right,font=\scriptsize]{Temp ($^\circ$C)}; \draw[->,slate](0,0)--(0,1.25) node[above,font=\scriptsize]{$\mu$};
+\foreach \x in {0,10,20,30,40,50}{\draw(\x,0)--(\x,-0.04) node[below,font=\tiny]{\x};}
+\draw[teal,very thick](0,1)--(10,1)--(20,0); \node[teal,font=\scriptsize\bfseries] at (5,1.12){Cold};
+\draw[gold!80!black,very thick](10,0)--(25,1)--(40,0); \node[gold!80!black,font=\scriptsize\bfseries] at (25,1.12){Warm};
+\draw[crimson,very thick](30,0)--(40,1)--(50,1); \node[crimson,font=\scriptsize\bfseries] at (45,1.12){Hot};
+\draw[dashed,navy](16,0)--(16,0.6); \node[font=\tiny,navy] at (16,0.68){18$^\circ$:\,Cold 0.2, Warm 0.53};
+\end{tikzpicture}
+\end{center}
+\textbf{Operations} (Zadeh): union $\mu_{A\cup B}=\max(\mu_A,\mu_B)$; intersection $\mu_{A\cap B}=\min(\mu_A,\mu_B)$; complement $\mu_{\bar A}=1-\mu_A$. Linguistic hedges: \emph{very} $A=\mu_A^{2}$, \emph{somewhat} $A=\sqrt{\mu_A}$.
+
+\subsection{Fuzzy Inference (Mamdani)}
+\begin{center}
+\begin{tikzpicture}[s/.style={draw=navy,thick,rounded corners,fill=#1,minimum width=2.4cm,minimum height=1cm,align=center,font=\small},>=Latex]
+\node(in){\small crisp input}; \node[s=goldL,right=0.5cm of in](fz){Fuzzification}; \node[s=tealL,right=0.5cm of fz](rb){Rule evaluation\\(IF--THEN)};
+\node[s=tealL,right=0.5cm of rb](ag){Aggregation}; \node[s=goldL,right=0.5cm of ag](df){Defuzzification};
+\node[below=0.5cm of df](out){\small crisp output};
+\draw[->,thick](in)--(fz); \draw[->,thick](fz)--(rb); \draw[->,thick](rb)--(ag); \draw[->,thick](ag)--(df); \draw[->,thick](df)--(out);
+\node[s=navy,text=white,below=0.5cm of rb,minimum width=5cm](kb){Rule base \& membership functions};
+\draw[->,thick,gold!80!black](kb)--(rb);
+\end{tikzpicture}
+\end{center}
+\textbf{Example rules} (fan-speed controller): \emph{IF temp is Hot THEN speed is High}; \emph{IF temp is Warm AND humidity is High THEN speed is Medium}. AND $\to\min$, OR $\to\max$; implication clips the output set; aggregation takes the max; \textbf{centroid defuzzification}: $z^{*}=\dfrac{\int\mu(z)\,z\,dz}{\int\mu(z)\,dz}$. Applications: washing machines, air-conditioners, ABS braking, camera autofocus, metro train control (Sendai).
+
+\begin{keypoint}[Probability vs.\ Fuzziness]
+Probability: \emph{uncertainty about whether} a crisp event occurs. Fuzzy logic: \emph{degree to which} a vague property holds. ``Probability 0.8 the bottle is poisonous'' $\ne$ ``bottle has membership 0.8 in the set of poisonous liquids''.
+\end{keypoint}
+
+\subsection*{Unit IV --- Summary}
+\begin{itemize}
+\item STRIPS: PRE/ADD/DEL; forward \& backward planning; POP uses causal links and least commitment.
+\item Probability + Bayes' rule handle uncertainty; beware base rates.
+\item Bayesian networks factorise the joint distribution; inference by enumeration/sampling.
+\item Fuzzy logic: membership functions, min/max operators, Mamdani inference and centroid defuzzification.
+\end{itemize}

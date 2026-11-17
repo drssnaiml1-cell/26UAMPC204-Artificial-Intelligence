@@ -1,0 +1,146 @@
+% =====================================================================
+%  ai204.sty  --  House style for 26UAMPC204 Artificial Intelligence
+%  Navy & Gold | Times (TeX Gyre Termes) | Sanjivani University
+%  Compile with XeLaTeX
+% =====================================================================
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{ai204}[2026/11/17 AI 26UAMPC204 handbook style]
+
+\RequirePackage[a4paper,margin=2.2cm,headheight=28pt]{geometry}
+\RequirePackage{fontspec}
+\IfFontExistsTF{Times New Roman}{\setmainfont{Times New Roman}}{\setmainfont{TeX Gyre Termes}}
+\setmonofont{DejaVu Sans Mono}[Scale=0.82]
+\RequirePackage{amsmath,amssymb}
+
+\RequirePackage{xcolor}
+\RequirePackage{graphicx}
+\RequirePackage{tikz}
+\usetikzlibrary{positioning,arrows.meta,shapes,calc,fit,backgrounds,shadows,trees}
+\RequirePackage[most]{tcolorbox}
+\RequirePackage{fancyhdr}
+\RequirePackage{titlesec}
+\RequirePackage{enumitem}
+\RequirePackage{booktabs,tabularx,longtable,array,multirow,colortbl}
+\RequirePackage{listings}
+
+\RequirePackage{hyperref}
+\RequirePackage{lastpage}
+\RequirePackage{etoolbox}
+
+% ---------- Palette -------------------------------------------------
+\definecolor{navy}{HTML}{0B1F4B}
+\definecolor{navyL}{HTML}{1F3A7A}
+\definecolor{gold}{HTML}{C9A227}
+\definecolor{goldL}{HTML}{F6EBC8}
+\definecolor{ivory}{HTML}{FBF8F0}
+\definecolor{teal}{HTML}{0E7C86}
+\definecolor{tealL}{HTML}{DDF1F2}
+\definecolor{crimson}{HTML}{A4243B}
+\definecolor{crimsonL}{HTML}{F8E1E5}
+\definecolor{leaf}{HTML}{2E7D32}
+\definecolor{leafL}{HTML}{E3F2E4}
+\definecolor{slate}{HTML}{4A5568}
+\definecolor{codebg}{HTML}{F7F8FC}
+
+\hypersetup{colorlinks=true,linkcolor=navyL,urlcolor=teal,citecolor=teal,
+  pdfauthor={Dr. S. Satyanarayana},pdfsubject={26UAMPC204 Artificial Intelligence}}
+
+% ---------- Headings ------------------------------------------------
+\titleformat{\section}{\Large\bfseries\color{navy}}
+  {\colorbox{gold}{\textcolor{navy}{\,\thesection\,}}}{0.6em}{}[{\color{gold}\titlerule[1.2pt]}]
+\titleformat{\subsection}{\large\bfseries\color{navyL}}{\thesubsection}{0.6em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries\color{teal}}{\thesubsubsection}{0.5em}{}
+\titlespacing*{\section}{0pt}{14pt}{8pt}
+
+% ---------- Header / footer ----------------------------------------
+\newcommand{\coursecode}{26UAMPC204}
+\newcommand{\coursename}{Artificial Intelligence}
+\newcommand{\doctitle}{Course Handbook}
+\pagestyle{fancy}\fancyhf{}
+\renewcommand{\headrule}{{\color{gold}\hrule height 1.2pt}}
+\fancyhead[L]{\small\color{navy}\textbf{\coursecode}\ \textbullet\ \coursename}
+\fancyhead[R]{\small\color{slate}\doctitle}
+\fancyfoot[L]{\footnotesize\color{slate}Sanjivani University \textbullet\ Dept.\ of AI \& Data Science}
+\fancyfoot[R]{\footnotesize\color{navy}\textbf{\thepage}\,/\,\pageref*{LastPage}}
+\renewcommand{\footrulewidth}{0.4pt}
+\renewcommand{\footrule}{{\color{gold}\hrule height 0.4pt}}
+
+% ---------- Boxes ---------------------------------------------------
+\tcbset{aibox/.style={enhanced,breakable,arc=2mm,boxrule=0.8pt,left=2mm,right=2mm,
+  fonttitle=\bfseries,attach boxed title to top left={yshift=-2mm,xshift=3mm},
+  boxed title style={arc=1mm}}}
+\newtcolorbox{definition}[1][]{aibox,colback=tealL,colframe=teal,title={Definition\ifstrempty{#1}{}{: #1}},
+  boxed title style={colback=teal}}
+\newtcolorbox{keypoint}[1][Key Idea]{aibox,colback=goldL,colframe=gold!80!black,coltitle=navy,title={#1},
+  boxed title style={colback=gold}}
+\newtcolorbox{example}[1][]{aibox,colback=leafL,colframe=leaf,title={Worked Example\ifstrempty{#1}{}{: #1}},
+  boxed title style={colback=leaf}}
+\newtcolorbox{caution}[1][Common Pitfall]{aibox,colback=crimsonL,colframe=crimson,title={#1},
+  boxed title style={colback=crimson}}
+\newtcolorbox{algo}[1][]{aibox,colback=ivory,colframe=navy,title={Algorithm\ifstrempty{#1}{}{: #1}},
+  boxed title style={colback=navy}}
+\newtcolorbox{outcome}[1][Learning Outcomes]{enhanced,arc=2mm,colback=navy,colframe=gold,
+  coltext=white,boxrule=1.2pt,fonttitle=\bfseries\color{gold},title={#1}}
+
+% ---------- Code ----------------------------------------------------
+\lstdefinestyle{py}{language=Python,basicstyle=\ttfamily\small,
+  backgroundcolor=\color{codebg},frame=leftline,framerule=3pt,rulecolor=\color{gold},
+  keywordstyle=\color{navyL}\bfseries,commentstyle=\color{leaf}\itshape,
+  stringstyle=\color{crimson},numbers=left,numberstyle=\tiny\color{slate},
+  breaklines=true,showstringspaces=false,tabsize=4,xleftmargin=1.5em,
+  morekeywords={self,True,False,None}}
+\lstdefinestyle{out}{basicstyle=\ttfamily\small\color{navy},backgroundcolor=\color{goldL!50},
+  frame=single,rulecolor=\color{gold},breaklines=true,columns=fullflexible}
+\lstset{style=py}
+
+\setlist[itemize]{label={\color{gold}\small$\blacktriangleright$},itemsep=2pt}
+\setlist[enumerate]{label={\color{navy}\bfseries\arabic*.},itemsep=2pt}
+
+% ---------- Cover page ---------------------------------------------
+% \aicover{Title}{Subtitle}{Tagline}
+\newcommand{\aicover}[3]{%
+\begin{titlepage}
+\begin{tikzpicture}[remember picture,overlay]
+  \fill[navy] (current page.north west) rectangle (current page.south east);
+  \fill[gold] ([yshift=-5.2cm]current page.north west) rectangle ([yshift=-5.45cm]current page.north east);
+  \fill[gold] ([yshift=3.2cm]current page.south west) rectangle ([yshift=3.35cm]current page.south east);
+  \foreach \i in {0,...,7}{\draw[gold!35,line width=0.5pt]
+     ([xshift=1.5cm,yshift=1.5cm]current page.north east) circle (2.5cm+\i*0.55cm);}
+  \node[anchor=north west] at ([xshift=2cm,yshift=-1.4cm]current page.north west) {%
+    \IfFileExists{../../assets/logo.png}{\includegraphics[height=2.4cm]{../../assets/logo.png}}{%
+    \IfFileExists{../assets/logo.png}{\includegraphics[height=2.4cm]{../assets/logo.png}}{%
+    \begin{tikzpicture}\shade[ball color=gold] (0,0) circle (1cm);
+      \node[navy,font=\bfseries\Huge] at (0,0){S};\end{tikzpicture}}}};
+  \node[anchor=north west,text=white,align=left] at ([xshift=5.1cm,yshift=-1.75cm]current page.north west)
+    {\fontsize{22}{26}\selectfont\bfseries SANJIVANI UNIVERSITY\\[2pt]
+     \large\color{gold} Kopargaon, Maharashtra\\[2pt]
+     \normalsize\color{white} Department of Artificial Intelligence \& Data Science};
+  \node[anchor=west,text=gold] at ([xshift=2cm,yshift=-7.3cm]current page.north west)
+    {\fontsize{16}{18}\selectfont\bfseries 26UAMPC204\quad\textbullet\quad Professional Core (2-0-2) \textbullet\ 3 Credits};
+  \node[anchor=west,text=white,text width=17cm,align=left] at ([xshift=2cm,yshift=-10.2cm]current page.north west)
+    {\fontsize{40}{46}\selectfont\bfseries Artificial\\ Intelligence};
+  \node[anchor=west,text=gold,text width=17cm,align=left] at ([xshift=2cm,yshift=-14.2cm]current page.north west)
+    {\fontsize{24}{28}\selectfont\bfseries #1};
+  \node[anchor=west,text=white,text width=16cm,align=left] at ([xshift=2cm,yshift=-16.3cm]current page.north west)
+    {\Large #2};
+  \node[anchor=west,text=white!85!gold,text width=16cm,align=left] at ([xshift=2cm,yshift=-18.6cm]current page.north west)
+    {\large\itshape #3};
+  \node[anchor=south west,text=white,align=left] at ([xshift=2cm,yshift=0.9cm]current page.south west)
+    {\large\bfseries Dr. S. Satyanarayana, Ph.D., PDF (AI)\\[2pt]
+     \normalsize\color{gold} Professor \& Advisor, AI \& Data Science, Sanjivani University};
+  \node[anchor=south east,text=gold] at ([xshift=-2cm,yshift=1.2cm]current page.south east)
+    {\normalsize Academic Year 2026--27};
+\end{tikzpicture}
+\end{titlepage}}
+
+% ---------- Unit opener banner -------------------------------------
+\newcommand{\unitbanner}[3]{% num, title, hours
+\begin{tcolorbox}[enhanced,colback=navy,colframe=gold,boxrule=1.5pt,arc=3mm,
+  left=5mm,right=5mm,top=4mm,bottom=4mm]
+{\color{gold}\fontsize{14}{16}\selectfont\bfseries UNIT #1}\hfill{\color{gold}\bfseries #3}\\[4pt]
+{\color{white}\fontsize{24}{28}\selectfont\bfseries #2}
+\end{tcolorbox}}
+
+\newcommand{\btl}[1]{\colorbox{gold!70}{\textcolor{navy}{\scriptsize\bfseries #1}}}
+\newcommand{\co}[1]{\colorbox{tealL}{\textcolor{teal}{\scriptsize\bfseries #1}}}
+\endinput

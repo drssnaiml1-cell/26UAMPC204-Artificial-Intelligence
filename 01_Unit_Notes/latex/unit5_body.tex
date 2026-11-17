@@ -1,0 +1,143 @@
+% ================== UNIT V ==================
+\unitbanner{V}{Learning, Expert Systems and Applications of AI}{06 Hours \textbullet\ CO204.5}
+
+\begin{outcome}
+\begin{itemize}
+\item distinguish supervised, unsupervised and reinforcement learning \btl{L2}
+\item build a decision tree using entropy and information gain \btl{L3}
+\item explain artificial neurons and train a perceptron by hand \btl{L3}
+\item describe the architecture of an expert system and design a rule base \btl{L2/L6}
+\item illustrate AI applications in NLP, vision and robotics and evaluate ethical issues \btl{L4/L5}
+\end{itemize}
+\end{outcome}
+
+\section{Introduction to Learning}
+An agent is \textbf{learning} if it improves its performance on future tasks after making observations about the world (Mitchell: \emph{a program learns from experience E w.r.t.\ task T and performance measure P if its performance at T, as measured by P, improves with E}).
+
+\subsection{Forms of Learning}
+\begin{center}
+\begin{tikzpicture}[r/.style={draw=navy,thick,rounded corners,fill=#1,text width=4.4cm,minimum height=3.3cm,align=left,font=\small}]
+\node[r=goldL](s){\textbf{\color{navy}Supervised}\\ Labelled pairs $(x,y)$; learn $h\approx f$.\\ \emph{Classification} (discrete $y$), \emph{regression} (continuous $y$).\\ e.g.\ spam filter, house price.};
+\node[r=tealL,right=0.25cm of s](u){\textbf{\color{navy}Unsupervised}\\ Unlabelled $x$; discover structure.\\ \emph{Clustering}, dimensionality reduction, association rules.\\ e.g.\ customer segmentation.};
+\node[r=leafL,right=0.25cm of u](r){\textbf{\color{navy}Reinforcement}\\ Agent acts, receives \emph{rewards/punishments}; learns a policy $\pi$ maximising return.\\ e.g.\ AlphaGo, robot walking.};
+\end{tikzpicture}
+\end{center}
+Also: \emph{semi-supervised}, \emph{self-supervised} (foundation models) and \emph{transfer} learning. Key concepts: hypothesis space, \textbf{generalisation}, \textbf{overfitting} vs.\ \textbf{underfitting}, training/validation/test split, cross-validation, bias--variance trade-off, Ockham's razor.
+
+\section{Learning by Decision Trees}
+A decision tree represents a function mapping attribute vectors to a decision; each internal node tests an attribute, branches are attribute values, leaves are outputs. Learned top-down greedily (ID3/C4.5/CART), choosing the \emph{most important} attribute first.
+\subsection{Entropy and Information Gain}
+\[H(S)=-\sum_{k}p_k\log_2p_k,\qquad \textit{Gain}(S,A)=H(S)-\sum_{v\in\textit{Values}(A)}\frac{|S_v|}{|S|}H(S_v)\]
+\begin{example}[Play Tennis (14 examples: 9 Yes, 5 No)]
+\small
+$H(S)=-\tfrac{9}{14}\log_2\tfrac{9}{14}-\tfrac{5}{14}\log_2\tfrac{5}{14}=0.940$.\\
+\textbf{Outlook}: Sunny (2Y,3N) $H=0.971$; Overcast (4Y,0N) $H=0$; Rain (3Y,2N) $H=0.971$.\\
+$\textit{Gain}(S,\textit{Outlook})=0.940-\tfrac{5}{14}(0.971)-\tfrac{4}{14}(0)-\tfrac{5}{14}(0.971)=\mathbf{0.247}$.\\
+Similarly Gain(Humidity)$=0.151$, Gain(Wind)$=0.048$, Gain(Temp)$=0.029$ $\Rightarrow$ \textbf{Outlook} is the root.\\[2pt]
+\begin{tikzpicture}[level distance=1.15cm,level 1/.style={sibling distance=3.4cm},level 2/.style={sibling distance=1.7cm},
+ every node/.style={draw=navy,rounded corners,fill=goldL,font=\scriptsize\bfseries},edge from parent/.style={draw=navy,thick},
+ yes/.style={fill=leaf,text=white},no/.style={fill=crimson,text=white}]
+\node[fill=navy,text=white]{Outlook}
+ child{node{Humidity} child{node[no]{No} edge from parent node[left,draw=none,fill=none]{High}} child{node[yes]{Yes} edge from parent node[right,draw=none,fill=none]{Normal}} edge from parent node[left,draw=none,fill=none]{Sunny}}
+ child{node[yes]{Yes} edge from parent node[right,draw=none,fill=none]{Overcast}}
+ child{node{Wind} child{node[no]{No} edge from parent node[left,draw=none,fill=none]{Strong}} child{node[yes]{Yes} edge from parent node[right,draw=none,fill=none]{Weak}} edge from parent node[right,draw=none,fill=none]{Rain}};
+\end{tikzpicture}\\
+Rule extraction: \texttt{IF Outlook=Sunny AND Humidity=Normal THEN Yes}, \dots
+\end{example}
+Other measures: \textbf{Gini index} $1-\sum p_k^2$ (CART), \textbf{gain ratio} (C4.5). Overfitting is controlled by \emph{pre-pruning} (max depth, min samples) and \emph{post-pruning} ($\chi^2$ pruning, reduced-error pruning). Trees are interpretable --- a key property for explainable AI.
+
+\section{Artificial Neural Networks and the Perceptron}
+\subsection{The Artificial Neuron}
+\begin{center}
+\begin{tikzpicture}[i/.style={circle,draw=navy,fill=goldL,minimum size=0.75cm,font=\small},>=Latex]
+\foreach \k/\y in {1/1.6,2/0.5,n/-1.1}{\node[i](x\k) at (0,\y){$x_{\k}$};}
+\node at (0,-0.25){$\vdots$}; \node[i,fill=tealL](b) at (0,2.7){$1$};
+\node[circle,draw=navy,very thick,fill=navy,text=white,minimum size=1.4cm](s) at (3.5,0.6){$\Sigma$};
+\node[draw=navy,thick,fill=gold,minimum size=1cm,rounded corners](f) at (5.7,0.6){$g(\cdot)$};
+\draw[->,thick](b)--node[above,font=\scriptsize]{$w_0$ (bias)}(s);
+\foreach \k in {1,2,n}{\draw[->,thick](x\k)--node[above,font=\scriptsize,pos=0.4]{$w_{\k}$}(s);}
+\draw[->,thick](s)--node[above,font=\scriptsize]{$in$}(f); \draw[->,very thick,crimson](f)--++(1.6,0) node[right]{$y$};
+\end{tikzpicture}
+\end{center}
+$y=g\bigl(\sum_{i=0}^{n}w_ix_i\bigr)$ with activation $g$: \emph{step/threshold}, \emph{sigmoid} $1/(1+e^{-z})$, \emph{tanh}, \emph{ReLU} $\max(0,z)$. Networks: \emph{feed-forward} (multilayer perceptron) and \emph{recurrent}; trained by \textbf{back-propagation} with gradient descent. Deep learning stacks many layers (CNNs for vision, Transformers for language).
+
+\subsection{The Perceptron (Rosenblatt, 1958)}
+A single neuron with a hard threshold: $h_w(x)=1$ if $w\cdot x\ge0$ else $0$.
+\begin{algo}[Perceptron learning rule]
+Initialise $w$ randomly. For each training example $(x,y)$: \quad $w_i\leftarrow w_i+\eta\,(y-h_w(x))\,x_i$ \quad (learning rate $\eta$). Repeat until no errors.
+\end{algo}
+\textbf{Perceptron convergence theorem}: converges if the data are \emph{linearly separable}. It learns AND, OR, NOT but \textbf{not XOR} (Minsky \& Papert, 1969) --- solved by multilayer networks with a hidden layer.
+\begin{example}[Training a perceptron for AND ($\eta=1$, $w=(w_0,w_1,w_2)=(0,0,0)$, $x_0=1$)]
+\small
+\begin{tabular}{cccccc}
+\rowcolor{navy}\color{gold}$x_1$&\color{gold}$x_2$&\color{gold}$y$&\color{gold}$\hat y$&\color{gold}error&\color{gold}new $w$\\
+0&0&0&1&$-1$&$(-1,0,0)$\\ \rowcolor{ivory}0&1&0&0&0&$(-1,0,0)$\\ 1&0&0&0&0&$(-1,0,0)$\\ \rowcolor{ivory}1&1&1&0&$+1$&$(0,1,1)$\\
+\multicolumn{6}{l}{\dots\ after a few epochs: $w=(-2,1,1)$ i.e.\ $x_1+x_2\ge2$ --- correct AND boundary.}\\
+\end{tabular}
+\end{example}
+
+\section{Expert Systems}
+An expert system is a program that emulates the decision-making ability of a human expert in a narrow domain using a knowledge base of facts and heuristic rules. Classic systems: \textbf{MYCIN} (bacterial infections, certainty factors), \textbf{DENDRAL} (mass spectrometry), \textbf{XCON/R1} (configuring VAX computers), \textbf{PROSPECTOR} (mineral exploration).
+\subsection{Architecture}
+\begin{center}
+\begin{tikzpicture}[c/.style={draw=navy,thick,rounded corners,fill=#1,minimum width=3.1cm,minimum height=1cm,align=center,font=\small},>=Latex]
+\node[c=goldL](ui){User interface}; \node[c=navy,text=white,right=1.4cm of ui](ie){Inference engine};
+\node[c=tealL,above right=0.3cm and 1.2cm of ie](kb){Knowledge base\\(rules + facts)};
+\node[c=tealL,below right=0.3cm and 1.2cm of ie](wm){Working memory\\(case facts)};
+\node[c=leafL,below=0.8cm of ui](ex){Explanation facility}; \node[c=leafL,above=0.8cm of ui](ka){Knowledge acquisition};
+\node[left=0.6cm of ui,font=\small\bfseries](u){User}; \node[left=0.6cm of ka,font=\small\bfseries](ke){Expert / KE};
+\draw[<->,thick](u)--(ui); \draw[<->,thick](ui)--(ie); \draw[<->,thick](ie)--(kb); \draw[<->,thick](ie)--(wm);
+\draw[<->,thick](ui)--(ex); \draw[->,thick](ke)--(ka); \draw[->,thick,gold!80!black](ka)-|(kb); \draw[->,thick](ie)|-(ex);
+\end{tikzpicture}
+\end{center}
+\subsection{Knowledge Acquisition}
+The process of extracting, structuring and organising knowledge from domain experts, books and data --- performed by a \textbf{knowledge engineer} through interviews, protocol analysis, observation, repertory grids and machine learning. It is the main \textbf{bottleneck} in building expert systems.
+\subsection{Inference Engine and Rule-Based Reasoning}
+Knowledge is encoded as production rules: \texttt{IF <conditions> THEN <conclusion/action> [CF]}. The inference engine runs a \textbf{recognise--act cycle}: (1) \emph{match} rules against working memory (Rete algorithm), (2) \emph{conflict resolution} --- choose one rule by specificity, recency, priority or refractoriness, (3) \emph{act} --- fire it, updating working memory.
+\begin{itemize}
+\item \textbf{Forward chaining} (data-driven): monitoring, configuration, planning (XCON).
+\item \textbf{Backward chaining} (goal-driven): diagnosis (MYCIN).
+\item \textbf{Uncertainty}: certainty factors $CF\in[-1,1]$; $CF(H,E_1\wedge E_2)$ combined as $CF_1+CF_2(1-CF_1)$ for positive CFs.
+\end{itemize}
+\begin{example}[Mini medical rule base]
+\small R1: IF fever AND cough THEN flu-suspected (CF 0.6)\\
+R2: IF flu-suspected AND body-ache THEN influenza (CF 0.8)\\
+R3: IF fever AND rash THEN measles-suspected (CF 0.7)\\
+Facts: fever, cough, body-ache $\Rightarrow$ R1 fires $\Rightarrow$ R2 fires $\Rightarrow$ \textbf{influenza} with $CF=0.6\times0.8=0.48$. Explanation: ``\emph{because} fever and cough (R1), \emph{and} body-ache (R2)''.
+\end{example}
+Expert-system shells: CLIPS, Jess, Drools, Prolog-based shells. Advantages: consistency, availability, explanation; limitations: brittleness, no common sense, costly maintenance.
+
+\section{Applications of AI}
+\subsection{Natural Language Processing}
+Levels: morphology $\to$ syntax (parsing) $\to$ semantics $\to$ pragmatics $\to$ discourse. Tasks: tokenisation, POS tagging, named-entity recognition, sentiment analysis, machine translation, question answering, summarisation, chatbots. Evolution: rule-based $\to$ statistical (n-grams, HMM) $\to$ word embeddings (word2vec) $\to$ Transformers / LLMs (BERT, GPT, Claude).
+\subsection{Computer Vision}
+Image formation $\to$ low-level processing (edges, filters) $\to$ features $\to$ recognition. Tasks: image classification, object detection (YOLO), semantic segmentation, face recognition, OCR, medical image analysis, autonomous driving perception. Deep CNNs and Vision Transformers dominate.
+\subsection{Robotics}
+Robots perceive (cameras, LiDAR, IMU), plan (path/motion planning, SLAM --- simultaneous localisation and mapping) and act (manipulators, mobile bases). Types: industrial arms, mobile robots, drones, humanoids, surgical robots (da Vinci), Mars rovers. Challenges: uncertainty, real-time control, human--robot interaction.
+
+\section{Ethical and Societal Issues in AI}
+\begin{center}\small
+\begin{tabularx}{\linewidth}{>{\bfseries\color{navy}}p{3.4cm}X}
+\toprule
+Bias \& fairness & Models inherit societal bias from data (e.g.\ hiring tools, face recognition error rates across groups).\\
+Privacy \& surveillance & Mass data collection, face recognition in public spaces; India's DPDP Act 2023, EU GDPR.\\
+Transparency \& explainability & ``Black-box'' decisions in credit, health, justice; need for XAI (LIME, SHAP).\\
+Accountability \& liability & Who is responsible when an autonomous car or medical AI errs?\\
+Safety \& robustness & Adversarial examples, hallucinations, misuse; alignment of goals with human values.\\
+Employment & Automation displaces routine jobs; reskilling and new job creation.\\
+Misinformation & Deepfakes, synthetic media, election manipulation.\\
+Autonomous weapons & Lethal autonomous systems and meaningful human control.\\
+Environment & Energy and water footprint of training large models.\\\bottomrule
+\end{tabularx}\end{center}
+\textbf{Frameworks:} EU AI Act (risk-based regulation, 2024), OECD AI Principles, UNESCO Recommendation on AI Ethics, NITI Aayog \emph{Responsible AI for All} (India), IEEE Ethically Aligned Design. Core principles: \emph{beneficence, non-maleficence, autonomy, justice, explicability}.
+\begin{keypoint}[Responsible AI checklist for every project]
+Data consent \& provenance $\cdot$ bias audit across groups $\cdot$ explanation for affected users $\cdot$ human-in-the-loop for high-stakes decisions $\cdot$ security testing $\cdot$ documented limitations (model cards).
+\end{keypoint}
+
+\subsection*{Unit V --- Summary}
+\begin{itemize}
+\item Supervised, unsupervised and reinforcement learning differ in the feedback available.
+\item Decision trees choose attributes by information gain; perceptrons learn linear boundaries.
+\item Expert systems = knowledge base + inference engine + explanation + knowledge acquisition.
+\item AI powers NLP, vision and robotics --- and must be developed responsibly.
+\end{itemize}

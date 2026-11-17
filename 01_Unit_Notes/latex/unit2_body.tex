@@ -1,0 +1,195 @@
+% ================== UNIT II ==================
+\unitbanner{II}{Problem Solving by Search}{06 Hours \textbullet\ CO204.2}
+
+\begin{outcome}
+\begin{itemize}
+\item trace BFS, DFS, DLS, IDS, UCS and bidirectional search on a graph \btl{L3}
+\item compare search strategies on completeness, optimality, time and space \btl{L4}
+\item design admissible and consistent heuristics and apply Greedy Best-First and A* \btl{L3/L6}
+\item apply hill climbing, simulated annealing and genetic algorithms to optimisation problems \btl{L3}
+\item apply Minimax with $\alpha$--$\beta$ pruning and solve CSPs with backtracking and AC-3 \btl{L3/L5}
+\end{itemize}
+\end{outcome}
+
+\section{Searching for Solutions}
+All tree/graph search algorithms share one skeleton; they differ only in \emph{which frontier node is expanded next}.
+\begin{algo}[Generic Graph Search (Best-First form)]
+\begin{lstlisting}[numbers=none,backgroundcolor=\color{ivory},frame=none]
+function GRAPH-SEARCH(problem, f):
+    node     <- Node(problem.initial)
+    frontier <- priority queue ordered by f, containing node
+    reached  <- {problem.initial: node}
+    while frontier not empty:
+        node <- POP(frontier)
+        if problem.IS-GOAL(node.state): return node
+        for child in EXPAND(problem, node):
+            s <- child.state
+            if s not in reached or child.g < reached[s].g:
+                reached[s] <- child ; ADD(frontier, child)
+    return failure
+\end{lstlisting}
+\end{algo}
+\textbf{Performance criteria:} \emph{completeness} (finds a solution if one exists), \emph{cost-optimality}, \emph{time complexity}, \emph{space complexity} --- expressed with $b$ (branching factor), $d$ (depth of shallowest solution), $m$ (max depth), $C^{*}$ (optimal cost) and $\varepsilon$ (minimum step cost).
+
+\section{Uninformed (Blind) Search}
+\begin{center}
+\begin{tikzpicture}[level distance=1.1cm,level 1/.style={sibling distance=3.6cm},level 2/.style={sibling distance=1.6cm},
+ every node/.style={circle,draw=navy,thick,fill=goldL,minimum size=0.75cm,font=\small\bfseries}]
+\node[fill=navy,text=white]{A}
+ child{node{B} child{node{D}} child{node{E}}}
+ child{node{C} child{node{F}} child{node[fill=leaf,text=white]{G}}};
+\end{tikzpicture}\\[3pt]
+\small BFS order: \textbf{A B C D E F G} \qquad DFS order: \textbf{A B D E C F G}
+\end{center}
+
+\subsection{Breadth-First Search (BFS)}
+Expands the \emph{shallowest} node first; frontier is a \textbf{FIFO queue}. Complete (finite $b$); optimal when all step costs are equal. Time and space $O(b^{d})$ --- memory is the bottleneck.
+
+\subsection{Depth-First Search (DFS)}
+Expands the \emph{deepest} node first; frontier is a \textbf{LIFO stack}. Not complete in infinite spaces or with loops (tree search); not optimal. Time $O(b^{m})$, space only $O(bm)$.
+
+\subsection{Depth-Limited Search (DLS)}
+DFS with a depth limit $\ell$: nodes at depth $\ell$ are treated as having no successors. Incomplete if $\ell<d$; time $O(b^{\ell})$, space $O(b\ell)$. The \emph{diameter} of the state space gives a good $\ell$.
+
+\subsection{Iterative-Deepening Search (IDS)}
+Runs DLS with $\ell=0,1,2,\dots$ until a goal is found. Combines BFS's completeness/optimality (unit costs) with DFS's $O(bd)$ memory. Overhead is small: total nodes $=db+(d-1)b^{2}+\dots+b^{d}=O(b^{d})$.
+\begin{keypoint}
+IDS is the \textbf{preferred uninformed method} when the search space is large and the depth of the solution is unknown.
+\end{keypoint}
+
+\subsection{Uniform-Cost Search (UCS)}
+Expands the node with the lowest path cost $g(n)$ (Dijkstra's algorithm); frontier is a priority queue. Complete and optimal if $\varepsilon>0$. Complexity $O(b^{1+\lfloor C^{*}/\varepsilon\rfloor})$.
+
+\subsection{Bidirectional Search}
+Runs two simultaneous searches --- forward from the start, backward from the goal --- stopping when the frontiers meet. Time and space $O(b^{d/2})$, since $b^{d/2}+b^{d/2}\ll b^{d}$. Requires reversible actions and an explicit goal state.
+
+\begin{center}\small
+\begin{tabular}{lcccccc}
+\rowcolor{navy}\color{white}\textbf{Criterion}&\color{gold}BFS&\color{gold}UCS&\color{gold}DFS&\color{gold}DLS&\color{gold}IDS&\color{gold}Bidir.\\
+Complete?&Yes$^a$&Yes$^{a,b}$&No&No&Yes$^a$&Yes$^{a,d}$\\
+\rowcolor{ivory}Optimal?&Yes$^c$&Yes&No&No&Yes$^c$&Yes$^{c,d}$\\
+Time&$O(b^d)$&$O(b^{1+\lfloor C^*/\varepsilon\rfloor})$&$O(b^m)$&$O(b^\ell)$&$O(b^d)$&$O(b^{d/2})$\\
+\rowcolor{ivory}Space&$O(b^d)$&$O(b^{1+\lfloor C^*/\varepsilon\rfloor})$&$O(bm)$&$O(b\ell)$&$O(bd)$&$O(b^{d/2})$\\
+\end{tabular}\\[2pt]
+{\scriptsize $a$: $b$ finite \quad $b$: step costs $\ge\varepsilon>0$ \quad $c$: unit step costs \quad $d$: both directions use BFS}
+\end{center}
+
+\section{Informed (Heuristic) Search}
+A \textbf{heuristic function} $h(n)$ estimates the cost of the cheapest path from $n$ to a goal; $h(\text{goal})=0$.
+
+\subsection{Greedy Best-First Search}
+Expands the node that \emph{appears} closest to the goal: $f(n)=h(n)$. Fast but neither complete (tree version) nor optimal. Example: straight-line distance $h_{SLD}$ to Bucharest yields Arad$\to$Sibiu$\to$Fagaras$\to$Bucharest (450 km), which is \emph{not} optimal (418 km via Rimnicu Vilcea and Pitesti).
+
+\subsection{A* Search}
+\[ f(n) = g(n) + h(n) \]
+$g(n)$ = actual cost from start to $n$; $h(n)$ = estimated cost from $n$ to goal; $f(n)$ = estimated cost of the cheapest solution through $n$.
+
+\begin{definition}[Admissibility and Consistency]
+$h$ is \textbf{admissible} if it never overestimates: $h(n)\le h^{*}(n)$ for all $n$.\\
+$h$ is \textbf{consistent} (monotone) if for every node $n$ and successor $n'$ via action $a$: $h(n)\le c(n,a,n')+h(n')$ --- a form of the triangle inequality.
+\end{definition}
+\begin{keypoint}[Optimality of A*]
+Tree-search A* is optimal if $h$ is admissible; graph-search A* is optimal if $h$ is consistent. Every consistent heuristic is admissible. With a consistent $h$, $f$ is non-decreasing along any path, so the first goal expanded is optimal.
+\end{keypoint}
+
+\begin{example}[8-puzzle heuristics]
+$h_1$ = number of misplaced tiles; $h_2$ = sum of Manhattan distances of tiles from their goal squares. Both are admissible (they are exact costs of \emph{relaxed} problems), and $h_2$ \textbf{dominates} $h_1$ ($h_2(n)\ge h_1(n)$), so A* with $h_2$ expands fewer nodes. Effective branching factor at $d=12$: IDS $\approx 2.78$, A*$(h_1)\approx1.42$, A*$(h_2)\approx1.24$.
+\end{example}
+
+\begin{example}[A* trace on a small graph]
+\small
+\begin{tikzpicture}[n/.style={circle,draw=navy,thick,fill=goldL,minimum size=0.8cm,font=\bfseries},>=Latex]
+\node[n,fill=navy,text=white] (S) at (0,0){S};
+\node[n] (A) at (2.2,1.2){A}; \node[n] (B) at (2.2,-1.2){B};
+\node[n] (C) at (4.4,0){C}; \node[n,fill=leaf,text=white] (G) at (6.6,0){G};
+\draw[->,thick] (S)--node[above]{1}(A); \draw[->,thick] (S)--node[below]{4}(B);
+\draw[->,thick] (A)--node[above]{2}(C); \draw[->,thick] (B)--node[below]{1}(C);
+\draw[->,thick] (C)--node[above]{3}(G); \draw[->,thick] (A) to[bend left=35] node[above]{9}(G);
+\foreach \x/\h in {S/6,A/5,B/4,C/3,G/0}{\node[font=\scriptsize\color{crimson},above=1pt of \x]{$h{=}\h$};}
+\end{tikzpicture}\\
+Expand S: A $(f=1+5=6)$, B $(4+4=8)$. Expand A: C $(3+3=6)$, G $(10+0=10)$. Expand C: G $(6+0=6)$ replaces G(10). Expand G: \textbf{path S--A--C--G, cost 6} (optimal).
+\end{example}
+
+\section{Local Search and Optimisation}
+Local search keeps only a \emph{current state} and moves to neighbours; it uses $O(1)$ memory and works for optimisation problems where the path is irrelevant (e.g.\ $n$-queens, scheduling, VLSI layout).
+
+\subsection{Hill Climbing (steepest ascent)}
+Move to the best neighbour while it improves the objective. Problems: \textbf{local maxima}, \textbf{ridges}, \textbf{plateaux/shoulders}. Remedies: \emph{sideways moves}, \emph{stochastic} hill climbing, \emph{first-choice}, \emph{random-restart} (complete with probability $\to1$).
+\begin{center}
+\begin{tikzpicture}[xscale=1.1,yscale=0.9]
+\draw[->,slate] (0,0)--(11,0) node[right,font=\scriptsize]{state space};
+\draw[->,slate] (0,0)--(0,3.4) node[above,font=\scriptsize]{objective};
+\draw[navy,very thick,smooth] plot coordinates{(0.2,0.8)(1.5,1.9)(2.5,1.4)(3.5,1.6)(4.5,1.6)(5.5,1.62)(6.5,2.2)(7.5,3.1)(8.5,2.2)(9.5,2.4)(10.5,1.0)};
+\fill[gold] (1.5,1.9) circle (3pt) node[above,font=\scriptsize]{local max};
+\fill[crimson] (4.5,1.6) circle (3pt) node[above,font=\scriptsize]{plateau};
+\fill[leaf] (7.5,3.1) circle (3pt) node[above,font=\scriptsize]{global max};
+\fill[teal] (9.5,2.4) circle (3pt) node[above,font=\scriptsize]{local max};
+\end{tikzpicture}
+\end{center}
+
+\subsection{Simulated Annealing}
+Pick a random move; if it improves, accept; otherwise accept with probability $e^{\Delta E/T}$ where $\Delta E<0$ is the loss and $T$ the temperature, decreased by a \emph{schedule}. High $T$ $\Rightarrow$ exploration; low $T$ $\Rightarrow$ exploitation. If $T$ decreases slowly enough, finds the global optimum with probability approaching 1.
+
+\subsection{Genetic Algorithms}
+A population of $k$ individuals (strings) evolves by \textbf{selection} (fitness-proportional), \textbf{crossover} and \textbf{mutation}.
+\begin{center}
+\begin{tikzpicture}[s/.style={draw=navy,fill=#1,rounded corners,minimum width=2.1cm,minimum height=0.8cm,font=\small\bfseries,align=center},>=Latex]
+\node[s=goldL](p){Initial\\population}; \node[s=tealL,right=0.6cm of p](f){Fitness\\evaluation};
+\node[s=tealL,right=0.6cm of f](sel){Selection}; \node[s=tealL,right=0.6cm of sel](cr){Crossover};
+\node[s=tealL,right=0.6cm of cr](mu){Mutation};
+\draw[->,thick](p)--(f); \draw[->,thick](f)--(sel); \draw[->,thick](sel)--(cr); \draw[->,thick](cr)--(mu);
+\draw[->,thick,gold!80!black](mu.south) -- ++(0,-0.6) -| node[below,pos=0.25,font=\scriptsize]{new generation}(f.south);
+\end{tikzpicture}
+\end{center}
+8-queens encoding: string of 8 digits (row of the queen in each column); fitness = number of non-attacking pairs (max 28).
+
+\section{Adversarial Search and Game Playing}
+Games are competitive multi-agent environments. A two-player zero-sum game is defined by $S_0$, \textsc{To-Move}$(s)$, \textsc{Actions}$(s)$, \textsc{Result}$(s,a)$, \textsc{Is-Terminal}$(s)$ and \textsc{Utility}$(s,p)$.
+
+\subsection{Minimax}
+\[\textsc{Minimax}(s)=\begin{cases}\textsc{Utility}(s,\textsc{Max}) & \text{if terminal}\\ \max_{a}\textsc{Minimax}(\textsc{Result}(s,a)) & \text{if MAX to move}\\ \min_{a}\textsc{Minimax}(\textsc{Result}(s,a)) & \text{if MIN to move}\end{cases}\]
+Complete (finite tree), optimal against an optimal opponent, time $O(b^{m})$, space $O(bm)$.
+
+\subsection{Alpha--Beta Pruning}
+$\alpha$ = best value found so far for MAX along the path; $\beta$ = best value for MIN. Prune when $\alpha\ge\beta$. Returns the same move as Minimax. With perfect move ordering time becomes $O(b^{m/2})$ --- doubling the searchable depth.
+\begin{center}
+\begin{tikzpicture}[level distance=1.25cm,level 1/.style={sibling distance=3.8cm},level 2/.style={sibling distance=1.15cm},
+  mx/.style={regular polygon,regular polygon sides=3,draw=navy,fill=navy,text=white,inner sep=1pt,minimum size=0.9cm,font=\scriptsize\bfseries},
+  mn/.style={regular polygon,regular polygon sides=3,shape border rotate=180,draw=navy,fill=goldL,inner sep=1pt,minimum size=0.9cm,font=\scriptsize\bfseries},
+  lf/.style={rectangle,draw=navy,fill=white,minimum size=0.5cm,font=\scriptsize}]
+\node[mx]{3}
+ child{node[mn]{3} child{node[lf]{3}} child{node[lf]{12}} child{node[lf]{8}}}
+ child{node[mn]{$\le$2} child{node[lf]{2}} child{node[lf,fill=crimsonL,draw=crimson]{\color{crimson}$\times$}} child{node[lf,fill=crimsonL,draw=crimson]{\color{crimson}$\times$}}}
+ child{node[mn]{2} child{node[lf]{14}} child{node[lf]{5}} child{node[lf]{2}}};
+\end{tikzpicture}\\[2pt]{\small Pruned leaves (red) under the second MIN node: once MIN can force $\le2<\alpha=3$, MAX will never choose it.}
+\end{center}
+Practical game programs add \emph{cutoff tests}, \emph{evaluation functions} (weighted features), \emph{transposition tables}, \emph{quiescence search}; modern programs use Monte-Carlo Tree Search with neural evaluation (AlphaZero).
+
+\section{Constraint Satisfaction Problems (CSPs)}
+\begin{definition}[CSP]
+A triple $\langle X, D, C\rangle$: variables $X=\{X_1,\dots,X_n\}$, domains $D=\{D_1,\dots,D_n\}$, constraints $C$ specifying allowable value combinations. A \textbf{solution} is a \emph{complete} and \emph{consistent} assignment.
+\end{definition}
+\begin{example}[Map colouring of Australia]
+$X=\{WA,NT,Q,NSW,V,SA,T\}$, $D_i=\{\text{red},\text{green},\text{blue}\}$, constraints: adjacent regions differ ($WA\ne NT$, $SA\ne Q$, \dots). Solution: $WA{=}r, NT{=}g, Q{=}r, NSW{=}g, V{=}r, SA{=}b, T{=}r$.
+\end{example}
+Constraint types: unary, binary, higher-order/global (\textsc{AllDiff}); hard vs.\ soft (preferences).
+
+\subsection{Backtracking Search}
+Depth-first search that assigns one variable at a time and backtracks when a variable has no legal values. Improvements:
+\begin{itemize}
+\item \textbf{MRV} (minimum remaining values / ``fail-first''): choose the variable with fewest legal values;
+\item \textbf{Degree heuristic}: tie-break by the variable involved in most constraints;
+\item \textbf{LCV} (least constraining value): try values that rule out the fewest choices for neighbours;
+\item \textbf{Forward checking}: after assigning $X$, delete inconsistent values from neighbours' domains.
+\end{itemize}
+
+\subsection{Constraint Propagation and Arc Consistency}
+An arc $X_i\to X_j$ is \textbf{arc-consistent} if for every value $x\in D_i$ there is some $y\in D_j$ satisfying the constraint. \textbf{AC-3} keeps a queue of arcs; when $D_i$ is revised, all arcs $X_k\to X_i$ are re-queued. Complexity $O(cd^{3})$ for $c$ constraints and domain size $d$. Stronger notions: path consistency, $k$-consistency. Sudoku is a classic CSP solved almost entirely by propagation.
+
+\subsection*{Unit II --- Summary}
+\begin{itemize}
+\item Uninformed: BFS, UCS, DFS, DLS, IDS, bidirectional --- trade completeness/optimality against memory.
+\item Informed: A* with admissible/consistent heuristics is optimal; better heuristics dominate.
+\item Local search (hill climbing, SA, GA) trades optimality for tiny memory.
+\item Games: Minimax + $\alpha$--$\beta$; CSPs: backtracking + MRV/LCV + AC-3.
+\end{itemize}

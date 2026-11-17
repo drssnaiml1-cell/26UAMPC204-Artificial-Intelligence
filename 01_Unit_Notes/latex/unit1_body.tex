@@ -1,0 +1,234 @@
+% ================== UNIT I ==================
+\unitbanner{I}{Introduction to AI and Intelligent Agents}{06 Hours \textbullet\ CO204.1}
+
+\begin{outcome}
+After this unit the student will be able to:
+\begin{itemize}
+\item define AI from the four classical viewpoints and trace its history \btl{L1}
+\item explain the Turing Test and the disciplines that form the foundations of AI \btl{L2}
+\item specify a task environment using PEAS and classify its properties \btl{L3}
+\item compare the five agent architectures and select one for a given problem \btl{L4}
+\item formulate a real-world problem as a well-defined state-space search problem \btl{L3/L6}
+\end{itemize}
+\end{outcome}
+
+\section{What is Artificial Intelligence?}
+Artificial Intelligence (AI) is the study and design of computational systems that perceive their environment, reason about it and act so as to achieve goals. Russell \& Norvig organise the many definitions along two axes: \emph{thinking vs.\ acting} and \emph{human-like vs.\ rational}.
+
+\begin{center}
+\begin{tikzpicture}[cell/.style={draw=navy,fill=#1,minimum width=6.4cm,minimum height=1.9cm,align=center,text width=6cm,rounded corners=2pt}]
+\node[cell=goldL] (a) {\textbf{Thinking Humanly}\\ Cognitive modelling --- \emph{``machines with minds''}};
+\node[cell=tealL,right=0.15cm of a] (b) {\textbf{Thinking Rationally}\\ Laws of thought --- logic, syllogisms};
+\node[cell=tealL,below=0.15cm of a] (c) {\textbf{Acting Humanly}\\ The Turing Test approach};
+\node[cell=goldL,below=0.15cm of b] (d) {\textbf{Acting Rationally}\\ \emph{The rational-agent approach} (adopted in this course)};
+\node[above=0.1cm of a,font=\bfseries\color{navy}]{Human-centred};
+\node[above=0.1cm of b,font=\bfseries\color{navy}]{Rationalist};
+\node[left=0.1cm of a,rotate=90,anchor=south,font=\bfseries\color{navy}]{Thought};
+\node[left=0.1cm of c,rotate=90,anchor=south,font=\bfseries\color{navy}]{Behaviour};
+\end{tikzpicture}
+\end{center}
+
+\begin{definition}[Rational Agent]
+A system that, for every possible percept sequence, selects an action expected to maximise its performance measure, given the evidence provided by the percept sequence and whatever built-in knowledge it has.
+\end{definition}
+
+\subsection{History and Evolution of AI}
+\begin{center}
+\begin{tikzpicture}[x=1.55cm,ev/.style={font=\scriptsize,align=center,text width=2.2cm}]
+\draw[navy,line width=2pt,-{Latex}] (0,0)--(10.6,0);
+\foreach \x/\y/\t/\p in {0/1943/McCulloch--Pitts neuron/above,1/1950/Turing Test paper/below,2/1956/Dartmouth: ``AI'' coined/above,
+ 3/1966/ELIZA \& Shakey/below,4/1974/First AI winter/above,5/1980/Expert systems boom (XCON)/below,
+ 6/1997/Deep Blue beats Kasparov/above,7/2012/AlexNet --- deep learning/below,8/2016/AlphaGo/above,9/2017/Transformers/below,10/2022/LLMs \& Agentic AI/above}{
+ \fill[gold] (\x,0) circle (4pt); \node[\p=6pt,ev] at (\x,0) {\textbf{\color{navy}\y}\\ \t};}
+\end{tikzpicture}
+\end{center}
+\begin{itemize}
+\item \textbf{Gestation (1943--55):} artificial neurons, Hebbian learning, Turing's ``Computing Machinery and Intelligence''.
+\item \textbf{Birth (1956):} Dartmouth workshop --- McCarthy, Minsky, Shannon, Newell, Simon. Logic Theorist proves theorems.
+\item \textbf{Early enthusiasm (1952--69):} General Problem Solver, LISP, microworlds.
+\item \textbf{Reality \& AI winters (1966--73, 1987--93):} combinatorial explosion; Lighthill report; perceptron limitations.
+\item \textbf{Knowledge-based systems (1969--86):} DENDRAL, MYCIN, R1/XCON --- the expert-system industry.
+\item \textbf{Probabilistic \& statistical AI (1987--):} Bayesian networks, HMMs, SVMs; ``big data''.
+\item \textbf{Deep learning \& foundation models (2012--):} CNNs, RL (AlphaGo), Transformers, LLMs, agentic AI.
+\end{itemize}
+
+\subsection{The Turing Test}
+Proposed by Alan Turing (1950) as an operational definition of intelligence: a human interrogator communicates by text with a hidden human and a hidden machine; if the interrogator cannot reliably tell which is which, the machine passes.
+\begin{center}
+\begin{tikzpicture}[box/.style={draw=navy,thick,rounded corners,minimum width=2.6cm,minimum height=1cm,fill=#1}]
+\node[box=goldL] (i) {Interrogator (C)};
+\node[box=tealL,right=3cm of i,yshift=0.8cm] (h) {Human (B)};
+\node[box=tealL,right=3cm of i,yshift=-0.8cm] (m) {Machine (A)};
+\draw[draw=navy,dashed] ($(h.north west)+(-0.4,0.3)$) rectangle ($(m.south east)+(0.3,-0.3)$);
+\node[above=0.35cm of h,font=\scriptsize\color{slate}]{hidden behind a wall};
+\draw[-{Latex},thick,gold!80!black] (i) -- node[above,sloped,font=\scriptsize]{text} (h);
+\draw[-{Latex},thick,gold!80!black] (i) -- node[below,sloped,font=\scriptsize]{text} (m);
+\end{tikzpicture}
+\end{center}
+To pass, a machine needs \textbf{natural language processing}, \textbf{knowledge representation}, \textbf{automated reasoning} and \textbf{machine learning}. The \emph{Total Turing Test} adds \textbf{computer vision} and \textbf{robotics}. Criticisms: Searle's \emph{Chinese Room}, the test rewards deception, and it is anthropocentric.
+
+\subsection{Foundations of AI}
+\begin{tabularx}{\linewidth}{>{\bfseries\color{navy}}l X}
+\toprule
+Discipline & Contribution to AI\\\midrule
+Philosophy & logic, reasoning, mind as a physical system, rationality, ethics\\
+Mathematics & formal logic, computability, complexity (NP-completeness), probability\\
+Economics & utility, decision theory, game theory, Markov decision processes\\
+Neuroscience & neurons, brain plasticity $\Rightarrow$ artificial neural networks\\
+Psychology & cognitive science, behaviourism, human problem solving\\
+Computer Engineering & hardware (GPUs/TPUs), programming languages, software\\
+Control Theory \& Cybernetics & feedback, optimal control, objective functions\\
+Linguistics & grammar, knowledge representation, NLP\\\bottomrule
+\end{tabularx}
+
+\subsection{Applications of AI}
+Healthcare (diagnosis, drug discovery), finance (fraud detection, algorithmic trading), transportation (autonomous vehicles, route planning), agriculture (crop monitoring), education (intelligent tutors), e-commerce (recommender systems), cybersecurity (intrusion detection), robotics, game playing, NLP (translation, chatbots, LLMs) and computer vision (face recognition, medical imaging).
+
+\section{Intelligent Agents}
+\begin{definition}[Agent]
+An \textbf{agent} is anything that \emph{perceives} its environment through \textbf{sensors} and \emph{acts} upon that environment through \textbf{actuators}. Mathematically, an agent is described by an \textbf{agent function} $f:\mathcal{P}^{*}\rightarrow\mathcal{A}$ mapping percept sequences to actions; the \textbf{agent program} implements $f$ on a physical architecture. \quad \textbf{Agent = Architecture + Program.}
+\end{definition}
+
+\begin{center}
+\begin{tikzpicture}[node distance=1.2cm,b/.style={draw=navy,thick,rounded corners,fill=#1,minimum height=0.9cm,align=center}]
+\node[b=navy,text=white,minimum width=3.6cm,minimum height=3cm] (ag) {\textbf{AGENT}\\[2pt]{\color{gold}\scriptsize agent program}\\{\color{gold}\Huge ?}};
+\node[b=goldL,minimum width=3.2cm,minimum height=3cm,right=3cm of ag] (env) {\textbf{ENVIRONMENT}};
+\draw[-{Latex},very thick,teal] ([yshift=0.8cm]env.west) -- node[above]{percepts} node[below,font=\scriptsize]{sensors} ([yshift=0.8cm]ag.east);
+\draw[-{Latex},very thick,crimson] ([yshift=-0.8cm]ag.east) -- node[below]{actions} node[above,font=\scriptsize]{actuators} ([yshift=-0.8cm]env.west);
+\end{tikzpicture}
+\end{center}
+
+\begin{example}[Vacuum-cleaner world]
+Two squares A and B. Percepts: \texttt{[location, status]} e.g.\ \texttt{[A, Dirty]}. Actions: \texttt{Left, Right, Suck, NoOp}. Agent function: \emph{if current square dirty then Suck; else if at A then Right; else Left.}
+\end{example}
+
+\subsection{Rationality}
+What is rational at any time depends on four things: (1) the \textbf{performance measure} defining success, (2) the agent's \textbf{prior knowledge} of the environment, (3) the \textbf{actions} it can perform, and (4) its \textbf{percept sequence} to date.
+\begin{keypoint}[Rational $\neq$ Omniscient $\neq$ Perfect]
+Rationality maximises \emph{expected} performance, not actual outcome. A rational agent should also \textbf{gather information} (exploration), \textbf{learn} from what it perceives, and be \textbf{autonomous} --- relying on its own percepts rather than only on designer knowledge.
+\end{keypoint}
+
+\subsection{The PEAS Framework}
+To design an agent we first specify its \emph{task environment} as \textbf{P}erformance measure, \textbf{E}nvironment, \textbf{A}ctuators and \textbf{S}ensors.
+\begin{center}\small
+\begin{tabularx}{\linewidth}{>{\bfseries}p{2.4cm}XXXX}
+\rowcolor{navy}\color{white}Agent&\color{gold}Performance&\color{gold}Environment&\color{gold}Actuators&\color{gold}Sensors\\
+Automated taxi & safe, fast, legal, comfortable trip, profit & roads, traffic, pedestrians, customers & steering, accelerator, brake, horn, display & cameras, LiDAR, GPS, speedometer, odometer\\
+\rowcolor{ivory}Medical diagnosis & healthy patient, minimised cost & patient, hospital, staff & display of questions, tests, diagnoses & keyboard entry of symptoms, findings\\
+Part-picking robot & \% parts in correct bins & conveyor belt, bins & jointed arm and hand & camera, joint-angle sensors\\
+\rowcolor{ivory}English tutor & student's test score & set of students & exercises, suggestions & keyboard entry\\
+Spam filter & accuracy, low false positives & mail server, users & label/move mail & message text, headers\\
+\end{tabularx}\end{center}
+
+\subsection{Properties of Task Environments}
+\begin{tabularx}{\linewidth}{>{\bfseries\color{navy}}p{3.6cm}X}
+\toprule
+Fully vs.\ Partially observable & Do sensors give the complete relevant state at each instant? (chess: fully; poker: partially)\\
+Single vs.\ Multi-agent & Competitive (chess) or cooperative (taxi fleet) multi-agent settings.\\
+Deterministic vs.\ Stochastic & Is the next state completely determined by current state + action?\\
+Episodic vs.\ Sequential & Does the current decision affect future decisions? (image classification: episodic)\\
+Static vs.\ Dynamic & Can the environment change while the agent deliberates? (semi-dynamic: chess with a clock)\\
+Discrete vs.\ Continuous & Applies to states, time, percepts and actions.\\
+Known vs.\ Unknown & Does the agent know the ``laws of physics'' of the environment?\\\bottomrule
+\end{tabularx}
+
+\begin{center}\small
+\begin{tabular}{lcccccc}
+\rowcolor{navy}\color{white}\textbf{Task}&\color{gold}Observable&\color{gold}Agents&\color{gold}Determ.&\color{gold}Episodic&\color{gold}Static&\color{gold}Discrete\\
+Crossword&Fully&Single&Det.&Seq.&Static&Discrete\\
+\rowcolor{ivory}Chess with clock&Fully&Multi&Det.&Seq.&Semi&Discrete\\
+Poker&Partially&Multi&Stoch.&Seq.&Static&Discrete\\
+\rowcolor{ivory}Taxi driving&Partially&Multi&Stoch.&Seq.&Dynamic&Continuous\\
+Medical diagnosis&Partially&Single&Stoch.&Seq.&Dynamic&Continuous\\
+\rowcolor{ivory}Image analysis&Fully&Single&Det.&Episodic&Semi&Continuous\\
+\end{tabular}\end{center}
+The hardest case: \emph{partially observable, multi-agent, stochastic, sequential, dynamic, continuous and unknown}.
+
+\section{Structure of Agents}
+\subsection{Simple Reflex Agent}
+Selects actions on the basis of the \emph{current percept only}, using condition--action rules (\texttt{if car-in-front-is-braking then initiate-braking}). Works only if the environment is fully observable; can fall into infinite loops (randomisation helps).
+\subsection{Model-Based Reflex Agent}
+Maintains an \textbf{internal state} that depends on percept history, updated using a \emph{transition model} (how the world evolves and how actions affect it) and a \emph{sensor model}. Handles partial observability.
+\subsection{Goal-Based Agent}
+Uses \textbf{goal} information describing desirable situations, and \emph{search/planning} to find action sequences reaching the goal. More flexible: change the goal, behaviour changes.
+\subsection{Utility-Based Agent}
+A \textbf{utility function} $U(s)$ maps states to real numbers measuring ``happiness''. Chooses the action maximising \emph{expected utility}: $a^{*}=\arg\max_a \sum_{s'}P(s'\mid s,a)\,U(s')$. Resolves conflicting goals and uncertainty.
+\subsection{Learning Agent}
+\begin{center}
+\begin{tikzpicture}[b/.style={draw=navy,thick,rounded corners,fill=#1,minimum width=3cm,minimum height=0.9cm,align=center,font=\small}]
+\node[b=goldL] (cr) {Critic};
+\node[b=tealL,below=0.7cm of cr] (le) {Learning element};
+\node[b=navy,text=white,right=1.5cm of le] (pe) {Performance element};
+\node[b=leafL,below=0.7cm of le] (pg) {Problem generator};
+\node[left=1.2cm of cr,font=\small\itshape,align=center] (ps) {Performance\\standard};
+\draw[-{Latex},thick] (ps)--(cr);
+\draw[-{Latex},thick] (cr)--node[left,font=\scriptsize]{feedback}(le);
+\draw[-{Latex},thick] (le)--node[above,font=\scriptsize]{changes}(pe);
+\draw[-{Latex},thick] (pe.north) |- node[above,font=\scriptsize,pos=0.7]{knowledge}(le.30);
+\draw[-{Latex},thick] (le)--node[left,font=\scriptsize]{learning goals}(pg);
+\draw[-{Latex},thick,gold!80!black] (pg.east) -| node[below,font=\scriptsize,pos=0.3]{exploratory actions}(pe.south);
+\end{tikzpicture}
+\end{center}
+The \textbf{critic} judges how well the agent is doing against a fixed performance standard; the \textbf{learning element} improves the \textbf{performance element}; the \textbf{problem generator} suggests exploratory actions.
+
+\begin{keypoint}[Agent hierarchy]
+Simple reflex $\subset$ Model-based $\subset$ Goal-based $\subset$ Utility-based; \textbf{any} of these can be turned into a learning agent.
+\end{keypoint}
+
+\section{Problem-Solving Agents}
+A problem-solving agent is a goal-based agent that uses \emph{atomic} state representations. It follows a four-phase process: \textbf{goal formulation} $\rightarrow$ \textbf{problem formulation} $\rightarrow$ \textbf{search} $\rightarrow$ \textbf{execution}.
+
+\subsection{Well-Defined Problems and Solutions}
+\begin{definition}[Search problem]
+A problem is defined by five components:
+\begin{enumerate}
+\item \textbf{Initial state} $s_0$;
+\item \textbf{Actions}: $\textsc{Actions}(s)$ returns the actions applicable in $s$;
+\item \textbf{Transition model}: $\textsc{Result}(s,a)$ returns the successor state;
+\item \textbf{Goal test}: $\textsc{Is-Goal}(s)$;
+\item \textbf{Action cost}: $c(s,a,s')\ge 0$; the \emph{path cost} is the sum of step costs.
+\end{enumerate}
+A \textbf{solution} is an action sequence from $s_0$ to a goal; an \textbf{optimal solution} has the lowest path cost.
+\end{definition}
+Initial state + actions + transition model implicitly define the \textbf{state space}: a directed graph whose nodes are states and edges are actions.
+
+\begin{example}[8-Puzzle formulation]
+\textbf{States:} arrangement of tiles 1--8 and blank in a $3\times3$ grid ($9!/2 = 181{,}440$ reachable states).
+\textbf{Initial:} any state. \textbf{Actions:} move blank \texttt{Up, Down, Left, Right}. \textbf{Transition:} swap blank with adjacent tile. \textbf{Goal:} \texttt{1 2 3 / 4 5 6 / 7 8 \_}. \textbf{Cost:} 1 per move.
+\end{example}
+
+\begin{example}[Water-Jug problem]
+Jugs of 4 L and 3 L, no markings; obtain exactly 2 L in the 4-L jug.
+\textbf{State} $(x,y)$, $0\le x\le4$, $0\le y\le3$; \textbf{initial} $(0,0)$; \textbf{goal} $(2,\cdot)$.
+\textbf{Actions:} Fill-4 $\to(4,y)$; Fill-3 $\to(x,3)$; Empty-4 $\to(0,y)$; Empty-3 $\to(x,0)$;
+Pour 4$\to$3 $\to(x-d,\,y+d)$, $d=\min(x,3-y)$; Pour 3$\to$4 $\to(x+d,\,y-d)$, $d=\min(y,4-x)$.\\
+\textbf{One solution:} $(0,0)\!\to\!(0,3)\!\to\!(3,0)\!\to\!(3,3)\!\to\!(4,2)\!\to\!(0,2)\!\to\!(2,0)$.
+\end{example}
+
+\begin{example}[Route finding: Romania]
+States = cities; actions = drive to neighbouring city; cost = road distance; initial = Arad; goal = Bucharest.
+\end{example}
+
+\subsection{State-Space Representation}
+\begin{center}
+\begin{tikzpicture}[level distance=1.3cm,
+ level 1/.style={sibling distance=4.2cm},level 2/.style={sibling distance=1.4cm},
+ every node/.style={draw=navy,circle,fill=goldL,minimum size=0.9cm,font=\scriptsize}]
+\node[fill=navy,text=white]{(0,0)}
+ child{node{(4,0)} child{node{(4,3)}} child{node{(1,3)}} child{node{(0,0)}}}
+ child{node{(0,3)} child{node{(4,3)}} child{node{(3,0)}} child{node{(0,0)}}};
+\end{tikzpicture}\\[2pt]{\small\color{slate} First two levels of the Water-Jug search tree (repeated states shown).}
+\end{center}
+Key terms: \textbf{search tree} vs.\ \textbf{state space graph}; \textbf{node} (state, parent, action, path-cost $g$, depth); \textbf{frontier} (open list); \textbf{explored set} (closed list); \textbf{branching factor} $b$; \textbf{depth} $d$ of shallowest goal; \textbf{maximum depth} $m$.
+
+\begin{caution}[State $\neq$ Node]
+A \emph{state} is a configuration of the world; a \emph{node} is a bookkeeping data structure in the search tree. Two different nodes can contain the same state (reached by different paths).
+\end{caution}
+
+\subsection*{Unit I --- Summary}
+\begin{itemize}
+\item AI is best viewed as building \textbf{rational agents}.
+\item Specify the task environment with \textbf{PEAS}; classify it along seven dimensions.
+\item Agent programs: reflex $\rightarrow$ model-based $\rightarrow$ goal-based $\rightarrow$ utility-based; all can learn.
+\item Problem formulation: initial state, actions, transition model, goal test, path cost $\Rightarrow$ state space.
+\end{itemize}

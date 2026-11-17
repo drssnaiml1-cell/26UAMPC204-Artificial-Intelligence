@@ -1,0 +1,184 @@
+% ================== UNIT III ==================
+\unitbanner{III}{Knowledge Representation and Reasoning}{06 Hours \textbullet\ CO204.3}
+
+\begin{outcome}
+\begin{itemize}
+\item describe the architecture of a knowledge-based agent \btl{L2}
+\item build truth tables; prove equivalence, validity and entailment in propositional logic \btl{L3}
+\item translate English sentences into first-order logic using quantifiers \btl{L3}
+\item apply unification, forward chaining, backward chaining and resolution \btl{L3/L4}
+\item represent knowledge using semantic networks, frames and ontologies \btl{L3/L6}
+\end{itemize}
+\end{outcome}
+
+\section{Knowledge-Based Agents}
+A knowledge-based agent has a \textbf{knowledge base (KB)} --- a set of \emph{sentences} in a \emph{knowledge representation language} --- and an \textbf{inference engine}. Its two interface operations are \textsc{Tell} (add a sentence) and \textsc{Ask} (query what follows).
+\begin{algo}[KB-Agent]
+\begin{lstlisting}[numbers=none,backgroundcolor=\color{ivory},frame=none]
+function KB-AGENT(percept):          # persistent: KB, t (time counter)
+    TELL(KB, MAKE-PERCEPT-SENTENCE(percept, t))
+    action <- ASK(KB, MAKE-ACTION-QUERY(t))
+    TELL(KB, MAKE-ACTION-SENTENCE(action, t))
+    t <- t + 1
+    return action
+\end{lstlisting}
+\end{algo}
+\textbf{Declarative} approach: tell the agent what it needs to know; \textbf{procedural}: encode behaviour directly. The \textbf{Wumpus World} is the classic testbed (PEAS: +1000 for gold, $-1000$ for pit/wumpus, $-1$ per step; percepts: Stench, Breeze, Glitter, Bump, Scream).
+
+\section{Propositional Logic}
+\subsection{Syntax}
+Atomic sentences are proposition symbols ($P$, $Q$, $W_{1,3}$) plus \textit{True}/\textit{False}. Complex sentences use connectives (in order of precedence): $\neg$ (not), $\wedge$ (and), $\vee$ (or), $\Rightarrow$ (implies), $\Leftrightarrow$ (iff).
+\subsection{Semantics}
+A \textbf{model} assigns true/false to every symbol. Truth of complex sentences is computed recursively:
+\begin{center}\small
+\begin{tabular}{cc|ccccc}
+\rowcolor{navy}\color{gold}$P$&\color{gold}$Q$&\color{white}$\neg P$&\color{white}$P\wedge Q$&\color{white}$P\vee Q$&\color{white}$P\Rightarrow Q$&\color{white}$P\Leftrightarrow Q$\\
+F&F&T&F&F&T&T\\ \rowcolor{ivory}F&T&T&F&T&T&F\\ T&F&F&F&T&\cellcolor{crimsonL}F&F\\ \rowcolor{ivory}T&T&F&T&T&T&T\\
+\end{tabular}\end{center}
+\begin{definition}[Entailment]
+$KB\models\alpha$ iff $\alpha$ is true in every model in which $KB$ is true, i.e.\ $M(KB)\subseteq M(\alpha)$. Model checking enumerates all $2^{n}$ models.
+\end{definition}
+
+\subsection{Logical Equivalence, Validity and Satisfiability}
+$\alpha\equiv\beta$ iff they are true in the same models. A sentence is \textbf{valid} (tautology) if true in all models (e.g.\ $P\vee\neg P$); \textbf{satisfiable} if true in some model; \textbf{unsatisfiable} if true in none.
+\begin{keypoint}[Deduction theorem \& refutation]
+$\alpha\models\beta$ iff $(\alpha\Rightarrow\beta)$ is valid. \quad $\alpha\models\beta$ iff $(\alpha\wedge\neg\beta)$ is unsatisfiable --- the basis of \textbf{proof by contradiction / resolution}.
+\end{keypoint}
+\begin{center}\small
+\begin{tabularx}{0.92\linewidth}{>{\bfseries\color{navy}}l X}
+\toprule
+Commutativity & $\alpha\wedge\beta\equiv\beta\wedge\alpha$;\quad $\alpha\vee\beta\equiv\beta\vee\alpha$\\
+Associativity & $(\alpha\wedge\beta)\wedge\gamma\equiv\alpha\wedge(\beta\wedge\gamma)$\\
+Double negation & $\neg\neg\alpha\equiv\alpha$\\
+Contraposition & $\alpha\Rightarrow\beta\equiv\neg\beta\Rightarrow\neg\alpha$\\
+Implication elimination & $\alpha\Rightarrow\beta\equiv\neg\alpha\vee\beta$\\
+Biconditional elimination & $\alpha\Leftrightarrow\beta\equiv(\alpha\Rightarrow\beta)\wedge(\beta\Rightarrow\alpha)$\\
+De Morgan & $\neg(\alpha\wedge\beta)\equiv\neg\alpha\vee\neg\beta$;\quad $\neg(\alpha\vee\beta)\equiv\neg\alpha\wedge\neg\beta$\\
+Distributivity & $\alpha\vee(\beta\wedge\gamma)\equiv(\alpha\vee\beta)\wedge(\alpha\vee\gamma)$\\\bottomrule
+\end{tabularx}\end{center}
+
+\subsection{Inference}
+\textbf{Sound} inference derives only entailed sentences; \textbf{complete} inference derives all of them. Key rules: \emph{Modus Ponens} $\dfrac{\alpha\Rightarrow\beta,\ \alpha}{\beta}$, \emph{And-Elimination} $\dfrac{\alpha\wedge\beta}{\alpha}$, and \emph{Resolution} $\dfrac{\ell_1\vee\dots\vee\ell_k,\ \ \neg\ell_i}{\ell_1\vee\dots\ell_{i-1}\vee\ell_{i+1}\dots\vee\ell_k}$.
+\paragraph{Conversion to CNF.} (1) eliminate $\Leftrightarrow$; (2) eliminate $\Rightarrow$; (3) move $\neg$ inwards (De Morgan); (4) distribute $\vee$ over $\wedge$.
+\begin{example}[Resolution refutation]
+KB: $P\Rightarrow Q$, $Q\Rightarrow R$, $P$. Prove $R$.\\
+Clauses: (1) $\neg P\vee Q$ \ (2) $\neg Q\vee R$ \ (3) $P$ \ (4) $\neg R$ (negated goal).\\
+(1)+(3): $Q$ \ $\to$\ with (2): $R$ \ $\to$\ with (4): $\square$ (empty clause). Hence $KB\models R$.
+\end{example}
+\textbf{Horn clauses} (at most one positive literal) allow linear-time \emph{forward} and \emph{backward chaining}; \textbf{DPLL} and \textbf{WalkSAT} are efficient SAT solvers.
+
+\section{First-Order (Predicate) Logic}
+Propositional logic cannot express ``all pits cause breezes in adjacent squares'' compactly. FOL assumes the world contains \textbf{objects}, \textbf{relations} and \textbf{functions}.
+\subsection{Syntax and Semantics}
+\begin{itemize}
+\item \textbf{Constants}: \texttt{John}, \texttt{2}, \texttt{Pune};\quad \textbf{Variables}: $x,y$;\quad \textbf{Functions}: \texttt{FatherOf(x)}, \texttt{LeftLeg(x)}
+\item \textbf{Predicates}: \texttt{Brother(Richard, John)}, \texttt{King(x)}, \texttt{>(x, y)};\quad \textbf{Equality}: $=$
+\item \textbf{Terms} denote objects; \textbf{atomic sentences} $=$ predicate(terms); complex sentences use connectives.
+\end{itemize}
+A \textbf{model} contains a domain of objects and an interpretation mapping symbols to objects, relations and functions.
+\subsection{Quantifiers}
+\begin{itemize}
+\item \textbf{Universal} $\forall x\, P(x)$: true for every object. Natural connective: $\Rightarrow$. \ \ $\forall x\ \textit{King}(x)\Rightarrow\textit{Person}(x)$
+\item \textbf{Existential} $\exists x\, P(x)$: true for at least one object. Natural connective: $\wedge$. \ \ $\exists x\ \textit{Crown}(x)\wedge\textit{OnHead}(x,\textit{John})$
+\item Duality: $\forall x\,\neg P \equiv \neg\exists x\,P$;\quad $\exists x\,\neg P\equiv\neg\forall x\,P$. Order matters: $\forall x\exists y\,\textit{Loves}(x,y)\ne\exists y\forall x\,\textit{Loves}(x,y)$.
+\end{itemize}
+\begin{caution}[Classic translation errors]
+$\forall x\ \textit{Student}(x)\wedge\textit{Smart}(x)$ says \emph{everyone} is a smart student (wrong). Use $\Rightarrow$ with $\forall$.
+$\exists x\ \textit{Student}(x)\Rightarrow\textit{Smart}(x)$ is true if anyone is not a student (wrong). Use $\wedge$ with $\exists$.
+\end{caution}
+\subsection{Representing Knowledge in FOL}
+\begin{example}[Kinship \& English to FOL]
+\small
+\begin{tabular}{@{}p{6.3cm}p{8.2cm}@{}}
+Every student who studies passes. & $\forall x\ \textit{Student}(x)\wedge\textit{Studies}(x)\Rightarrow\textit{Passes}(x)$\\
+Some students like AI. & $\exists x\ \textit{Student}(x)\wedge\textit{Likes}(x,\textit{AI})$\\
+No one likes a liar. & $\forall x\,\forall y\ \textit{Liar}(y)\Rightarrow\neg\textit{Likes}(x,y)$\\
+Everyone has a mother. & $\forall x\,\exists y\ \textit{Mother}(y,x)$\\
+A grandparent is a parent of a parent. & $\forall g,c\ \textit{Grandparent}(g,c)\Leftrightarrow\exists p\ \textit{Parent}(g,p)\wedge\textit{Parent}(p,c)$\\
+\end{tabular}
+\end{example}
+\textbf{Knowledge engineering process:} identify the task $\rightarrow$ assemble relevant knowledge $\rightarrow$ decide vocabulary (ontology) $\rightarrow$ encode general domain knowledge $\rightarrow$ encode the specific instance $\rightarrow$ pose queries $\rightarrow$ debug the KB.
+
+\section{Inference in First-Order Logic}
+\subsection{Unification}
+\textbf{Universal instantiation} replaces a universally quantified variable by a ground term; \textbf{existential instantiation} uses a new \emph{Skolem} constant. \textbf{Unification} finds a substitution $\theta$ making two expressions identical: $\textsc{Unify}(p,q)=\theta$ where $p\theta=q\theta$.
+\begin{center}\small
+\begin{tabular}{lll}
+\rowcolor{navy}\color{gold}$p$&\color{gold}$q$&\color{gold}$\theta$\\
+$\textit{Knows}(John,x)$&$\textit{Knows}(John,Jane)$&$\{x/Jane\}$\\
+\rowcolor{ivory}$\textit{Knows}(John,x)$&$\textit{Knows}(y,Bill)$&$\{x/Bill,\ y/John\}$\\
+$\textit{Knows}(John,x)$&$\textit{Knows}(y,Mother(y))$&$\{y/John,\ x/Mother(John)\}$\\
+\rowcolor{ivory}$\textit{Knows}(John,x)$&$\textit{Knows}(x,Elizabeth)$&\textit{fail} (standardise apart $\Rightarrow\{x_1/Elizabeth,x/John\}$)\\
+\end{tabular}\end{center}
+The \textbf{most general unifier (MGU)} is unique up to renaming. The \textbf{occurs check} prevents $x/F(x)$. \textbf{Generalised Modus Ponens}: from $p_1',\dots,p_n'$ and $(p_1\wedge\dots\wedge p_n\Rightarrow q)$ with $p_i'\theta=p_i\theta$, infer $q\theta$.
+
+\subsection{Forward Chaining}
+Data-driven: start from known facts, fire every rule whose premises are satisfied, add conclusions, repeat until the query is found or no new facts (fixed point). Sound and complete for first-order definite clauses; used in production systems and expert systems.
+\begin{example}[The ``Colonel West'' crime KB]
+\small
+\textit{It is a crime for an American to sell weapons to hostile nations. Nono, an enemy of America, has missiles, all sold to it by Colonel West, an American.}\\
+(1) $\textit{American}(x)\wedge\textit{Weapon}(y)\wedge\textit{Sells}(x,y,z)\wedge\textit{Hostile}(z)\Rightarrow\textit{Criminal}(x)$\\
+(2) $\textit{Owns}(Nono,M_1)$, $\textit{Missile}(M_1)$ \quad (3) $\textit{Missile}(x)\wedge\textit{Owns}(Nono,x)\Rightarrow\textit{Sells}(West,x,Nono)$\\
+(4) $\textit{Missile}(x)\Rightarrow\textit{Weapon}(x)$ \quad (5) $\textit{Enemy}(x,America)\Rightarrow\textit{Hostile}(x)$\\
+(6) $\textit{American}(West)$, $\textit{Enemy}(Nono,America)$\\[2pt]
+\textbf{Iteration 1:} $\textit{Weapon}(M_1)$, $\textit{Sells}(West,M_1,Nono)$, $\textit{Hostile}(Nono)$. \ \textbf{Iteration 2:} $\textit{Criminal}(West)$ \checkmark
+\end{example}
+
+\subsection{Backward Chaining}
+Goal-driven: start from the query, find rules whose conclusion unifies with it, and recursively prove their premises (depth-first, left-to-right). Basis of \textbf{Prolog} (logic programming). Efficient when the goal is known but may loop on repeated subgoals.
+\begin{center}
+\begin{tikzpicture}[level distance=1.15cm,level 1/.style={sibling distance=3.1cm},
+ every node/.style={draw=navy,rounded corners,fill=goldL,font=\scriptsize,align=center}]
+\node[fill=navy,text=white]{Criminal(West)}
+ child{node{American(West)\\\checkmark}}
+ child{node{Weapon(y)}child{node{Missile(M1)\\\checkmark}}}
+ child{node{Sells(West,M1,z)}child{node{Missile(M1),\\Owns(Nono,M1) \checkmark}}}
+ child{node{Hostile(Nono)}child{node{Enemy(Nono,America)\\\checkmark}}};
+\end{tikzpicture}\\[1pt]{\small\color{slate}Backward-chaining proof tree}
+\end{center}
+
+\subsection{Resolution in FOL}
+\textbf{Steps:} (1) convert every sentence to CNF --- eliminate implications, move $\neg$ inwards, \emph{standardise variables}, \emph{Skolemise} ($\exists$ removed by Skolem functions), drop $\forall$, distribute $\vee$ over $\wedge$; (2) add the negated query; (3) repeatedly resolve pairs of clauses using unification; (4) derive the empty clause $\square$ $\Rightarrow$ proof. Resolution is \emph{refutation-complete}.
+\begin{example}[Resolution proof]
+\small KB: $\forall x\ \textit{Man}(x)\Rightarrow\textit{Mortal}(x)$; $\textit{Man}(Socrates)$. Prove $\textit{Mortal}(Socrates)$.\\
+Clauses: $\neg\textit{Man}(x)\vee\textit{Mortal}(x)$; $\textit{Man}(Socrates)$; $\neg\textit{Mortal}(Socrates)$.\\
+Resolve 1 \& 3 with $\{x/Socrates\}$: $\neg\textit{Man}(Socrates)$; resolve with 2: $\square$. \checkmark
+\end{example}
+
+\section{Structured Knowledge Representation}
+\subsection{Semantic Networks}
+Graphs whose nodes are objects/categories and whose labelled arcs are relations. Inheritance via \texttt{is-a} (subclass) and \texttt{instance-of} (membership) links; efficient for \emph{default reasoning} but limited for negation, disjunction and quantification.
+\begin{center}
+\begin{tikzpicture}[n/.style={draw=navy,thick,rounded corners,fill=#1,font=\small\bfseries,minimum width=2cm,minimum height=0.7cm},>=Latex]
+\node[n=goldL](an){Animal}; \node[n=goldL,below left=1cm and 0.6cm of an](bi){Bird};
+\node[n=goldL,below right=1cm and 0.6cm of an](ma){Mammal};
+\node[n=tealL,below=1cm of bi](pe){Penguin}; \node[n=navy,text=white,below=1cm of ma](tw){Tweety};
+\node[n=leafL,left=1.2cm of bi](wi){Wings}; \node[n=leafL,right=1.2cm of an](br){Breathes};
+\draw[->,thick](bi)--node[left,font=\scriptsize]{is-a}(an); \draw[->,thick](ma)--node[right,font=\scriptsize]{is-a}(an);
+\draw[->,thick](pe)--node[left,font=\scriptsize]{is-a}(bi); \draw[->,thick,dashed](tw)--node[above,font=\scriptsize,sloped]{instance-of}(bi);
+\draw[->,thick,teal](bi)--node[above,font=\scriptsize]{has}(wi); \draw[->,thick,teal](an)--node[above,font=\scriptsize]{can}(br);
+\end{tikzpicture}
+\end{center}
+
+\subsection{Frames}
+Proposed by Minsky (1975): a frame is a record-like structure with \textbf{slots} and \textbf{fillers}, default values and attached procedures (\emph{if-needed}, \emph{if-added} demons). Frames form inheritance hierarchies --- a forerunner of object-oriented programming.
+\begin{center}\small
+\begin{tabular}{|>{\columncolor{navy}\color{gold}\bfseries}l|l|}\hline
+Frame & \textbf{Hotel-Room}\\\hline
+is-a & Room\\\hline
+location & Hotel\\\hline
+contains & (Hotel-Chair, Hotel-Bed, Hotel-Phone)\\\hline
+rate (default) & Rs.\,3500 per night \quad \emph{if-needed}: compute-rate()\\\hline
+\end{tabular}\end{center}
+
+\subsection{Ontologies}
+An \textbf{ontology} is a formal, explicit specification of a shared conceptualisation: concepts (classes), properties, relations, individuals and axioms. An \emph{upper ontology} (e.g.\ SUMO, Cyc) provides general categories (Thing, Event, Physical Object, Time, Measurement). Web standards: \textbf{RDF} triples (subject--predicate--object), \textbf{RDFS}, \textbf{OWL} (Description Logic based), query language \textbf{SPARQL}; tool: Protégé. Applications: Google Knowledge Graph, SNOMED-CT (medicine), Gene Ontology.
+
+\subsection*{Unit III --- Summary}
+\begin{itemize}
+\item KB agents \textsc{Tell} and \textsc{Ask}; inference must be sound and complete.
+\item Propositional logic: truth tables, equivalences, CNF and resolution.
+\item FOL adds objects, relations, functions and quantifiers.
+\item Unification + GMP $\Rightarrow$ forward/backward chaining; resolution is refutation-complete.
+\item Semantic nets, frames and ontologies provide structured, inheritable knowledge.
+\end{itemize}
