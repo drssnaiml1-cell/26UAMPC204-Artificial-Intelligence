@@ -3,7 +3,9 @@
 const pptxgen = require("pptxgenjs");
 const path = require("path");
 const units = require("./units.js");
-const { applyTheme } = require(process.env.PPTX_SKILL + "/scripts/apply_theme.js");
+// Optional: set PPTX_SKILL to a folder containing scripts/apply_theme.js to write theme colours into the deck.
+let applyTheme = async () => {};
+try { if (process.env.PPTX_SKILL) applyTheme = require(process.env.PPTX_SKILL + "/scripts/apply_theme.js").applyTheme; } catch (e) {}
 
 const NAVY = "0B1F4B", NAVY2 = "1F3A7A", GOLD = "C9A227", GOLDL = "F6EBC8", TEAL = "0E7C86",
       TEALL = "DDF1F2", CRIM = "A4243B", LEAF = "2E7D32", INK = "1A202C", SLATE = "4A5568", MIST = "EEF2F8", WHITE = "FFFFFF";

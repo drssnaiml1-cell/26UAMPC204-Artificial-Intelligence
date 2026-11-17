@@ -1,0 +1,9 @@
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+__pycache__/
+.ipynb_checkpoints/
+node_modules/
+*.pptx.tmp
