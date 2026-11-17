@@ -52,7 +52,7 @@ def qb_tex():
         L += [r"\begin{longtable}{>{\bfseries\color{navy}}p{0.8cm}p{11.6cm}ccc}",
               r"\rowcolor{navy}\color{gold}Q.&\color{gold}Question&\color{gold}BTL&\color{gold}CO&\color{gold}M\\\endhead"]
         for i, (lv, mk, q) in enumerate(qs, 1):
-            row = rf"{i}&{tex(q)}&\btl{{{lv}}}&\co{{{co.split('.')[1]}}}&{mk}\\"
+            row = rf"{i}&{tex(q)}&\btl{{{lv}}}&\co{{{co}}}&{mk}\\"
             L.append((r"\rowcolor{ivory}" if i % 2 == 0 else "") + row)
             if i % 5 == 0 and i < 30:
                 L.append(r"\arrayrulecolor{gold}\midrule\arrayrulecolor{black}")

@@ -30,15 +30,18 @@ def save_gif(anim, name, fps=2):
 print("Environment ready  ✓  numpy", np.__version__, "| matplotlib", matplotlib.__version__)
 '''
 
+LOGO_URL = "https://raw.githubusercontent.com/drssnaiml1-cell/26UAMPC204-Artificial-Intelligence/main/assets/logo.png"
+
 def header(num, title, co, aim):
     return f'''<div style="background:#0B1F4B;padding:22px 26px;border-radius:12px;border:3px solid #C9A227;font-family:'Times New Roman',serif">
+<img src="{LOGO_URL}" alt="Sanjivani University" width="92" style="float:right;background:#FFFFFF;border:2px solid #C9A227;border-radius:8px;padding:3px;margin-left:14px">
 <div style="color:#C9A227;font-size:14px;letter-spacing:2px;font-weight:bold">26UAMPC204 · ARTIFICIAL INTELLIGENCE LAB · SANJIVANI UNIVERSITY</div>
 <div style="color:#FFFFFF;font-size:30px;font-weight:bold;margin-top:6px">Experiment {num}: {title}</div>
 <div style="color:#F6EBC8;font-size:15px;margin-top:8px"><b>Course Outcome:</b> {co} &nbsp;|&nbsp; <b>Faculty:</b> Dr. S. Satyanarayana, Professor &amp; Advisor, AI &amp; DS</div>
 </div>
 
 <div style="background:#F6EBC8;padding:12px 18px;border-radius:8px;margin-top:10px;font-family:'Times New Roman',serif;color:#0B1F4B">
-<b>🎯 Aim:</b> {aim}</div>'''
+<b>🎯 Aim:</b> {aim}</div>'''.replace("</div>\n\n<div", "<div style=\"clear:both\"></div></div>\n\n<div", 1)
 
 def box(title, body, color="#0E7C86", bg="#DDF1F2"):
     return f'''<div style="border-left:6px solid {color};background:{bg};padding:12px 18px;border-radius:6px;font-family:'Times New Roman',serif;color:#1A202C">

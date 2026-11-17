@@ -147,7 +147,7 @@ Requirements for the full rebuild: XeLaTeX (TeX Live with `tcolorbox`, `tikz` an
 └── requirements.txt
 ```
 
-> **University logo:** place the official logo at `assets/logo.png` and run `bash build_all.sh`. The covers of the notes, question bank, project portfolio and lab manual pick it up automatically.
+> **University logo:** the official Sanjivani University logo lives at `assets/logo.png`. It appears on every PDF cover, every page header, every unit banner, every slide and every notebook header. Replace that file and run `bash build_all.sh` to update it everywhere.
 
 ---
 

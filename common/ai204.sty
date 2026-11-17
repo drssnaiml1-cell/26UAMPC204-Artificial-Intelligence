@@ -6,7 +6,7 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{ai204}[2026/11/17 AI 26UAMPC204 handbook style]
 
-\RequirePackage[a4paper,margin=2.2cm,headheight=28pt]{geometry}
+\RequirePackage[a4paper,margin=2.2cm,headheight=32pt,top=2.6cm]{geometry}
 \RequirePackage{fontspec}
 \IfFontExistsTF{Times New Roman}{\setmainfont{Times New Roman}}{\setmainfont{TeX Gyre Termes}}
 \setmonofont{DejaVu Sans Mono}[Scale=0.82]
@@ -14,6 +14,8 @@
 
 \RequirePackage{xcolor}
 \RequirePackage{graphicx}
+\graphicspath{{../../assets/}{../assets/}{assets/}}
+\newcommand{\unilogo}[1]{\includegraphics[height=#1]{logo.png}}
 \RequirePackage{tikz}
 \usetikzlibrary{positioning,arrows.meta,shapes,calc,fit,backgrounds,shadows,trees}
 \RequirePackage[most]{tcolorbox}
@@ -58,7 +60,7 @@
 \newcommand{\doctitle}{Course Handbook}
 \pagestyle{fancy}\fancyhf{}
 \renewcommand{\headrule}{{\color{gold}\hrule height 1.2pt}}
-\fancyhead[L]{\small\color{navy}\textbf{\coursecode}\ \textbullet\ \coursename}
+\fancyhead[L]{\raisebox{-0.32\height}{\unilogo{0.9cm}}\ \ \small\color{navy}\textbf{\coursecode}\ \textbullet\ \coursename}
 \fancyhead[R]{\small\color{slate}\doctitle}
 \fancyfoot[L]{\footnotesize\color{slate}Sanjivani University \textbullet\ Dept.\ of AI \& Data Science}
 \fancyfoot[R]{\footnotesize\color{navy}\textbf{\thepage}\,/\,\pageref*{LastPage}}
@@ -107,11 +109,8 @@
   \foreach \i in {0,...,7}{\draw[gold!35,line width=0.5pt]
      ([xshift=1.5cm,yshift=1.5cm]current page.north east) circle (2.5cm+\i*0.55cm);}
   \node[anchor=north west] at ([xshift=2cm,yshift=-1.4cm]current page.north west) {%
-    \IfFileExists{../../assets/logo.png}{\includegraphics[height=2.4cm]{../../assets/logo.png}}{%
-    \IfFileExists{../assets/logo.png}{\includegraphics[height=2.4cm]{../assets/logo.png}}{%
-    \begin{tikzpicture}\shade[ball color=gold] (0,0) circle (1cm);
-      \node[navy,font=\bfseries\Huge] at (0,0){S};\end{tikzpicture}}}};
-  \node[anchor=north west,text=white,align=left] at ([xshift=5.1cm,yshift=-1.75cm]current page.north west)
+    \begin{tikzpicture}\node[fill=white,rounded corners=4pt,draw=gold,line width=1.5pt,inner sep=3pt]{\unilogo{2.4cm}};\end{tikzpicture}};
+  \node[anchor=north west,text=white,align=left] at ([xshift=5.4cm,yshift=-1.75cm]current page.north west)
     {\fontsize{22}{26}\selectfont\bfseries SANJIVANI UNIVERSITY\\[2pt]
      \large\color{gold} Kopargaon, Maharashtra\\[2pt]
      \normalsize\color{white} Department of Artificial Intelligence \& Data Science};
@@ -137,8 +136,13 @@
 \newcommand{\unitbanner}[3]{% num, title, hours
 \begin{tcolorbox}[enhanced,colback=navy,colframe=gold,boxrule=1.5pt,arc=3mm,
   left=5mm,right=5mm,top=4mm,bottom=4mm]
+\begin{minipage}[c]{0.83\linewidth}
 {\color{gold}\fontsize{14}{16}\selectfont\bfseries UNIT #1}\hfill{\color{gold}\bfseries #3}\\[4pt]
 {\color{white}\fontsize{24}{28}\selectfont\bfseries #2}
+\end{minipage}\hfill
+\begin{minipage}[c]{0.14\linewidth}\raggedleft
+\tikz\node[fill=white,rounded corners=3pt,draw=gold,line width=1pt,inner sep=2pt]{\unilogo{1.7cm}};
+\end{minipage}
 \end{tcolorbox}}
 
 \newcommand{\btl}[1]{\colorbox{gold!70}{\textcolor{navy}{\scriptsize\bfseries #1}}}

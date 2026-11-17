@@ -17,6 +17,7 @@ const THEME = { name: "AI204 Navy Gold", headFontFace: FONT, bodyFontFace: FONT,
             accent4: CRIM, accent5: LEAF, accent6: "6B46C1", hlink: TEAL, folHlink: "6B46C1" } };
 
 const W = 13.333, H = 7.5;
+const LOGO = path.join(__dirname, "..", "..", "assets", "logo.png");
 
 async function buildUnit(u, idx) {
   const pres = new pptxgen();
@@ -31,22 +32,26 @@ async function buildUnit(u, idx) {
     objects: [
       { text: { text: footer, options: { x: 0.6, y: 7.0, w: 8, h: 0.3, fontFace: FONT, fontSize: 10, color: SLATE, isTextBox: true, margin: 0 } } },
       { text: { text: "Sanjivani University  •  Dept. of AI & DS", options: { x: 7.9, y: 7.0, w: 4.2, h: 0.3, fontFace: FONT, fontSize: 10, color: SLATE, align: "right", isTextBox: true, margin: 0 } } },
-      { placeholder: { options: { name: "title", type: "title", x: 0.6, y: 0.35, w: 12.1, h: 0.9, fontFace: FONT, fontSize: 34, bold: true, color: NAVY, valign: "middle", margin: 0 }, text: "" } } ],
+      { image: { path: LOGO, x: 12.0, y: 0.3, w: 0.85, h: 0.85, altText: "Sanjivani University logo" } },
+      { placeholder: { options: { name: "title", type: "title", x: 0.6, y: 0.35, w: 11.2, h: 0.9, fontFace: FONT, fontSize: 34, bold: true, color: NAVY, valign: "middle", margin: 0 }, text: "" } } ],
     slideNumber: { x: 12.3, y: 6.98, w: 0.5, h: 0.32, fontFace: FONT, fontSize: 10, color: NAVY, bold: true, align: "right" } });
   pres.defineSlideMaster({ title: "DARK", background: { color: NAVY },
     objects: [
-      { placeholder: { options: { name: "title", type: "title", x: 0.8, y: 0.5, w: 11.7, h: 1.0, fontFace: FONT, fontSize: 36, bold: true, color: GOLD, valign: "middle", margin: 0 }, text: "" } } ],
+      { rect: { x: 11.93, y: 0.43, w: 0.99, h: 0.99, fill: { color: WHITE }, line: { color: GOLD, width: 1.5 } } },
+      { image: { path: LOGO, x: 12.0, y: 0.5, w: 0.85, h: 0.85, altText: "Sanjivani University logo" } },
+      { placeholder: { options: { name: "title", type: "title", x: 0.8, y: 0.5, w: 10.8, h: 1.0, fontFace: FONT, fontSize: 36, bold: true, color: GOLD, valign: "middle", margin: 0 }, text: "" } } ],
     slideNumber: { x: 12.3, y: 6.98, w: 0.5, h: 0.32, fontFace: FONT, fontSize: 10, color: GOLD, align: "right" } });
 
+  pres.defineSlideMaster({ title: "COVER", background: { color: NAVY }, objects: [] });
   // ---------- Cover ----------
   pres.addSection({ title: "Opening" });
-  let s = pres.addSlide({ masterName: "DARK", sectionTitle: "Opening" });
+  let s = pres.addSlide({ masterName: "COVER", sectionTitle: "Opening" });
   for (let i = 0; i < 7; i++) s.addShape(pres.shapes.OVAL, { x: 9.2 - i * 0.25, y: -2.2 - i * 0.25, w: 6 + i * 0.5, h: 6 + i * 0.5, fill: { color: NAVY, transparency: 100 }, line: { color: GOLD, width: 0.75, transparency: 55 + i * 5 } });
-  s.addShape(pres.shapes.OVAL, { x: 0.8, y: 0.7, w: 1.1, h: 1.1, fill: { color: GOLD }, line: { color: GOLD } });
-  s.addText("S", { x: 0.8, y: 0.7, w: 1.1, h: 1.1, fontFace: FONT, fontSize: 40, bold: true, color: NAVY, align: "center", valign: "middle", isTextBox: true, margin: 0 });
+  s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x: 0.72, y: 0.52, w: 1.46, h: 1.46, rectRadius: 0.08, fill: { color: WHITE }, line: { color: GOLD, width: 2 } });
+  s.addImage({ path: LOGO, x: 0.8, y: 0.6, w: 1.3, h: 1.3, altText: "Sanjivani University logo" });
   s.addText([{ text: "SANJIVANI UNIVERSITY", options: { fontSize: 24, bold: true, color: WHITE, breakLine: true } },
              { text: "Department of Artificial Intelligence & Data Science", options: { fontSize: 15, color: GOLD } }],
-    { x: 2.1, y: 0.75, w: 8, h: 1.0, fontFace: FONT, isTextBox: true, margin: 0, valign: "middle" });
+    { x: 2.45, y: 0.75, w: 8, h: 1.0, fontFace: FONT, isTextBox: true, margin: 0, valign: "middle" });
   s.addText(`26UAMPC204  •  ARTIFICIAL INTELLIGENCE  •  UNIT ${u.num}`, { x: 0.8, y: 2.55, w: 11, h: 0.45, fontFace: FONT, fontSize: 16, bold: true, color: GOLD, charSpacing: 2, isTextBox: true, margin: 0, objectName: "anim1_a" });
   s.addText(u.title, { x: 0.8, y: 3.05, w: 11.5, h: 1.7, fontFace: FONT, fontSize: 46, bold: true, color: WHITE, valign: "top", isTextBox: true, margin: 0, objectName: "anim2_a" });
   s.addText(u.tagline, { x: 0.8, y: 4.85, w: 11, h: 0.5, fontFace: FONT, fontSize: 20, italic: true, color: "D9E2F3", isTextBox: true, margin: 0, objectName: "anim3_a" });

@@ -298,7 +298,7 @@ plt.tight_layout(); plt.savefig(f"{FIG}/exp02_heuristics.png", dpi=130); plt.sho
 \noindent{\small\bfseries\color{gold!70!black}Output}
 \begin{lstlisting}[style=out]
 Algorithm  Solution cost  Nodes expanded  Time (s)
-      UCS (h=0)             20           55409      0.29
+      UCS (h=0)             20           55409      0.24
 A* h1 misplaced             20            3667      0.02
 A* h2 Manhattan             20             283      0.00
 \end{lstlisting}
@@ -1087,9 +1087,9 @@ print("Proved!" if ok else "Not proved")
 \noindent{\small\bfseries\color{gold!70!black}Output}
 \begin{lstlisting}[style=out]
 KB: forall x Man(x) => Mortal(x);  Man(Socrates)   Goal: Mortal(Socrates)
-   resolve [Man(Socrates)] with [Mortal(x0) | ~Man(x0)]  =>  Mortal(Socrates)
+   resolve [Mortal(x0) | ~Man(x0)] with [Man(Socrates)]  =>  Mortal(Socrates)
    resolve [Mortal(x0) | ~Man(x0)] with [~Mortal(Socrates)]  =>  ~Man(Socrates)
-   resolve [~Man(Socrates)] with [Man(Socrates)]  =>  []
+   resolve [~Mortal(Socrates)] with [Mortal(Socrates)]  =>  []
 Proved!
 \end{lstlisting}
 \begin{lstlisting}[style=py]
@@ -1109,7 +1109,7 @@ print("Final step:", f"[{cs(r[1])}] + [{cs(r[2])}] => {cs(r[0])}")
 \noindent{\small\bfseries\color{gold!70!black}Output}
 \begin{lstlisting}[style=out]
 Goal: Criminal(West) -> PROVED [ok] after generating 100 resolvents
-Final step: [~Criminal(West)] + [Criminal(West)] => []
+Final step: [~Sells(West, M1, Nono)] + [Sells(West, M1, Nono)] => []
 \end{lstlisting}
 \begin{lstlisting}[style=py]
 # Visualise the Socrates refutation as a proof tree
