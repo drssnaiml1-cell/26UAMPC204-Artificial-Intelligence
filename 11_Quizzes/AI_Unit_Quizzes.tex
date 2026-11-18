@@ -1,0 +1,429 @@
+\documentclass[11pt]{article}
+\usepackage{../common/ai204}
+\renewcommand{\doctitle}{Unit Quizzes}
+\begin{document}
+\aicover{Complex Unit Quizzes}{75 multi-step questions \textbullet\ 15 per unit \textbullet\ answer keys with worked explanations}{Compute \textbullet\ Trace \textbullet\ Analyse \textbullet\ Evaluate}
+\section*{How to use these quizzes}
+\begin{itemize}\item Each unit has 15 multiple-choice questions that need computation, algorithm tracing or analysis, mostly at Bloom's levels L3--L5. Recall alone will not answer them.
+\item Suggested format: 30 minutes per unit quiz, +1 for a correct answer, no negative marking. Use as a pre-CIA diagnostic or a flipped-classroom warm-up.
+\item Answer keys with worked explanations follow each unit, on a new page, so the questions can be printed alone.
+\item Self-check online: \texttt{11\_Quizzes/Quiz\_SelfCheck.ipynb} grades your answers and explains every mistake.\end{itemize}
+\begin{center}\begin{tabular}{c l c c}\rowcolor{navy}\textcolor{gold}{\textbf{Unit}}&\textcolor{gold}{\textbf{Title}}&\textcolor{gold}{\textbf{CO}}&\textcolor{gold}{\textbf{Questions}}\\
+I&Introduction to AI and Intelligent Agents&CO204.1&15\\
+\rowcolor{ivory}II&Problem Solving by Search&CO204.2&15\\
+III&Knowledge Representation and Reasoning&CO204.3&15\\
+\rowcolor{ivory}IV&Planning and Reasoning under Uncertainty&CO204.4&15\\
+V&Learning, Expert Systems and Applications of AI&CO204.5&15\\
+\end{tabular}\end{center}
+\newpage
+\unitbanner{I}{Quiz: Introduction to AI and Intelligent Agents}{15 Questions \textbullet\ 30 min \textbullet\ CO204.1}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QI.01}\quad Classify poker (Texas Hold'em) along observability, agents, determinism, episodes, dynamics and discreteness.\hfill\btl{L4}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ Fully observable, multi-agent, deterministic, episodic, static, discrete\\[1pt]\textbf{\color{navyL}(B)}\ Partially observable, multi-agent, stochastic, sequential, static, discrete\\[1pt]\textbf{\color{navyL}(C)}\ Partially observable, single-agent, stochastic, sequential, dynamic, continuous\\[1pt]\textbf{\color{navyL}(D)}\ Fully observable, multi-agent, stochastic, episodic, dynamic, discrete}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QI.02}\quad Jugs of 4 L and 3 L start empty. What is the minimum number of operations to leave exactly 2 L in the 4-L jug?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ 4\\[1pt]\textbf{\color{navyL}(B)}\ 5\\[1pt]\textbf{\color{navyL}(C)}\ 6\\[1pt]\textbf{\color{navyL}(D)}\ 7}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QI.03}\quad How many distinct states does the two-square vacuum world have?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ 4\\[1pt]\textbf{\color{navyL}(B)}\ 6\\[1pt]\textbf{\color{navyL}(C)}\ 8\\[1pt]\textbf{\color{navyL}(D)}\ 16}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QI.04}\quad How many states of the 8-puzzle are reachable from a given start state?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ 9! = 362,880\\[1pt]\textbf{\color{navyL}(B)}\ 9!/2 = 181,440\\[1pt]\textbf{\color{navyL}(C)}\ 8! = 40,320\\[1pt]\textbf{\color{navyL}(D)}\ 8!/2 = 20,160}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QI.05}\quad A car-routing agent must trade off travel time, fuel cost and passenger comfort under uncertain traffic. Which architecture is the minimum that handles this properly?\hfill\btl{L4}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ Simple reflex\\[1pt]\textbf{\color{navyL}(B)}\ Model-based reflex\\[1pt]\textbf{\color{navyL}(C)}\ Goal-based\\[1pt]\textbf{\color{navyL}(D)}\ Utility-based}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QI.06}\quad What a rational agent should do at a given moment does NOT depend on which of these?\hfill\btl{L2}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ Its performance measure\\[1pt]\textbf{\color{navyL}(B)}\ Its prior knowledge of the environment\\[1pt]\textbf{\color{navyL}(C)}\ The percepts it will receive in the future\\[1pt]\textbf{\color{navyL}(D)}\ The actions it can perform}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QI.07}\quad A simple reflex vacuum agent with no location sensor keeps moving Left forever in a clean square. Which change fixes this without adding internal state?\hfill\btl{L4}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ A larger rule table\\[1pt]\textbf{\color{navyL}(B)}\ Randomising its movement choice\\[1pt]\textbf{\color{navyL}(C)}\ A faster processor\\[1pt]\textbf{\color{navyL}(D)}\ Removing the Suck action}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QI.08}\quad In a learning agent, which component proposes exploratory actions that may be sub-optimal now but informative later?\hfill\btl{L2}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ Critic\\[1pt]\textbf{\color{navyL}(B)}\ Learning element\\[1pt]\textbf{\color{navyL}(C)}\ Performance element\\[1pt]\textbf{\color{navyL}(D)}\ Problem generator}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QI.09}\quad Chess played with a clock is best described as which kind of environment?\hfill\btl{L4}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ Static\\[1pt]\textbf{\color{navyL}(B)}\ Semi-dynamic\\[1pt]\textbf{\color{navyL}(C)}\ Dynamic\\[1pt]\textbf{\color{navyL}(D)}\ Continuous}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QI.10}\quad Three missionaries and three cannibals cross a river in a 2-person boat; cannibals may never outnumber missionaries on either bank. What is the minimum number of crossings?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ 7\\[1pt]\textbf{\color{navyL}(B)}\ 9\\[1pt]\textbf{\color{navyL}(C)}\ 11\\[1pt]\textbf{\color{navyL}(D)}\ 13}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QI.11}\quad In the complete-state formulation of 8-queens with one queen per column in any row, how many states exist?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ 8! = 40,320\\[1pt]\textbf{\color{navyL}(B)}\ 8$^8$ = 16,777,216\\[1pt]\textbf{\color{navyL}(C)}\ C(64,8) $\approx$ 4.4 $\times$ 10$^9$\\[1pt]\textbf{\color{navyL}(D)}\ 2,057}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QI.12}\quad The Total Turing Test adds which two capabilities to those needed for the standard test?\hfill\btl{L1}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ Planning and learning\\[1pt]\textbf{\color{navyL}(B)}\ Computer vision and robotics\\[1pt]\textbf{\color{navyL}(C)}\ Speech and translation\\[1pt]\textbf{\color{navyL}(D)}\ Memory and reasoning}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QI.13}\quad Which of these is NOT one of the five components of a well-defined search problem?\hfill\btl{L2}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ Transition model\\[1pt]\textbf{\color{navyL}(B)}\ Goal test\\[1pt]\textbf{\color{navyL}(C)}\ Heuristic function\\[1pt]\textbf{\color{navyL}(D)}\ Action cost}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QI.14}\quad A thermostat rule 'IF temperature < 18 $^\circ$C THEN heater ON' is an example of which agent?\hfill\btl{L4}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ Simple reflex\\[1pt]\textbf{\color{navyL}(B)}\ Model-based reflex\\[1pt]\textbf{\color{navyL}(C)}\ Goal-based\\[1pt]\textbf{\color{navyL}(D)}\ Learning}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QI.15}\quad An agent's performance measure is 'number of support tickets closed per hour'. What is the most likely failure?\hfill\btl{L5}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ The agent becomes too slow\\[1pt]\textbf{\color{navyL}(B)}\ The agent closes tickets without solving them\\[1pt]\textbf{\color{navyL}(C)}\ The agent cannot perceive tickets\\[1pt]\textbf{\color{navyL}(D)}\ The agent needs a utility function}
+\end{tcolorbox}
+\newpage
+\section*{Answer key and explanations --- Unit I}
+\begin{longtable}{>{\leavevmode\bfseries\color{navy}}p{1.3cm} c p{13.2cm}}
+\rowcolor{navy}\textcolor{gold}{\textbf{Q.}}&\textcolor{gold}{\textbf{Ans}}&\textcolor{gold}{\textbf{Worked explanation}}\\\endhead
+QI.01&\textbf{\color{leaf}B}&Opponents' cards are hidden (partial), other players are agents (multi), the deal is random (stochastic), bets affect later decisions (sequential), nothing changes while you think (static), and actions and cards are discrete.\\
+\rowcolor{ivory}QI.02&\textbf{\color{leaf}C}&BFS gives (0,0)$\to$(0,3)$\to$(3,0)$\to$(3,3)$\to$(4,2)$\to$(0,2)$\to$(2,0): six operations. No shorter sequence puts 2 L in the 4-L jug (four steps reach 2 L only in the 3-L jug).\\
+QI.03&\textbf{\color{leaf}C}&The agent is in one of 2 squares and each square is dirty or clean: 2 $\times$ 2$^2$ = 8 states.\\
+\rowcolor{ivory}QI.04&\textbf{\color{leaf}B}&Moves preserve inversion parity, so the 9! arrangements split into two disconnected halves of 181,440 states each.\\
+QI.05&\textbf{\color{leaf}D}&Conflicting objectives and uncertain outcomes need a utility function and expected-utility maximisation; a binary goal cannot rank partial successes.\\
+\rowcolor{ivory}QI.06&\textbf{\color{leaf}C}&Rationality depends on the performance measure, prior knowledge, available actions and the percept sequence to date, not on future percepts it cannot yet know.\\
+QI.07&\textbf{\color{leaf}B}&Randomised reflex agents escape such infinite loops; the alternative is internal state (a model-based agent).\\
+\rowcolor{ivory}QI.08&\textbf{\color{leaf}D}&The problem generator suggests exploratory actions; the critic gives feedback against the performance standard.\\
+QI.09&\textbf{\color{leaf}B}&The board does not change while the agent thinks, but its performance score (time left) does, which makes it semi-dynamic.\\
+\rowcolor{ivory}QI.10&\textbf{\color{leaf}C}&BFS over states (M, C, boat side) finds the classic 11-crossing solution; no shorter safe sequence exists.\\
+QI.11&\textbf{\color{leaf}B}&Each of 8 columns independently chooses one of 8 rows: 8$^8$ states. 2,057 is the size of the incremental 'no attacks' formulation.\\
+\rowcolor{ivory}QI.12&\textbf{\color{leaf}B}&It requires perceiving objects (vision) and manipulating them (robotics) in addition to NLP, knowledge representation, reasoning and learning.\\
+QI.13&\textbf{\color{leaf}C}&A problem is initial state, actions, transition model, goal test and path cost. A heuristic belongs to a solution method, not to the problem definition.\\
+\rowcolor{ivory}QI.14&\textbf{\color{leaf}A}&It maps the current percept directly to an action through a condition--action rule, with no history or goals.\\
+QI.15&\textbf{\color{leaf}B}&Reward hacking: optimising a proxy of the desired outcome. Measure the environment state you want (problems resolved, not reopened).\\
+\end{longtable}
+\newpage
+\unitbanner{II}{Quiz: Problem Solving by Search}{15 Questions \textbullet\ 30 min \textbullet\ CO204.2}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QII.01}\quad With branching factor b = 10 and the shallowest goal at depth d = 5, how many nodes does a complete search tree contain up to depth 5?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ 100,000\\[1pt]\textbf{\color{navyL}(B)}\ 111,111\\[1pt]\textbf{\color{navyL}(C)}\ 123,456\\[1pt]\textbf{\color{navyL}(D)}\ 1,111,111}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QII.02}\quad For b = 10 and d = 5, how many nodes does iterative-deepening search generate in total?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ 111,111\\[1pt]\textbf{\color{navyL}(B)}\ 123,456\\[1pt]\textbf{\color{navyL}(C)}\ 222,222\\[1pt]\textbf{\color{navyL}(D)}\ 611,110}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QII.03}\quad Start state 7 2 4 / 5 \_ 6 / 8 3 1 with goal 1 2 3 / 4 5 6 / 7 8 \_. What are h$_1$ (misplaced tiles) and h$_2$ (Manhattan distance)?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ h$_1$ = 6, h$_2$ = 14\\[1pt]\textbf{\color{navyL}(B)}\ h$_1$ = 8, h$_2$ = 18\\[1pt]\textbf{\color{navyL}(C)}\ h$_1$ = 7, h$_2$ = 14\\[1pt]\textbf{\color{navyL}(D)}\ h$_1$ = 6, h$_2$ = 12}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QII.04}\quad Graph: S$\to$A (1), S$\to$B (4), A$\to$C (2), B$\to$C (1), C$\to$G (3), A$\to$G (9); h(S)=6, h(A)=5, h(B)=4, h(C)=3, h(G)=0. In what order does A* expand nodes, and what is the path cost?\hfill\btl{L4}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ S, B, C, G; cost 8\\[1pt]\textbf{\color{navyL}(B)}\ S, A, C, G; cost 6\\[1pt]\textbf{\color{navyL}(C)}\ S, A, G; cost 10\\[1pt]\textbf{\color{navyL}(D)}\ S, A, B, C, G; cost 6}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QII.05}\quad MAX root over three MIN nodes with leaves (3, 12, 8), (2, 4, 6), (14, 5, 2), evaluated left to right with alpha--beta. What is the root value and how many leaves are pruned?\hfill\btl{L4}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ Root 3; 2 leaves pruned\\[1pt]\textbf{\color{navyL}(B)}\ Root 2; 2 leaves pruned\\[1pt]\textbf{\color{navyL}(C)}\ Root 3; 0 leaves pruned\\[1pt]\textbf{\color{navyL}(D)}\ Root 5; 3 leaves pruned}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QII.06}\quad Simulated annealing at temperature T = 1 proposes a move that worsens the objective by 2 ($\Delta$E = --2). What is the acceptance probability?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ 0.865\\[1pt]\textbf{\color{navyL}(B)}\ 0.500\\[1pt]\textbf{\color{navyL}(C)}\ 0.135\\[1pt]\textbf{\color{navyL}(D)}\ 0.018}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QII.07}\quad Bidirectional BFS with b = 10 and d = 6. Roughly how many nodes are generated, compared with one-directional BFS?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ About 2,000 vs 1,000,000\\[1pt]\textbf{\color{navyL}(B)}\ About 20,000 vs 1,000,000\\[1pt]\textbf{\color{navyL}(C)}\ About 1,000 vs 100,000\\[1pt]\textbf{\color{navyL}(D)}\ About 200 vs 10,000}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QII.08}\quad A* expanded N = 52 nodes to find a solution at depth 5. What is the effective branching factor b*?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ 1.42\\[1pt]\textbf{\color{navyL}(B)}\ 1.92\\[1pt]\textbf{\color{navyL}(C)}\ 2.78\\[1pt]\textbf{\color{navyL}(D)}\ 3.10}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QII.09}\quad Uniform-cost search and BFS return different solutions only when \dots{}\hfill\btl{L4}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ the goal is deep\\[1pt]\textbf{\color{navyL}(B)}\ step costs are not all equal\\[1pt]\textbf{\color{navyL}(C)}\ the graph has cycles\\[1pt]\textbf{\color{navyL}(D)}\ the heuristic is inadmissible}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QII.10}\quad In Australia map colouring, after WA = red and NT = green, which variable does MRV choose next, and with which value?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ Q = red\\[1pt]\textbf{\color{navyL}(B)}\ SA = blue\\[1pt]\textbf{\color{navyL}(C)}\ NSW = blue\\[1pt]\textbf{\color{navyL}(D)}\ V = green}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QII.11}\quad What is the worst-case time complexity of AC-3 for c binary constraints and domain size d?\hfill\btl{L2}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ O(cd)\\[1pt]\textbf{\color{navyL}(B)}\ O(cd$^2$)\\[1pt]\textbf{\color{navyL}(C)}\ O(cd$^3$)\\[1pt]\textbf{\color{navyL}(D)}\ O(c$^2$d)}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QII.12}\quad On the Romania map, greedy best-first search (straight-line distance) finds Arad$\to$Sibiu$\to$Fagaras$\to$Bucharest. How much longer is it than the optimal A* route?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ 0 km\\[1pt]\textbf{\color{navyL}(B)}\ 18 km\\[1pt]\textbf{\color{navyL}(C)}\ 32 km\\[1pt]\textbf{\color{navyL}(D)}\ 57 km}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QII.13}\quad In the genetic-algorithm encoding of 8-queens, fitness is the number of non-attacking pairs. What is the fitness of a solution?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ 8\\[1pt]\textbf{\color{navyL}(B)}\ 16\\[1pt]\textbf{\color{navyL}(C)}\ 28\\[1pt]\textbf{\color{navyL}(D)}\ 56}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QII.14}\quad Which heuristic is admissible but NOT consistent? Edges S$\to$A cost 1, A$\to$G cost 1.\hfill\btl{L5}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ h(S)=2, h(A)=1, h(G)=0\\[1pt]\textbf{\color{navyL}(B)}\ h(S)=2, h(A)=0, h(G)=0\\[1pt]\textbf{\color{navyL}(C)}\ h(S)=3, h(A)=1, h(G)=0\\[1pt]\textbf{\color{navyL}(D)}\ h(S)=1, h(A)=1, h(G)=0}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QII.15}\quad Why is random-restart hill climbing complete with probability approaching 1?\hfill\btl{L4}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ It never revisits states\\[1pt]\textbf{\color{navyL}(B)}\ Each restart has a non-zero chance p of success, so failure after k restarts is (1--p)$^k$ $\to$ 0\\[1pt]\textbf{\color{navyL}(C)}\ It accepts worse moves\\[1pt]\textbf{\color{navyL}(D)}\ It keeps a frontier of all neighbours}
+\end{tcolorbox}
+\newpage
+\section*{Answer key and explanations --- Unit II}
+\begin{longtable}{>{\leavevmode\bfseries\color{navy}}p{1.3cm} c p{13.2cm}}
+\rowcolor{navy}\textcolor{gold}{\textbf{Q.}}&\textcolor{gold}{\textbf{Ans}}&\textcolor{gold}{\textbf{Worked explanation}}\\\endhead
+QII.01&\textbf{\color{leaf}B}&1 + 10 + 100 + 1,000 + 10,000 + 100,000 = 111,111.\\
+\rowcolor{ivory}QII.02&\textbf{\color{leaf}B}&N(IDS) = 6$\cdot$1 + 5$\cdot$10 + 4$\cdot$100 + 3$\cdot$1,000 + 2$\cdot$10,000 + 1$\cdot$100,000 = 123,456, only about 11\% more than BFS.\\
+QII.03&\textbf{\color{leaf}A}&Misplaced: 7, 4, 5, 8, 3, 1 $\to$ 6. Manhattan: 7$\to$2, 2$\to$0, 4$\to$3, 5$\to$1, 6$\to$0, 8$\to$1, 3$\to$3, 1$\to$4, total 14.\\
+\rowcolor{ivory}QII.04&\textbf{\color{leaf}B}&f(A)=6, f(B)=8 $\to$ expand A; f(C)=6, f(G via A)=10 $\to$ expand C; f(G)=6 $\to$ goal. Path S--A--C--G with cost 6.\\
+QII.05&\textbf{\color{leaf}A}&First MIN = 3 so $\alpha$ = 3. In the second MIN, the first leaf 2 $\le$ $\alpha$, so 4 and 6 are pruned. Third MIN = 2. Root = max(3, $\le$2, 2) = 3.\\
+\rowcolor{ivory}QII.06&\textbf{\color{leaf}C}&P = $e^{\Delta E/T}$ = $e^{--2}$ $\approx$ 0.135.\\
+QII.07&\textbf{\color{leaf}A}&Each search goes to depth d/2 = 3: 2 $\times$ 10$^3$ = 2,000 nodes versus about 10$^6$ for one direction.\\
+\rowcolor{ivory}QII.08&\textbf{\color{leaf}B}&Solve N + 1 = 1 + b* + b*$^2$ + \dots{} + b*$^5$ = 53; b* $\approx$ 1.92.\\
+QII.09&\textbf{\color{leaf}B}&With equal step costs, shallowest equals cheapest. Different costs make UCS (cheapest g) and BFS (shallowest) diverge.\\
+\rowcolor{ivory}QII.10&\textbf{\color{leaf}B}&SA neighbours both WA and NT, leaving only blue. One legal value is the minimum, so MRV picks SA = blue.\\
+QII.11&\textbf{\color{leaf}C}&Each arc can be re-queued up to d times and each revision costs O(d$^2$): O(cd$^3$).\\
+\rowcolor{ivory}QII.12&\textbf{\color{leaf}C}&Greedy: 140 + 99 + 211 = 450 km. A*: Arad--Sibiu--Rimnicu--Pitesti--Bucharest = 140 + 80 + 97 + 101 = 418 km. Difference 32 km.\\
+QII.13&\textbf{\color{leaf}C}&There are C(8,2) = 28 pairs of queens; in a solution none attack, so fitness = 28.\\
+\rowcolor{ivory}QII.14&\textbf{\color{leaf}B}&True costs are 2 and 1, so h(S)=2, h(A)=0 never overestimate (admissible), but h(S)=2 > c(S,A) + h(A) = 1 violates consistency. Option C overestimates.\\
+QII.15&\textbf{\color{leaf}B}&Independent restarts each succeed with probability p; expected restarts are 1/p and the failure probability vanishes.\\
+\end{longtable}
+\newpage
+\unitbanner{III}{Quiz: Knowledge Representation and Reasoning}{15 Questions \textbullet\ 30 min \textbullet\ CO204.3}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QIII.01}\quad Over symbols P, Q, R, how many models satisfy (P $\vee$ Q) $\wedge$ $\neg$R?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ 2\\[1pt]\textbf{\color{navyL}(B)}\ 3\\[1pt]\textbf{\color{navyL}(C)}\ 4\\[1pt]\textbf{\color{navyL}(D)}\ 6}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QIII.02}\quad Which sentence is valid (a tautology)?\hfill\btl{L4}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ (P $\Rightarrow$ Q) $\Rightarrow$ (Q $\Rightarrow$ P)\\[1pt]\textbf{\color{navyL}(B)}\ (P $\wedge$ (P $\Rightarrow$ Q)) $\Rightarrow$ Q\\[1pt]\textbf{\color{navyL}(C)}\ P $\vee$ Q\\[1pt]\textbf{\color{navyL}(D)}\ (P $\Rightarrow$ Q) $\wedge$ P}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QIII.03}\quad What is the CNF of P $\Leftrightarrow$ Q?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ (P $\vee$ Q) $\wedge$ ($\neg$P $\vee$ $\neg$Q)\\[1pt]\textbf{\color{navyL}(B)}\ ($\neg$P $\vee$ Q) $\wedge$ (P $\vee$ $\neg$Q)\\[1pt]\textbf{\color{navyL}(C)}\ ($\neg$P $\wedge$ Q) $\vee$ (P $\wedge$ $\neg$Q)\\[1pt]\textbf{\color{navyL}(D)}\ (P $\wedge$ Q) $\vee$ ($\neg$P $\wedge$ $\neg$Q)}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QIII.04}\quad What is the most general unifier of P(x, f(y), y) and P(g(z), f(a), z)?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ {x/g(z), y/a}\\[1pt]\textbf{\color{navyL}(B)}\ {x/g(a), y/a, z/a}\\[1pt]\textbf{\color{navyL}(C)}\ {x/g(y), z/y}\\[1pt]\textbf{\color{navyL}(D)}\ No unifier exists}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QIII.05}\quad Why does unifying Knows(John, x) with Knows(x, Elizabeth) fail, and what fixes it?\hfill\btl{L4}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ Occurs check; rename predicates\\[1pt]\textbf{\color{navyL}(B)}\ x cannot be both John and Elizabeth; standardise variables apart\\[1pt]\textbf{\color{navyL}(C)}\ Different arity; add arguments\\[1pt]\textbf{\color{navyL}(D)}\ Constants never unify; use Skolem functions}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QIII.06}\quad Which FOL sentence correctly says 'Every student who takes AI likes some professor'?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ $\forall$x $\exists$y Student(x) $\wedge$ Takes(x, AI) $\wedge$ Professor(y) $\wedge$ Likes(x, y)\\[1pt]\textbf{\color{navyL}(B)}\ $\forall$x [Student(x) $\wedge$ Takes(x, AI) $\Rightarrow$ $\exists$y (Professor(y) $\wedge$ Likes(x, y))]\\[1pt]\textbf{\color{navyL}(C)}\ $\exists$y $\forall$x [Student(x) $\Rightarrow$ Likes(x, y)]\\[1pt]\textbf{\color{navyL}(D)}\ $\forall$x $\exists$y [Student(x) $\wedge$ Takes(x, AI) $\Rightarrow$ Professor(y) $\Rightarrow$ Likes(x, y)]}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QIII.07}\quad Which is equivalent to $\neg$$\forall$x (Student(x) $\Rightarrow$ Smart(x))?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ $\forall$x (Student(x) $\wedge$ $\neg$Smart(x))\\[1pt]\textbf{\color{navyL}(B)}\ $\exists$x (Student(x) $\wedge$ $\neg$Smart(x))\\[1pt]\textbf{\color{navyL}(C)}\ $\exists$x ($\neg$Student(x) $\Rightarrow$ Smart(x))\\[1pt]\textbf{\color{navyL}(D)}\ $\neg$$\exists$x Student(x)}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QIII.08}\quad What does Skolemisation turn $\forall$x $\exists$y Loves(x, y) into?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ Loves(x, C)\\[1pt]\textbf{\color{navyL}(B)}\ Loves(x, F(x))\\[1pt]\textbf{\color{navyL}(C)}\ Loves(F(y), y)\\[1pt]\textbf{\color{navyL}(D)}\ $\exists$y Loves(C, y)}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QIII.09}\quad Forward chaining with Generalised Modus Ponens is sound and complete for which class of KBs?\hfill\btl{L2}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ Any FOL KB\\[1pt]\textbf{\color{navyL}(B)}\ First-order definite clauses\\[1pt]\textbf{\color{navyL}(C)}\ Propositional CNF\\[1pt]\textbf{\color{navyL}(D)}\ KBs with negation as failure}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QIII.10}\quad Resolve (A $\vee$ B $\vee$ $\neg$C) with (C $\vee$ D). What is the resolvent?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ A $\vee$ B\\[1pt]\textbf{\color{navyL}(B)}\ A $\vee$ B $\vee$ D\\[1pt]\textbf{\color{navyL}(C)}\ A $\vee$ B $\vee$ C $\vee$ D\\[1pt]\textbf{\color{navyL}(D)}\ $\square$}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QIII.11}\quad KB = {P $\Rightarrow$ Q, $\neg$Q}. Which statement does the KB entail?\hfill\btl{L4}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ P\\[1pt]\textbf{\color{navyL}(B)}\ $\neg$P\\[1pt]\textbf{\color{navyL}(C)}\ Q\\[1pt]\textbf{\color{navyL}(D)}\ Nothing beyond the KB}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QIII.12}\quad Which sentence is satisfiable but not valid?\hfill\btl{L2}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ P $\vee$ $\neg$P\\[1pt]\textbf{\color{navyL}(B)}\ P $\wedge$ $\neg$P\\[1pt]\textbf{\color{navyL}(C)}\ P $\vee$ Q\\[1pt]\textbf{\color{navyL}(D)}\ (P $\Rightarrow$ P)}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QIII.13}\quad A semantic network says Bird ---can$\to$ Fly, Penguin ---is-a$\to$ Bird, Penguin ---can$\to$ $\neg$Fly. How does a typical inheritance reasoner answer 'Can Tweety the penguin fly?'\hfill\btl{L4}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ Yes, from Bird\\[1pt]\textbf{\color{navyL}(B)}\ No, the most specific class overrides the default\\[1pt]\textbf{\color{navyL}(C)}\ Contradiction, no answer\\[1pt]\textbf{\color{navyL}(D)}\ Unknown, nets cannot represent this}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QIII.14}\quad Which clause is a Horn clause?\hfill\btl{L2}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ A $\vee$ B $\vee$ $\neg$C\\[1pt]\textbf{\color{navyL}(B)}\ $\neg$A $\vee$ $\neg$B $\vee$ C\\[1pt]\textbf{\color{navyL}(C)}\ A $\vee$ B\\[1pt]\textbf{\color{navyL}(D)}\ A $\vee$ $\neg$B $\vee$ C}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QIII.15}\quad Why can Prolog-style backward chaining fail to terminate on ancestor(X, Y) :- ancestor(X, Z), parent(Z, Y)?\hfill\btl{L5}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ Unification is undecidable\\[1pt]\textbf{\color{navyL}(B)}\ Depth-first, left-to-right search loops on the left-recursive goal\\[1pt]\textbf{\color{navyL}(C)}\ Resolution is incomplete\\[1pt]\textbf{\color{navyL}(D)}\ The KB is not Horn}
+\end{tcolorbox}
+\newpage
+\section*{Answer key and explanations --- Unit III}
+\begin{longtable}{>{\leavevmode\bfseries\color{navy}}p{1.3cm} c p{13.2cm}}
+\rowcolor{navy}\textcolor{gold}{\textbf{Q.}}&\textcolor{gold}{\textbf{Ans}}&\textcolor{gold}{\textbf{Worked explanation}}\\\endhead
+QIII.01&\textbf{\color{leaf}B}&P $\vee$ Q is true in 3 of the 4 (P, Q) combinations and $\neg$R fixes R = false: 3 models.\\
+\rowcolor{ivory}QIII.02&\textbf{\color{leaf}B}&This is modus ponens as a sentence and is true in all four models; the others fail in at least one.\\
+QIII.03&\textbf{\color{leaf}B}&P $\Leftrightarrow$ Q $\equiv$ (P $\Rightarrow$ Q) $\wedge$ (Q $\Rightarrow$ P) $\equiv$ ($\neg$P $\vee$ Q) $\wedge$ ($\neg$Q $\vee$ P). Option D is equivalent but in DNF.\\
+\rowcolor{ivory}QIII.04&\textbf{\color{leaf}B}&x/g(z); f(y)=f(a) gives y/a; y=z gives z/a; substituting back gives x/g(a).\\
+QIII.05&\textbf{\color{leaf}B}&The same variable x would need two values. Renaming one sentence's variable (x$_1$) gives {x$_1$/Elizabeth, x/John}.\\
+\rowcolor{ivory}QIII.06&\textbf{\color{leaf}B}&$\forall$ pairs with $\Rightarrow$ and $\exists$ pairs with $\wedge$. Option A wrongly makes everyone an AI student; C makes one professor liked by all.\\
+QIII.07&\textbf{\color{leaf}B}&$\neg$$\forall$x $\varphi$ $\equiv$ $\exists$x $\neg$$\varphi$, and $\neg$(A $\Rightarrow$ B) $\equiv$ A $\wedge$ $\neg$B.\\
+\rowcolor{ivory}QIII.08&\textbf{\color{leaf}B}&The existential y depends on the universal x, so it becomes a Skolem function F(x). A constant would wrongly mean everyone loves the same person.\\
+QIII.09&\textbf{\color{leaf}B}&For definite clauses (exactly one positive literal), forward chaining derives every entailed atomic fact.\\
+\rowcolor{ivory}QIII.10&\textbf{\color{leaf}B}&Cancel the complementary pair $\neg$C / C and keep the remaining literals: A $\vee$ B $\vee$ D.\\
+QIII.11&\textbf{\color{leaf}B}&Modus tollens: the only model with P $\Rightarrow$ Q true and Q false has P false. By resolution, $\neg$P $\vee$ Q with $\neg$Q gives $\neg$P.\\
+\rowcolor{ivory}QIII.12&\textbf{\color{leaf}C}&P $\vee$ Q is true when either holds but false when both are false.\\
+QIII.13&\textbf{\color{leaf}B}&Default inheritance lets the more specific class (Penguin) override the inherited default (Bird). This is non-monotonic reasoning, which pure FOL cannot do.\\
+\rowcolor{ivory}QIII.14&\textbf{\color{leaf}B}&A Horn clause has at most one positive literal; $\neg$A $\vee$ $\neg$B $\vee$ C is the rule A $\wedge$ B $\Rightarrow$ C.\\
+QIII.15&\textbf{\color{leaf}B}&The first subgoal calls ancestor again with no progress, an infinite descent. Reordering the body (parent first) or tabling fixes it.\\
+\end{longtable}
+\newpage
+\unitbanner{IV}{Quiz: Planning and Reasoning under Uncertainty}{15 Questions \textbullet\ 30 min \textbullet\ CO204.4}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QIV.01}\quad Prevalence is 1\%, sensitivity 90\% and false-positive rate 5\%. What is P(disease | positive)?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ 0.90\\[1pt]\textbf{\color{navyL}(B)}\ 0.50\\[1pt]\textbf{\color{navyL}(C)}\ 0.154\\[1pt]\textbf{\color{navyL}(D)}\ 0.045}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QIV.02}\quad The same patient takes a second, independent test that is also positive. What is the updated posterior?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ 0.154\\[1pt]\textbf{\color{navyL}(B)}\ 0.31\\[1pt]\textbf{\color{navyL}(C)}\ 0.77\\[1pt]\textbf{\color{navyL}(D)}\ 0.99}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QIV.03}\quad In the burglary network (P(B)=.001, P(E)=.002, P(a | $\neg$b, $\neg$e)=.001, P(j | a)=.9, P(m | a)=.7), what is P(j, m, a, $\neg$b, $\neg$e)?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ 0.000628\\[1pt]\textbf{\color{navyL}(B)}\ 0.00063 $\times$ 10$^{-3}$\\[1pt]\textbf{\color{navyL}(C)}\ 0.0063\\[1pt]\textbf{\color{navyL}(D)}\ 0.063}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QIV.04}\quad How many independent probabilities does the burglary network (B, E $\to$ A; A $\to$ J, M; all Boolean) need, compared with the full joint?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ 10 vs 31\\[1pt]\textbf{\color{navyL}(B)}\ 10 vs 32\\[1pt]\textbf{\color{navyL}(C)}\ 5 vs 31\\[1pt]\textbf{\color{navyL}(D)}\ 16 vs 32}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QIV.05}\quad Which independence does the burglary network structure imply?\hfill\btl{L4}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ Burglary and Earthquake are dependent\\[1pt]\textbf{\color{navyL}(B)}\ JohnCalls and MaryCalls are independent given Alarm\\[1pt]\textbf{\color{navyL}(C)}\ JohnCalls is independent of Burglary unconditionally\\[1pt]\textbf{\color{navyL}(D)}\ Alarm is independent of Earthquake}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QIV.06}\quad Apply Stack(A, B) [PRE Holding(A) $\wedge$ Clear(B); ADD On(A,B), Clear(A), HandEmpty; DEL Holding(A), Clear(B)] to the state {Holding(A), Clear(B), OnTable(B)}. What is the result?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ {On(A,B), Clear(A), HandEmpty, OnTable(B)}\\[1pt]\textbf{\color{navyL}(B)}\ {On(A,B), Clear(B), HandEmpty}\\[1pt]\textbf{\color{navyL}(C)}\ {Holding(A), On(A,B), OnTable(B)}\\[1pt]\textbf{\color{navyL}(D)}\ {On(A,B), Clear(A), Clear(B), OnTable(B)}}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QIV.07}\quad Regress the goal {On(A,B), OnTable(B)} through Stack(A, B). What is the new subgoal?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ {OnTable(B)}\\[1pt]\textbf{\color{navyL}(B)}\ {Holding(A), Clear(B), OnTable(B)}\\[1pt]\textbf{\color{navyL}(C)}\ {On(A,B), Holding(A)}\\[1pt]\textbf{\color{navyL}(D)}\ {Clear(A), HandEmpty}}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QIV.08}\quad In partial-order planning, action C deletes p, which a causal link A ---p$\to$ B protects. Which fixes resolve the threat?\hfill\btl{L4}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ Promotion (C before A) or demotion (C after B)\\[1pt]\textbf{\color{navyL}(B)}\ Demotion (C before A) or promotion (C after B)\\[1pt]\textbf{\color{navyL}(C)}\ Delete C from the plan\\[1pt]\textbf{\color{navyL}(D)}\ Add p to the preconditions of C}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QIV.09}\quad How many valid total orders (linearisations) does the partial-order plan Left-Sock $\prec$ Left-Shoe, Right-Sock $\prec$ Right-Shoe have?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ 2\\[1pt]\textbf{\color{navyL}(B)}\ 4\\[1pt]\textbf{\color{navyL}(C)}\ 6\\[1pt]\textbf{\color{navyL}(D)}\ 24}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QIV.10}\quad $\mu$\_A(x) = 0.7 and $\mu$\_B(x) = 0.4. Under Zadeh operators, what are $\mu$(A AND B), $\mu$(A OR B), $\mu$(NOT A) and $\mu$(very A)?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ 0.4, 0.7, 0.3, 0.49\\[1pt]\textbf{\color{navyL}(B)}\ 0.28, 0.82, 0.3, 0.84\\[1pt]\textbf{\color{navyL}(C)}\ 0.4, 0.7, 0.6, 0.49\\[1pt]\textbf{\color{navyL}(D)}\ 0.7, 0.4, 0.3, 0.70}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QIV.11}\quad Warm is the triangular fuzzy set (a, b, c) = (10, 25, 40) $^\circ$C. What is $\mu$\_Warm(18 $^\circ$C)?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ 0.32\\[1pt]\textbf{\color{navyL}(B)}\ 0.47\\[1pt]\textbf{\color{navyL}(C)}\ 0.53\\[1pt]\textbf{\color{navyL}(D)}\ 0.80}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QIV.12}\quad An aggregated fuzzy output has singleton spikes of height 0.5 at fan speed 20\% and 1.0 at 80\%. What is the centroid output?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ 50\%\\[1pt]\textbf{\color{navyL}(B)}\ 60\%\\[1pt]\textbf{\color{navyL}(C)}\ 70\%\\[1pt]\textbf{\color{navyL}(D)}\ 80\%}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QIV.13}\quad In a spam filter, P(spam) = 0.3, P(word | spam) = 0.6 and P(word | ham) = 0.05. What is P(spam | word)?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ 0.60\\[1pt]\textbf{\color{navyL}(B)}\ 0.72\\[1pt]\textbf{\color{navyL}(C)}\ 0.84\\[1pt]\textbf{\color{navyL}(D)}\ 0.95}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QIV.14}\quad What does the Sussman anomaly demonstrate?\hfill\btl{L4}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ STRIPS cannot represent blocks\\[1pt]\textbf{\color{navyL}(B)}\ Non-interleaved (linear) planning of subgoals can be incomplete\\[1pt]\textbf{\color{navyL}(C)}\ Backward search is slower than forward search\\[1pt]\textbf{\color{navyL}(D)}\ Partial-order planning is unsound}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QIV.15}\quad From the full joint table (cavity $\wedge$ toothache = 0.12, toothache = 0.2), what is P(cavity | toothache), and what does it show?\hfill\btl{L5}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ 0.6; toothache is evidence for, but not proof of, a cavity\\[1pt]\textbf{\color{navyL}(B)}\ 0.12; joint equals conditional\\[1pt]\textbf{\color{navyL}(C)}\ 0.2; toothache is independent of cavity\\[1pt]\textbf{\color{navyL}(D)}\ 1.0; toothache implies cavity}
+\end{tcolorbox}
+\newpage
+\section*{Answer key and explanations --- Unit IV}
+\begin{longtable}{>{\leavevmode\bfseries\color{navy}}p{1.3cm} c p{13.2cm}}
+\rowcolor{navy}\textcolor{gold}{\textbf{Q.}}&\textcolor{gold}{\textbf{Ans}}&\textcolor{gold}{\textbf{Worked explanation}}\\\endhead
+QIV.01&\textbf{\color{leaf}C}&0.9 $\times$ 0.01 / (0.9 $\times$ 0.01 + 0.05 $\times$ 0.99) = 0.009 / 0.0585 $\approx$ 0.154.\\
+\rowcolor{ivory}QIV.02&\textbf{\color{leaf}C}&Use 0.154 as the prior: 0.9 $\times$ 0.154 / (0.9 $\times$ 0.154 + 0.05 $\times$ 0.846) $\approx$ 0.1386 / 0.1809 $\approx$ 0.77.\\
+QIV.03&\textbf{\color{leaf}A}&0.9 $\times$ 0.7 $\times$ 0.001 $\times$ 0.999 $\times$ 0.998 $\approx$ 0.000628.\\
+\rowcolor{ivory}QIV.04&\textbf{\color{leaf}A}&B 1 + E 1 + A 4 + J 2 + M 2 = 10; the full joint over 5 Boolean variables needs 2$^5$ -- 1 = 31.\\
+QIV.05&\textbf{\color{leaf}B}&J and M share only the parent A, so they are conditionally independent given A. B and E are independent a priori but dependent given A (explaining away).\\
+\rowcolor{ivory}QIV.06&\textbf{\color{leaf}A}&Result = (s -- DEL) $\cup$ ADD: remove Holding(A) and Clear(B), add On(A,B), Clear(A), HandEmpty; OnTable(B) persists.\\
+QIV.07&\textbf{\color{leaf}B}&g$'$ = (g -- ADD(a)) $\cup$ PRE(a) = {OnTable(B)} $\cup$ {Holding(A), Clear(B)}.\\
+\rowcolor{ivory}QIV.08&\textbf{\color{leaf}B}&Demotion orders the threat before the link's producer (C $\prec$ A); promotion orders it after the consumer (B $\prec$ C).\\
+QIV.09&\textbf{\color{leaf}C}&Interleave two ordered pairs: C(4,2) = 6 orders.\\
+\rowcolor{ivory}QIV.10&\textbf{\color{leaf}A}&AND = min = 0.4, OR = max = 0.7, NOT = 1 -- 0.7 = 0.3, very = $\mu$$^2$ = 0.49.\\
+QIV.11&\textbf{\color{leaf}C}&On the rising edge: (18 -- 10) / (25 -- 10) = 8 / 15 $\approx$ 0.53.\\
+\rowcolor{ivory}QIV.12&\textbf{\color{leaf}B}&(0.5 $\times$ 20 + 1.0 $\times$ 80) / (0.5 + 1.0) = 90 / 1.5 = 60\%.\\
+QIV.13&\textbf{\color{leaf}C}&0.6 $\times$ 0.3 / (0.6 $\times$ 0.3 + 0.05 $\times$ 0.7) = 0.18 / 0.215 $\approx$ 0.84.\\
+\rowcolor{ivory}QIV.14&\textbf{\color{leaf}B}&Achieving On(A,B) then On(B,C) undoes the first goal; solving the problem requires interleaving the subgoals' actions.\\
+QIV.15&\textbf{\color{leaf}A}&0.12 / 0.2 = 0.6. Logic (Toothache $\Rightarrow$ Cavity) fails; probability quantifies the degree of belief.\\
+\end{longtable}
+\newpage
+\unitbanner{V}{Quiz: Learning, Expert Systems and Applications of AI}{15 Questions \textbullet\ 30 min \textbullet\ CO204.5}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QV.01}\quad A dataset has 9 positive and 5 negative examples. What is its entropy?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ 0.500\\[1pt]\textbf{\color{navyL}(B)}\ 0.643\\[1pt]\textbf{\color{navyL}(C)}\ 0.940\\[1pt]\textbf{\color{navyL}(D)}\ 1.000}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QV.02}\quad Outlook splits Play Tennis into Sunny (2+, 3--), Overcast (4+, 0--) and Rain (3+, 2--). What is Gain(S, Outlook)?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ 0.048\\[1pt]\textbf{\color{navyL}(B)}\ 0.151\\[1pt]\textbf{\color{navyL}(C)}\ 0.247\\[1pt]\textbf{\color{navyL}(D)}\ 0.940}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QV.03}\quad What is the Gini impurity of a node with 9 positive and 5 negative examples?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ 0.230\\[1pt]\textbf{\color{navyL}(B)}\ 0.459\\[1pt]\textbf{\color{navyL}(C)}\ 0.541\\[1pt]\textbf{\color{navyL}(D)}\ 0.940}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QV.04}\quad A perceptron has w = (w$_0$, w$_1$, w$_2$) = (--1, 0, 0) with bias input x$_0$ = 1. On x = (1, 1) with target y = 1 and $\eta$ = 1, what are the weights after one update?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ (--1, 0, 0)\\[1pt]\textbf{\color{navyL}(B)}\ (0, 1, 1)\\[1pt]\textbf{\color{navyL}(C)}\ (--2, --1, --1)\\[1pt]\textbf{\color{navyL}(D)}\ (1, 1, 1)}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QV.05}\quad What is the smallest feed-forward network with threshold units that represents XOR?\hfill\btl{L4}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ One perceptron\\[1pt]\textbf{\color{navyL}(B)}\ One hidden layer with 2 units\\[1pt]\textbf{\color{navyL}(C)}\ One hidden layer with 4 units\\[1pt]\textbf{\color{navyL}(D)}\ Two hidden layers with 1 unit each}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QV.06}\quad A classifier has TP = 40, FP = 10 and FN = 20. What are its precision, recall and F1?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ 0.80, 0.67, 0.73\\[1pt]\textbf{\color{navyL}(B)}\ 0.67, 0.80, 0.73\\[1pt]\textbf{\color{navyL}(C)}\ 0.80, 0.80, 0.80\\[1pt]\textbf{\color{navyL}(D)}\ 0.57, 0.67, 0.62}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QV.07}\quad A decision tree scores 99\% training accuracy and 70\% test accuracy; a depth-3 tree scores 85\% and 84\%. What is the right reading?\hfill\btl{L4}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ The deep tree is better\\[1pt]\textbf{\color{navyL}(B)}\ The deep tree overfits; prefer the shallow tree or prune\\[1pt]\textbf{\color{navyL}(C)}\ Both underfit\\[1pt]\textbf{\color{navyL}(D)}\ The test set is wrong}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QV.08}\quad Two independent rules support the same conclusion with CF$_1$ = 0.6 and CF$_2$ = 0.5. What is the combined CF (MYCIN)?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ 0.30\\[1pt]\textbf{\color{navyL}(B)}\ 0.55\\[1pt]\textbf{\color{navyL}(C)}\ 0.80\\[1pt]\textbf{\color{navyL}(D)}\ 1.10}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QV.09}\quad Rule: IF fever (CF 0.9) AND cough (CF 0.7) THEN flu with rule CF 0.8. What is CF(flu)?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ 0.50\\[1pt]\textbf{\color{navyL}(B)}\ 0.56\\[1pt]\textbf{\color{navyL}(C)}\ 0.63\\[1pt]\textbf{\color{navyL}(D)}\ 0.72}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QV.10}\quad Which pairing of classic expert system and chaining strategy is correct?\hfill\btl{L4}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ MYCIN: forward; XCON: backward\\[1pt]\textbf{\color{navyL}(B)}\ MYCIN: backward; XCON: forward\\[1pt]\textbf{\color{navyL}(C)}\ Both backward\\[1pt]\textbf{\color{navyL}(D)}\ Both forward}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QV.11}\quad In a dataset with 2\% positives, a model predicts 'negative' for everyone. What is its accuracy, and what should you report instead?\hfill\btl{L5}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ 2\%; report accuracy\\[1pt]\textbf{\color{navyL}(B)}\ 98\%; report precision, recall, F1 and PR-AUC\\[1pt]\textbf{\color{navyL}(C)}\ 50\%; report ROC-AUC only\\[1pt]\textbf{\color{navyL}(D)}\ 100\%; nothing else needed}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QV.12}\quad What are sigmoid(0), tanh(0) and ReLU(--2)?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ 0.5, 0, 0\\[1pt]\textbf{\color{navyL}(B)}\ 0, 0, --2\\[1pt]\textbf{\color{navyL}(C)}\ 1, 1, 0\\[1pt]\textbf{\color{navyL}(D)}\ 0.5, 0.5, 2}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QV.13}\quad A loan model never sees religion or caste but splits first on pin code, and approval rates differ sharply by community. What is this called?\hfill\btl{L5}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ Overfitting\\[1pt]\textbf{\color{navyL}(B)}\ Proxy discrimination\\[1pt]\textbf{\color{navyL}(C)}\ Label noise\\[1pt]\textbf{\color{navyL}(D)}\ Concept drift}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QV.14}\quad Which expert-system component answers the user's 'WHY are you asking this?' and 'HOW did you conclude that?'\hfill\btl{L2}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ Knowledge acquisition\\[1pt]\textbf{\color{navyL}(B)}\ Inference engine\\[1pt]\textbf{\color{navyL}(C)}\ Explanation facility\\[1pt]\textbf{\color{navyL}(D)}\ Working memory}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QV.15}\quad How many leaves does the ID3 tree learned from the 14-example Play Tennis data have?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ 3\\[1pt]\textbf{\color{navyL}(B)}\ 4\\[1pt]\textbf{\color{navyL}(C)}\ 5\\[1pt]\textbf{\color{navyL}(D)}\ 7}
+\end{tcolorbox}
+\newpage
+\section*{Answer key and explanations --- Unit V}
+\begin{longtable}{>{\leavevmode\bfseries\color{navy}}p{1.3cm} c p{13.2cm}}
+\rowcolor{navy}\textcolor{gold}{\textbf{Q.}}&\textcolor{gold}{\textbf{Ans}}&\textcolor{gold}{\textbf{Worked explanation}}\\\endhead
+QV.01&\textbf{\color{leaf}C}&--(9/14) log$_2$(9/14) -- (5/14) log$_2$(5/14) $\approx$ 0.410 + 0.530 = 0.940.\\
+\rowcolor{ivory}QV.02&\textbf{\color{leaf}C}&0.940 -- (5/14)(0.971) -- (4/14)(0) -- (5/14)(0.971) $\approx$ 0.247.\\
+QV.03&\textbf{\color{leaf}B}&1 -- (9/14)$^2$ -- (5/14)$^2$ = 1 -- 0.413 -- 0.128 $\approx$ 0.459.\\
+\rowcolor{ivory}QV.04&\textbf{\color{leaf}B}&w$\cdot$x = --1 < 0, so $\hat y$ = 0 and the error is +1. Update w $\leftarrow$ w + (1)(1, 1, 1) = (0, 1, 1).\\
+QV.05&\textbf{\color{leaf}B}&XOR is not linearly separable. Two hidden units (e.g. OR and NAND) combined by an AND output unit compute XOR.\\
+\rowcolor{ivory}QV.06&\textbf{\color{leaf}A}&Precision 40/50 = 0.80; recall 40/60 $\approx$ 0.667; F1 = 2PR/(P+R) $\approx$ 0.727.\\
+QV.07&\textbf{\color{leaf}B}&A large train--test gap signals high variance; the shallow tree generalises better.\\
+\rowcolor{ivory}QV.08&\textbf{\color{leaf}C}&CF = CF$_1$ + CF$_2$(1 -- CF$_1$) = 0.6 + 0.5 $\times$ 0.4 = 0.80.\\
+QV.09&\textbf{\color{leaf}B}&AND takes the minimum premise CF (0.7), multiplied by the rule CF: 0.7 $\times$ 0.8 = 0.56.\\
+\rowcolor{ivory}QV.10&\textbf{\color{leaf}B}&MYCIN diagnoses goal-first (backward); XCON configures systems data-first (forward).\\
+QV.11&\textbf{\color{leaf}B}&Accuracy is 98\% but recall is 0: the accuracy paradox. Imbalanced problems need class-sensitive metrics.\\
+\rowcolor{ivory}QV.12&\textbf{\color{leaf}A}&$\sigma$(0) = 1/(1 + e$^0$) = 0.5; tanh(0) = 0; ReLU(--2) = max(0, --2) = 0.\\
+QV.13&\textbf{\color{leaf}B}&Pin code correlates with protected attributes, so the model discriminates through a proxy. Audit group metrics and remove or constrain proxies.\\
+\rowcolor{ivory}QV.14&\textbf{\color{leaf}C}&The explanation facility traces the rules fired (HOW) and the goal being pursued (WHY).\\
+QV.15&\textbf{\color{leaf}C}&Outlook $\to$ Sunny: Humidity (High $\to$ No, Normal $\to$ Yes); Overcast $\to$ Yes; Rain: Wind (Strong $\to$ No, Weak $\to$ Yes). Five leaves.\\
+\end{longtable}
+\newpage
+\end{document}

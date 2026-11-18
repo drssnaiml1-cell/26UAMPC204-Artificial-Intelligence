@@ -1,0 +1,162 @@
+{
+ "I": [
+  [
+   "QI.01",
+   "Classify poker (Texas Hold'em) along observability, agents, determinism, episodes, dynamics and discreteness.",
+   [
+    "Fully observable, multi-agent, deterministic, episodic, static, discrete",
+    "Partially observable, multi-agent, stochastic, sequential, static, discrete",
+    "Partially observable, single-agent, stochastic, sequential, dynamic, continuous",
+    "Fully observable, multi-agent, stochastic, episodic, dynamic, discrete"
+   ]
+  ],
+  [
+   "QI.05",
+   "A car-routing agent must trade off travel time, fuel cost and passenger comfort under uncertain traffic. Which architecture is the minimum that handles this properly?",
+   [
+    "Simple reflex",
+    "Model-based reflex",
+    "Goal-based",
+    "Utility-based"
+   ]
+  ],
+  [
+   "QI.15",
+   "An agent's performance measure is 'number of support tickets closed per hour'. What is the most likely failure?",
+   [
+    "The agent becomes too slow",
+    "The agent closes tickets without solving them",
+    "The agent cannot perceive tickets",
+    "The agent needs a utility function"
+   ]
+  ]
+ ],
+ "II": [
+  [
+   "QII.04",
+   "Graph: S→A (1), S→B (4), A→C (2), B→C (1), C→G (3), A→G (9); h(S)=6, h(A)=5, h(B)=4, h(C)=3, h(G)=0. In what order does A* expand nodes, and what is the path cost?",
+   [
+    "S, B, C, G; cost 8",
+    "S, A, C, G; cost 6",
+    "S, A, G; cost 10",
+    "S, A, B, C, G; cost 6"
+   ]
+  ],
+  [
+   "QII.05",
+   "MAX root over three MIN nodes with leaves (3, 12, 8), (2, 4, 6), (14, 5, 2), evaluated left to right with alpha–beta. What is the root value and how many leaves are pruned?",
+   [
+    "Root 3; 2 leaves pruned",
+    "Root 2; 2 leaves pruned",
+    "Root 3; 0 leaves pruned",
+    "Root 5; 3 leaves pruned"
+   ]
+  ],
+  [
+   "QII.14",
+   "Which heuristic is admissible but NOT consistent? Edges S→A cost 1, A→G cost 1.",
+   [
+    "h(S)=2, h(A)=1, h(G)=0",
+    "h(S)=2, h(A)=0, h(G)=0",
+    "h(S)=3, h(A)=1, h(G)=0",
+    "h(S)=1, h(A)=1, h(G)=0"
+   ]
+  ]
+ ],
+ "III": [
+  [
+   "QIII.02",
+   "Which sentence is valid (a tautology)?",
+   [
+    "(P ⇒ Q) ⇒ (Q ⇒ P)",
+    "(P ∧ (P ⇒ Q)) ⇒ Q",
+    "P ∨ Q",
+    "(P ⇒ Q) ∧ P"
+   ]
+  ],
+  [
+   "QIII.05",
+   "Why does unifying Knows(John, x) with Knows(x, Elizabeth) fail, and what fixes it?",
+   [
+    "Occurs check; rename predicates",
+    "x cannot be both John and Elizabeth; standardise variables apart",
+    "Different arity; add arguments",
+    "Constants never unify; use Skolem functions"
+   ]
+  ],
+  [
+   "QIII.15",
+   "Why can Prolog-style backward chaining fail to terminate on ancestor(X, Y) :- ancestor(X, Z), parent(Z, Y)?",
+   [
+    "Unification is undecidable",
+    "Depth-first, left-to-right search loops on the left-recursive goal",
+    "Resolution is incomplete",
+    "The KB is not Horn"
+   ]
+  ]
+ ],
+ "IV": [
+  [
+   "QIV.05",
+   "Which independence does the burglary network structure imply?",
+   [
+    "Burglary and Earthquake are dependent",
+    "JohnCalls and MaryCalls are independent given Alarm",
+    "JohnCalls is independent of Burglary unconditionally",
+    "Alarm is independent of Earthquake"
+   ]
+  ],
+  [
+   "QIV.08",
+   "In partial-order planning, action C deletes p, which a causal link A —p→ B protects. Which fixes resolve the threat?",
+   [
+    "Promotion (C before A) or demotion (C after B)",
+    "Demotion (C before A) or promotion (C after B)",
+    "Delete C from the plan",
+    "Add p to the preconditions of C"
+   ]
+  ],
+  [
+   "QIV.15",
+   "From the full joint table (cavity ∧ toothache = 0.12, toothache = 0.2), what is P(cavity | toothache), and what does it show?",
+   [
+    "0.6; toothache is evidence for, but not proof of, a cavity",
+    "0.12; joint equals conditional",
+    "0.2; toothache is independent of cavity",
+    "1.0; toothache implies cavity"
+   ]
+  ]
+ ],
+ "V": [
+  [
+   "QV.05",
+   "What is the smallest feed-forward network with threshold units that represents XOR?",
+   [
+    "One perceptron",
+    "One hidden layer with 2 units",
+    "One hidden layer with 4 units",
+    "Two hidden layers with 1 unit each"
+   ]
+  ],
+  [
+   "QV.11",
+   "In a dataset with 2% positives, a model predicts 'negative' for everyone. What is its accuracy, and what should you report instead?",
+   [
+    "2%; report accuracy",
+    "98%; report precision, recall, F1 and PR-AUC",
+    "50%; report ROC-AUC only",
+    "100%; nothing else needed"
+   ]
+  ],
+  [
+   "QV.13",
+   "A loan model never sees religion or caste but splits first on pin code, and approval rates differ sharply by community. What is this called?",
+   [
+    "Overfitting",
+    "Proxy discrimination",
+    "Label noise",
+    "Concept drift"
+   ]
+  ]
+ ]
+}

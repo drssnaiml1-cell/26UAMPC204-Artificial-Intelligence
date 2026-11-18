@@ -8,6 +8,7 @@ echo "1/5 Executing lab notebooks …";           python 06_Notebooks/src/build_
 echo "1b  Interview prep (notebook, handbook, unit inserts, PPT data) …"; python 07_Interview_Prep/src/build_interview.py; tex 07_Interview_Prep AI_Interview_Skills_Handbook
 echo "1c  Research ideas and assignments …"; python 09_Assignments/src/build_extras.py; tex 08_Research_Ideas AI_Research_Ideas; tex 09_Assignments AI_Assignments_Booklet
 echo "1d  Career launchpad …"; python 10_Career_Launchpad/src/build_launchpad.py; tex 10_Career_Launchpad AI_Career_Launchpad
+echo "1e  Unit quizzes …"; python 11_Quizzes/src/build_quizzes.py; tex 11_Quizzes AI_Unit_Quizzes
 echo "2/5 Building lab manual …";              python 05_Lab_Manual/src/build_lab_manual.py; tex 05_Lab_Manual AI_Lab_Manual_26UAMPC204
 echo "3/5 Building unit notes …"
 for f in Unit_1_Notes Unit_2_Notes Unit_3_Notes Unit_4_Notes Unit_5_Notes AI_Complete_Notes; do tex 01_Unit_Notes/latex $f; done

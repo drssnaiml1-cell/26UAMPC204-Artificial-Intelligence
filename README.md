@@ -22,6 +22,7 @@
   <a href="#-research-ideas"><img src="https://img.shields.io/badge/🔬_Research-6B46C1?style=flat-square" alt="Research"></a>
   <a href="#-interview--industry-readiness"><img src="https://img.shields.io/badge/💼_Interview_Prep-C05621?style=flat-square" alt="Interview prep"></a>
   <a href="#-career-launchpad-hackathons-conferences--journals"><img src="https://img.shields.io/badge/🏆_Hackathons_&_Venues-0B1F4B?style=flat-square" alt="Hackathons and venues"></a>
+  <a href="11_Quizzes"><img src="https://img.shields.io/badge/🧩_Quizzes-6B46C1?style=flat-square" alt="Quizzes"></a>
   <a href="#-end-of-course-skill-outcome"><img src="https://img.shields.io/badge/🎓_Skill_Outcome-C9A227?style=flat-square" alt="Skill outcome"></a>
 </p>
 
@@ -81,7 +82,7 @@ mindmap
 | **Structure of agents** | simple-reflex · model-based reflex · goal-based · utility-based · learning agents |
 | **Problem-solving agents** | problem formulation · well-defined problems and solutions · state-space representation |
 
-📄 [Notes](01_Unit_Notes/pdf/Unit_1_Notes.pdf) · 🎞️ [PPT](02_PPT/Unit_1_AI_26UAMPC204.pptx) ([PDF](02_PPT/pdf/Unit_1_AI_26UAMPC204.pdf)) · 🧪 [Exp 1](06_Notebooks/Exp01_BFS_DFS_WaterJug_8Puzzle.ipynb) · 📝 [Assignment 1](09_Assignments/notebooks/Assignment_1_Starter.ipynb) · 🔬 [Research](08_Research_Ideas/README.md#unit-i-introduction-to-ai-and-intelligent-agents) · 💼 [Interview Qs](07_Interview_Prep/README.md#unit-i-introduction-to-ai-and-intelligent-agents-co2041)
+📄 [Notes](01_Unit_Notes/pdf/Unit_1_Notes.pdf) · 🎞️ [PPT](02_PPT/Unit_1_AI_26UAMPC204.pptx) ([PDF](02_PPT/pdf/Unit_1_AI_26UAMPC204.pdf)) · 🧪 [Exp 1](06_Notebooks/Exp01_BFS_DFS_WaterJug_8Puzzle.ipynb) · 📝 [Assignment 1](09_Assignments/notebooks/Assignment_1_Starter.ipynb) · 🔬 [Research](08_Research_Ideas/README.md#unit-i-introduction-to-ai-and-intelligent-agents) · 💼 [Interview Qs](07_Interview_Prep/README.md#unit-i-introduction-to-ai-and-intelligent-agents-co2041) · 🧩 [Quiz](11_Quizzes/README.md#unit-i-introduction-to-ai-and-intelligent-agents-co2041)
 </details>
 
 <details>
@@ -96,7 +97,7 @@ mindmap
 | **Adversarial search** | game playing · Minimax · Alpha-Beta pruning |
 | **Constraint Satisfaction Problems** | backtracking search · constraint propagation · arc consistency |
 
-📄 [Notes](01_Unit_Notes/pdf/Unit_2_Notes.pdf) · 🎞️ [PPT](02_PPT/Unit_2_AI_26UAMPC204.pptx) ([PDF](02_PPT/pdf/Unit_2_AI_26UAMPC204.pdf)) · 🧪 [Exp 2](06_Notebooks/Exp02_AStar_8Puzzle_Route.ipynb) [3](06_Notebooks/Exp03_HillClimbing_BestFirst.ipynb) [4](06_Notebooks/Exp04_Minimax_AlphaBeta_TicTacToe.ipynb) [5](06_Notebooks/Exp05_CSP_NQueens_MapColour_Sudoku.ipynb) · 📝 [Assignment 2](09_Assignments/notebooks/Assignment_2_Starter.ipynb) · 🔬 [Research](08_Research_Ideas/README.md#unit-ii-problem-solving-by-search) · 💼 [Interview Qs](07_Interview_Prep/README.md#unit-ii-problem-solving-by-search-co2042)
+📄 [Notes](01_Unit_Notes/pdf/Unit_2_Notes.pdf) · 🎞️ [PPT](02_PPT/Unit_2_AI_26UAMPC204.pptx) ([PDF](02_PPT/pdf/Unit_2_AI_26UAMPC204.pdf)) · 🧪 [Exp 2](06_Notebooks/Exp02_AStar_8Puzzle_Route.ipynb) [3](06_Notebooks/Exp03_HillClimbing_BestFirst.ipynb) [4](06_Notebooks/Exp04_Minimax_AlphaBeta_TicTacToe.ipynb) [5](06_Notebooks/Exp05_CSP_NQueens_MapColour_Sudoku.ipynb) · 📝 [Assignment 2](09_Assignments/notebooks/Assignment_2_Starter.ipynb) · 🔬 [Research](08_Research_Ideas/README.md#unit-ii-problem-solving-by-search) · 💼 [Interview Qs](07_Interview_Prep/README.md#unit-ii-problem-solving-by-search-co2042) · 🧩 [Quiz](11_Quizzes/README.md#unit-ii-problem-solving-by-search-co2042)
 </details>
 
 <details>
@@ -111,7 +112,7 @@ mindmap
 | **Inference in FOL** | unification · forward chaining · backward chaining · resolution |
 | **Structured knowledge representation** | semantic networks · frames · ontologies |
 
-📄 [Notes](01_Unit_Notes/pdf/Unit_3_Notes.pdf) · 🎞️ [PPT](02_PPT/Unit_3_AI_26UAMPC204.pptx) ([PDF](02_PPT/pdf/Unit_3_AI_26UAMPC204.pdf)) · 🧪 [Exp 6](06_Notebooks/Exp06_Logic_Facts_Rules_Inference.ipynb) [7](06_Notebooks/Exp07_Unification_Resolution_FOL.ipynb) · 📝 [Assignment 3](09_Assignments/notebooks/Assignment_3_Starter.ipynb) · 🔬 [Research](08_Research_Ideas/README.md#unit-iii-knowledge-representation-and-reasoning) · 💼 [Interview Qs](07_Interview_Prep/README.md#unit-iii-knowledge-representation-and-reasoning-co2043)
+📄 [Notes](01_Unit_Notes/pdf/Unit_3_Notes.pdf) · 🎞️ [PPT](02_PPT/Unit_3_AI_26UAMPC204.pptx) ([PDF](02_PPT/pdf/Unit_3_AI_26UAMPC204.pdf)) · 🧪 [Exp 6](06_Notebooks/Exp06_Logic_Facts_Rules_Inference.ipynb) [7](06_Notebooks/Exp07_Unification_Resolution_FOL.ipynb) · 📝 [Assignment 3](09_Assignments/notebooks/Assignment_3_Starter.ipynb) · 🔬 [Research](08_Research_Ideas/README.md#unit-iii-knowledge-representation-and-reasoning) · 💼 [Interview Qs](07_Interview_Prep/README.md#unit-iii-knowledge-representation-and-reasoning-co2043) · 🧩 [Quiz](11_Quizzes/README.md#unit-iii-knowledge-representation-and-reasoning-co2043)
 </details>
 
 <details>
@@ -125,7 +126,7 @@ mindmap
 | **Bayesian (belief) networks** | representation · simple inference |
 | **Fuzzy logic** | fuzzy sets · membership functions · fuzzy inference |
 
-📄 [Notes](01_Unit_Notes/pdf/Unit_4_Notes.pdf) · 🎞️ [PPT](02_PPT/Unit_4_AI_26UAMPC204.pptx) ([PDF](02_PPT/pdf/Unit_4_AI_26UAMPC204.pdf)) · 🧪 [Exp 8](06_Notebooks/Exp08_Bayes_BayesianNetwork_Diagnosis.ipynb) · 📝 [Assignment 4](09_Assignments/notebooks/Assignment_4_Starter.ipynb) · 🔬 [Research](08_Research_Ideas/README.md#unit-iv-planning-and-reasoning-under-uncertainty) · 💼 [Interview Qs](07_Interview_Prep/README.md#unit-iv-planning-and-reasoning-under-uncertainty-co2044)
+📄 [Notes](01_Unit_Notes/pdf/Unit_4_Notes.pdf) · 🎞️ [PPT](02_PPT/Unit_4_AI_26UAMPC204.pptx) ([PDF](02_PPT/pdf/Unit_4_AI_26UAMPC204.pdf)) · 🧪 [Exp 8](06_Notebooks/Exp08_Bayes_BayesianNetwork_Diagnosis.ipynb) · 📝 [Assignment 4](09_Assignments/notebooks/Assignment_4_Starter.ipynb) · 🔬 [Research](08_Research_Ideas/README.md#unit-iv-planning-and-reasoning-under-uncertainty) · 💼 [Interview Qs](07_Interview_Prep/README.md#unit-iv-planning-and-reasoning-under-uncertainty-co2044) · 🧩 [Quiz](11_Quizzes/README.md#unit-iv-planning-and-reasoning-under-uncertainty-co2044)
 </details>
 
 <details>
@@ -140,7 +141,7 @@ mindmap
 | **Applications of AI** | natural language processing · computer vision · robotics (overview) |
 | **Ethics** | ethical and societal issues in Artificial Intelligence |
 
-📄 [Notes](01_Unit_Notes/pdf/Unit_5_Notes.pdf) · 🎞️ [PPT](02_PPT/Unit_5_AI_26UAMPC204.pptx) ([PDF](02_PPT/pdf/Unit_5_AI_26UAMPC204.pdf)) · 🧪 [Exp 9](06_Notebooks/Exp09_DecisionTree_Rules.ipynb) [10](06_Notebooks/Exp10_ExpertSystem_Chatbot.ipynb) · 📝 [Assignment 5](09_Assignments/notebooks/Assignment_5_Starter.ipynb) · 🔬 [Research](08_Research_Ideas/README.md#unit-v-learning-expert-systems-and-applications-of-ai) · 💼 [Interview Qs](07_Interview_Prep/README.md#unit-v-learning-expert-systems-and-applications-of-ai-co2045)
+📄 [Notes](01_Unit_Notes/pdf/Unit_5_Notes.pdf) · 🎞️ [PPT](02_PPT/Unit_5_AI_26UAMPC204.pptx) ([PDF](02_PPT/pdf/Unit_5_AI_26UAMPC204.pdf)) · 🧪 [Exp 9](06_Notebooks/Exp09_DecisionTree_Rules.ipynb) [10](06_Notebooks/Exp10_ExpertSystem_Chatbot.ipynb) · 📝 [Assignment 5](09_Assignments/notebooks/Assignment_5_Starter.ipynb) · 🔬 [Research](08_Research_Ideas/README.md#unit-v-learning-expert-systems-and-applications-of-ai) · 💼 [Interview Qs](07_Interview_Prep/README.md#unit-v-learning-expert-systems-and-applications-of-ai-co2045) · 🧩 [Quiz](11_Quizzes/README.md#unit-v-learning-expert-systems-and-applications-of-ai-co2045)
 </details>
 
 <p align="right"><b>Total: 30 hours of classroom instruction + 30 hours of laboratory + 30 hours of self-learning</b></p>
@@ -302,7 +303,7 @@ pie showData
 
 | | Component | What you get | Formats |
 |:-:|---|---|---|
-| 📄 | [**Unit-wise Lecture Notes**](01_Unit_Notes/pdf) | 5 units with definition / example / pitfall boxes, TikZ diagrams, worked examples and an Industry Readiness section | `LaTeX` · `PDF` |
+| 📄 | [**Unit-wise Lecture Notes**](01_Unit_Notes/pdf) | 5 units with definition / example / pitfall boxes, TikZ diagrams, worked examples, an Industry Readiness section and a 15-question unit quiz with answer key | `LaTeX` · `PDF` |
 | 🎞️ | [**Animated PowerPoint Decks**](02_PPT) | 5 decks (~16 slides each) with entrance animations, native charts, skills and interview slides | `PPTX` · `PDF` |
 | ❓ | [**BTL Question Bank**](03_Question_Bank) | 30 questions per unit (150), 5 at each Bloom's level L1–L6, CO- and marks-mapped | `LaTeX` · `PDF` · `MD` |
 | 🛠️ | [**Project Portfolio**](04_Projects) | 10 projects per unit (50), mini and major, with tools, deliverables and a rubric | `LaTeX` · `PDF` · `MD` |
@@ -311,6 +312,7 @@ pie showData
 | 💼 | [**Interview & Industry Skills**](07_Interview_Prep) | Skills map, 75 interview Q&A, 10 solved coding problems | `LaTeX` · `PDF` · `MD` · `.ipynb` |
 | 🔬 | [**Research Ideas**](08_Research_Ideas) | 20 research directions, from UG projects to Ph.D. topics | `LaTeX` · `PDF` · `MD` |
 | 📝 | [**Assignments**](09_Assignments) | 5 assignments: think-out-of-the-box + open-ended coding with starter notebooks | `LaTeX` · `PDF` · `MD` · `.ipynb` |
+| 🧩 | [**Complex Unit Quizzes**](11_Quizzes) | 75 multi-step MCQs (15 per unit) with worked answer keys, an auto-grading notebook, a quiz section in every unit's notes and a quiz slide in every deck | `LaTeX` · `PDF` · `MD` · `.ipynb` |
 | 🏆 | [**Career Launchpad**](10_Career_Launchpad) | Skill outcome, skill passport, top AI hackathons, conferences and journals | `LaTeX` · `PDF` · `MD` |
 | 🎓 | [**Course Finale deck**](02_PPT/Course_Finale_Skill_Outcome.pptx) | 9 animated slides for the last class: journey, can-do, competency, end products, hackathons, venues, next 90 days | `PPTX` · `PDF` |
 
@@ -482,6 +484,7 @@ Open any notebook in Google Colab by replacing `github.com` with `githubtocolab.
 ├── 08_Research_Ideas/      20 research directions
 ├── 09_Assignments/         5 assignments + starter notebooks
 ├── 10_Career_Launchpad/    skill outcome, hackathons, conferences, journals
+├── 11_Quizzes/             75 complex quiz questions + auto-grader
 ├── assets/                 logo, animated banner, figures, GIF animations
 ├── common/ai204.sty        shared LaTeX style (navy & gold, Times)
 ├── build_all.sh            one-command rebuild

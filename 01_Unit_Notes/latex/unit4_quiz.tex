@@ -1,0 +1,82 @@
+\section{Unit Quiz --- test yourself}
+{\small\color{slate}Fifteen multi-step questions. Answer before checking the key on the next page. Self-check notebook: \texttt{11\_Quizzes/Quiz\_SelfCheck.ipynb}.}\par\medskip
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QIV.01}\quad Prevalence is 1\%, sensitivity 90\% and false-positive rate 5\%. What is P(disease | positive)?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ 0.90\\[1pt]\textbf{\color{navyL}(B)}\ 0.50\\[1pt]\textbf{\color{navyL}(C)}\ 0.154\\[1pt]\textbf{\color{navyL}(D)}\ 0.045}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QIV.02}\quad The same patient takes a second, independent test that is also positive. What is the updated posterior?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ 0.154\\[1pt]\textbf{\color{navyL}(B)}\ 0.31\\[1pt]\textbf{\color{navyL}(C)}\ 0.77\\[1pt]\textbf{\color{navyL}(D)}\ 0.99}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QIV.03}\quad In the burglary network (P(B)=.001, P(E)=.002, P(a | $\neg$b, $\neg$e)=.001, P(j | a)=.9, P(m | a)=.7), what is P(j, m, a, $\neg$b, $\neg$e)?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ 0.000628\\[1pt]\textbf{\color{navyL}(B)}\ 0.00063 $\times$ 10$^{-3}$\\[1pt]\textbf{\color{navyL}(C)}\ 0.0063\\[1pt]\textbf{\color{navyL}(D)}\ 0.063}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QIV.04}\quad How many independent probabilities does the burglary network (B, E $\to$ A; A $\to$ J, M; all Boolean) need, compared with the full joint?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ 10 vs 31\\[1pt]\textbf{\color{navyL}(B)}\ 10 vs 32\\[1pt]\textbf{\color{navyL}(C)}\ 5 vs 31\\[1pt]\textbf{\color{navyL}(D)}\ 16 vs 32}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QIV.05}\quad Which independence does the burglary network structure imply?\hfill\btl{L4}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ Burglary and Earthquake are dependent\\[1pt]\textbf{\color{navyL}(B)}\ JohnCalls and MaryCalls are independent given Alarm\\[1pt]\textbf{\color{navyL}(C)}\ JohnCalls is independent of Burglary unconditionally\\[1pt]\textbf{\color{navyL}(D)}\ Alarm is independent of Earthquake}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QIV.06}\quad Apply Stack(A, B) [PRE Holding(A) $\wedge$ Clear(B); ADD On(A,B), Clear(A), HandEmpty; DEL Holding(A), Clear(B)] to the state {Holding(A), Clear(B), OnTable(B)}. What is the result?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ {On(A,B), Clear(A), HandEmpty, OnTable(B)}\\[1pt]\textbf{\color{navyL}(B)}\ {On(A,B), Clear(B), HandEmpty}\\[1pt]\textbf{\color{navyL}(C)}\ {Holding(A), On(A,B), OnTable(B)}\\[1pt]\textbf{\color{navyL}(D)}\ {On(A,B), Clear(A), Clear(B), OnTable(B)}}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QIV.07}\quad Regress the goal {On(A,B), OnTable(B)} through Stack(A, B). What is the new subgoal?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ {OnTable(B)}\\[1pt]\textbf{\color{navyL}(B)}\ {Holding(A), Clear(B), OnTable(B)}\\[1pt]\textbf{\color{navyL}(C)}\ {On(A,B), Holding(A)}\\[1pt]\textbf{\color{navyL}(D)}\ {Clear(A), HandEmpty}}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QIV.08}\quad In partial-order planning, action C deletes p, which a causal link A ---p$\to$ B protects. Which fixes resolve the threat?\hfill\btl{L4}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ Promotion (C before A) or demotion (C after B)\\[1pt]\textbf{\color{navyL}(B)}\ Demotion (C before A) or promotion (C after B)\\[1pt]\textbf{\color{navyL}(C)}\ Delete C from the plan\\[1pt]\textbf{\color{navyL}(D)}\ Add p to the preconditions of C}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QIV.09}\quad How many valid total orders (linearisations) does the partial-order plan Left-Sock $\prec$ Left-Shoe, Right-Sock $\prec$ Right-Shoe have?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ 2\\[1pt]\textbf{\color{navyL}(B)}\ 4\\[1pt]\textbf{\color{navyL}(C)}\ 6\\[1pt]\textbf{\color{navyL}(D)}\ 24}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QIV.10}\quad $\mu$\_A(x) = 0.7 and $\mu$\_B(x) = 0.4. Under Zadeh operators, what are $\mu$(A AND B), $\mu$(A OR B), $\mu$(NOT A) and $\mu$(very A)?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ 0.4, 0.7, 0.3, 0.49\\[1pt]\textbf{\color{navyL}(B)}\ 0.28, 0.82, 0.3, 0.84\\[1pt]\textbf{\color{navyL}(C)}\ 0.4, 0.7, 0.6, 0.49\\[1pt]\textbf{\color{navyL}(D)}\ 0.7, 0.4, 0.3, 0.70}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QIV.11}\quad Warm is the triangular fuzzy set (a, b, c) = (10, 25, 40) $^\circ$C. What is $\mu$\_Warm(18 $^\circ$C)?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ 0.32\\[1pt]\textbf{\color{navyL}(B)}\ 0.47\\[1pt]\textbf{\color{navyL}(C)}\ 0.53\\[1pt]\textbf{\color{navyL}(D)}\ 0.80}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QIV.12}\quad An aggregated fuzzy output has singleton spikes of height 0.5 at fan speed 20\% and 1.0 at 80\%. What is the centroid output?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ 50\%\\[1pt]\textbf{\color{navyL}(B)}\ 60\%\\[1pt]\textbf{\color{navyL}(C)}\ 70\%\\[1pt]\textbf{\color{navyL}(D)}\ 80\%}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QIV.13}\quad In a spam filter, P(spam) = 0.3, P(word | spam) = 0.6 and P(word | ham) = 0.05. What is P(spam | word)?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ 0.60\\[1pt]\textbf{\color{navyL}(B)}\ 0.72\\[1pt]\textbf{\color{navyL}(C)}\ 0.84\\[1pt]\textbf{\color{navyL}(D)}\ 0.95}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QIV.14}\quad What does the Sussman anomaly demonstrate?\hfill\btl{L4}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ STRIPS cannot represent blocks\\[1pt]\textbf{\color{navyL}(B)}\ Non-interleaved (linear) planning of subgoals can be incomplete\\[1pt]\textbf{\color{navyL}(C)}\ Backward search is slower than forward search\\[1pt]\textbf{\color{navyL}(D)}\ Partial-order planning is unsound}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QIV.15}\quad From the full joint table (cavity $\wedge$ toothache = 0.12, toothache = 0.2), what is P(cavity | toothache), and what does it show?\hfill\btl{L5}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ 0.6; toothache is evidence for, but not proof of, a cavity\\[1pt]\textbf{\color{navyL}(B)}\ 0.12; joint equals conditional\\[1pt]\textbf{\color{navyL}(C)}\ 0.2; toothache is independent of cavity\\[1pt]\textbf{\color{navyL}(D)}\ 1.0; toothache implies cavity}
+\end{tcolorbox}
+\newpage
+\subsection*{Answer key --- Unit IV quiz}
+\begin{longtable}{>{\leavevmode\bfseries\color{navy}}p{1.3cm} c p{13.2cm}}
+\rowcolor{navy}\textcolor{gold}{\textbf{Q.}}&\textcolor{gold}{\textbf{Ans}}&\textcolor{gold}{\textbf{Worked explanation}}\\\endhead
+QIV.01&\textbf{\color{leaf}C}&0.9 $\times$ 0.01 / (0.9 $\times$ 0.01 + 0.05 $\times$ 0.99) = 0.009 / 0.0585 $\approx$ 0.154.\\
+\rowcolor{ivory}QIV.02&\textbf{\color{leaf}C}&Use 0.154 as the prior: 0.9 $\times$ 0.154 / (0.9 $\times$ 0.154 + 0.05 $\times$ 0.846) $\approx$ 0.1386 / 0.1809 $\approx$ 0.77.\\
+QIV.03&\textbf{\color{leaf}A}&0.9 $\times$ 0.7 $\times$ 0.001 $\times$ 0.999 $\times$ 0.998 $\approx$ 0.000628.\\
+\rowcolor{ivory}QIV.04&\textbf{\color{leaf}A}&B 1 + E 1 + A 4 + J 2 + M 2 = 10; the full joint over 5 Boolean variables needs 2$^5$ -- 1 = 31.\\
+QIV.05&\textbf{\color{leaf}B}&J and M share only the parent A, so they are conditionally independent given A. B and E are independent a priori but dependent given A (explaining away).\\
+\rowcolor{ivory}QIV.06&\textbf{\color{leaf}A}&Result = (s -- DEL) $\cup$ ADD: remove Holding(A) and Clear(B), add On(A,B), Clear(A), HandEmpty; OnTable(B) persists.\\
+QIV.07&\textbf{\color{leaf}B}&g$'$ = (g -- ADD(a)) $\cup$ PRE(a) = {OnTable(B)} $\cup$ {Holding(A), Clear(B)}.\\
+\rowcolor{ivory}QIV.08&\textbf{\color{leaf}B}&Demotion orders the threat before the link's producer (C $\prec$ A); promotion orders it after the consumer (B $\prec$ C).\\
+QIV.09&\textbf{\color{leaf}C}&Interleave two ordered pairs: C(4,2) = 6 orders.\\
+\rowcolor{ivory}QIV.10&\textbf{\color{leaf}A}&AND = min = 0.4, OR = max = 0.7, NOT = 1 -- 0.7 = 0.3, very = $\mu$$^2$ = 0.49.\\
+QIV.11&\textbf{\color{leaf}C}&On the rising edge: (18 -- 10) / (25 -- 10) = 8 / 15 $\approx$ 0.53.\\
+\rowcolor{ivory}QIV.12&\textbf{\color{leaf}B}&(0.5 $\times$ 20 + 1.0 $\times$ 80) / (0.5 + 1.0) = 90 / 1.5 = 60\%.\\
+QIV.13&\textbf{\color{leaf}C}&0.6 $\times$ 0.3 / (0.6 $\times$ 0.3 + 0.05 $\times$ 0.7) = 0.18 / 0.215 $\approx$ 0.84.\\
+\rowcolor{ivory}QIV.14&\textbf{\color{leaf}B}&Achieving On(A,B) then On(B,C) undoes the first goal; solving the problem requires interleaving the subgoals' actions.\\
+QIV.15&\textbf{\color{leaf}A}&0.12 / 0.2 = 0.6. Logic (Toothache $\Rightarrow$ Cavity) fails; probability quantifies the degree of belief.\\
+\end{longtable}

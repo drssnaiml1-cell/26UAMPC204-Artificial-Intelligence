@@ -4,6 +4,7 @@ const pptxgen = require("pptxgenjs");
 const path = require("path");
 const units = require("./units.js");
 const INDUSTRY = require("./industry.json");
+const QUIZ = require("./quiz.json");
 // Optional: set PPTX_SKILL to a folder containing scripts/apply_theme.js to write theme colours into the deck.
 let applyTheme = async () => {};
 try { if (process.env.PPTX_SKILL) applyTheme = require(process.env.PPTX_SKILL + "/scripts/apply_theme.js").applyTheme; } catch (e) {}
@@ -70,6 +71,24 @@ async function buildUnit(u, idx) {
     RENDER[sd.type](pres, sl, sd);
     sl.addNotes(notesFor(sd));
   });
+
+  // ---------- Quiz challenge ----------
+  const qz = QUIZ[u.num];
+  if (qz) {
+    let qs = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Core concepts" });
+    qs.addText("Quiz challenge: can you solve these?", { placeholder: "title" });
+    qz.forEach(([id, stem, opts], i) => {
+      const y = 1.45 + i * 1.75;
+      qs.addShape(pres.shapes.ROUNDED_RECTANGLE, { x: 0.6, y, w: 12.1, h: 1.6, rectRadius: 0.1, fill: { color: i % 2 ? MIST : GOLDL }, line: { color: NAVY2, width: 1 }, objectName: `anim${i + 1}_a` });
+      qs.addText(id, { x: 0.8, y: y + 0.5, w: 1.1, h: 0.6, fontFace: FONT, fontSize: 14, bold: true, color: WHITE, align: "center", valign: "middle",
+        shape: pres.shapes.ROUNDED_RECTANGLE, rectRadius: 0.06, fill: { color: NAVY }, isTextBox: true, margin: 0, objectName: `anim${i + 1}_b` });
+      qs.addText([{ text: stem, options: { bold: true, color: NAVY, breakLine: true } },
+                  { text: opts.map((o, k) => `(${"ABCD"[k]}) ${o}`).join("    "), options: { color: INK, fontSize: 12 } }],
+        { x: 2.1, y: y + 0.05, w: 10.4, h: 1.5, fontFace: FONT, fontSize: 14, valign: "middle", paraSpaceAfter: 4, isTextBox: true, margin: 0, objectName: `anim${i + 1}_c` });
+    });
+    qs.addText("Answers with worked explanations: end of the unit notes, or 11_Quizzes (15 questions per unit + auto-grader).", { x: 0.6, y: 6.6, w: 12.1, h: 0.3, fontFace: FONT, fontSize: 11, italic: true, color: TEAL, isTextBox: true, margin: 0 });
+    qs.addNotes("Give students 6 minutes for these three questions, then reveal answers from the key. " + qz.map(q => q[0] + ": " + q[1]).join(" "));
+  }
 
   // ---------- Industry readiness ----------
   const ind = INDUSTRY[u.num];

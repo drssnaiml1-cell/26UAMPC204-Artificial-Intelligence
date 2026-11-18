@@ -1,0 +1,82 @@
+\section{Unit Quiz --- test yourself}
+{\small\color{slate}Fifteen multi-step questions. Answer before checking the key on the next page. Self-check notebook: \texttt{11\_Quizzes/Quiz\_SelfCheck.ipynb}.}\par\medskip
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QII.01}\quad With branching factor b = 10 and the shallowest goal at depth d = 5, how many nodes does a complete search tree contain up to depth 5?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ 100,000\\[1pt]\textbf{\color{navyL}(B)}\ 111,111\\[1pt]\textbf{\color{navyL}(C)}\ 123,456\\[1pt]\textbf{\color{navyL}(D)}\ 1,111,111}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QII.02}\quad For b = 10 and d = 5, how many nodes does iterative-deepening search generate in total?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ 111,111\\[1pt]\textbf{\color{navyL}(B)}\ 123,456\\[1pt]\textbf{\color{navyL}(C)}\ 222,222\\[1pt]\textbf{\color{navyL}(D)}\ 611,110}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QII.03}\quad Start state 7 2 4 / 5 \_ 6 / 8 3 1 with goal 1 2 3 / 4 5 6 / 7 8 \_. What are h$_1$ (misplaced tiles) and h$_2$ (Manhattan distance)?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ h$_1$ = 6, h$_2$ = 14\\[1pt]\textbf{\color{navyL}(B)}\ h$_1$ = 8, h$_2$ = 18\\[1pt]\textbf{\color{navyL}(C)}\ h$_1$ = 7, h$_2$ = 14\\[1pt]\textbf{\color{navyL}(D)}\ h$_1$ = 6, h$_2$ = 12}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QII.04}\quad Graph: S$\to$A (1), S$\to$B (4), A$\to$C (2), B$\to$C (1), C$\to$G (3), A$\to$G (9); h(S)=6, h(A)=5, h(B)=4, h(C)=3, h(G)=0. In what order does A* expand nodes, and what is the path cost?\hfill\btl{L4}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ S, B, C, G; cost 8\\[1pt]\textbf{\color{navyL}(B)}\ S, A, C, G; cost 6\\[1pt]\textbf{\color{navyL}(C)}\ S, A, G; cost 10\\[1pt]\textbf{\color{navyL}(D)}\ S, A, B, C, G; cost 6}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QII.05}\quad MAX root over three MIN nodes with leaves (3, 12, 8), (2, 4, 6), (14, 5, 2), evaluated left to right with alpha--beta. What is the root value and how many leaves are pruned?\hfill\btl{L4}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ Root 3; 2 leaves pruned\\[1pt]\textbf{\color{navyL}(B)}\ Root 2; 2 leaves pruned\\[1pt]\textbf{\color{navyL}(C)}\ Root 3; 0 leaves pruned\\[1pt]\textbf{\color{navyL}(D)}\ Root 5; 3 leaves pruned}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QII.06}\quad Simulated annealing at temperature T = 1 proposes a move that worsens the objective by 2 ($\Delta$E = --2). What is the acceptance probability?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ 0.865\\[1pt]\textbf{\color{navyL}(B)}\ 0.500\\[1pt]\textbf{\color{navyL}(C)}\ 0.135\\[1pt]\textbf{\color{navyL}(D)}\ 0.018}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QII.07}\quad Bidirectional BFS with b = 10 and d = 6. Roughly how many nodes are generated, compared with one-directional BFS?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ About 2,000 vs 1,000,000\\[1pt]\textbf{\color{navyL}(B)}\ About 20,000 vs 1,000,000\\[1pt]\textbf{\color{navyL}(C)}\ About 1,000 vs 100,000\\[1pt]\textbf{\color{navyL}(D)}\ About 200 vs 10,000}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QII.08}\quad A* expanded N = 52 nodes to find a solution at depth 5. What is the effective branching factor b*?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ 1.42\\[1pt]\textbf{\color{navyL}(B)}\ 1.92\\[1pt]\textbf{\color{navyL}(C)}\ 2.78\\[1pt]\textbf{\color{navyL}(D)}\ 3.10}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QII.09}\quad Uniform-cost search and BFS return different solutions only when \dots{}\hfill\btl{L4}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ the goal is deep\\[1pt]\textbf{\color{navyL}(B)}\ step costs are not all equal\\[1pt]\textbf{\color{navyL}(C)}\ the graph has cycles\\[1pt]\textbf{\color{navyL}(D)}\ the heuristic is inadmissible}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QII.10}\quad In Australia map colouring, after WA = red and NT = green, which variable does MRV choose next, and with which value?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ Q = red\\[1pt]\textbf{\color{navyL}(B)}\ SA = blue\\[1pt]\textbf{\color{navyL}(C)}\ NSW = blue\\[1pt]\textbf{\color{navyL}(D)}\ V = green}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QII.11}\quad What is the worst-case time complexity of AC-3 for c binary constraints and domain size d?\hfill\btl{L2}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ O(cd)\\[1pt]\textbf{\color{navyL}(B)}\ O(cd$^2$)\\[1pt]\textbf{\color{navyL}(C)}\ O(cd$^3$)\\[1pt]\textbf{\color{navyL}(D)}\ O(c$^2$d)}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QII.12}\quad On the Romania map, greedy best-first search (straight-line distance) finds Arad$\to$Sibiu$\to$Fagaras$\to$Bucharest. How much longer is it than the optimal A* route?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ 0 km\\[1pt]\textbf{\color{navyL}(B)}\ 18 km\\[1pt]\textbf{\color{navyL}(C)}\ 32 km\\[1pt]\textbf{\color{navyL}(D)}\ 57 km}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QII.13}\quad In the genetic-algorithm encoding of 8-queens, fitness is the number of non-attacking pairs. What is the fitness of a solution?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ 8\\[1pt]\textbf{\color{navyL}(B)}\ 16\\[1pt]\textbf{\color{navyL}(C)}\ 28\\[1pt]\textbf{\color{navyL}(D)}\ 56}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QII.14}\quad Which heuristic is admissible but NOT consistent? Edges S$\to$A cost 1, A$\to$G cost 1.\hfill\btl{L5}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ h(S)=2, h(A)=1, h(G)=0\\[1pt]\textbf{\color{navyL}(B)}\ h(S)=2, h(A)=0, h(G)=0\\[1pt]\textbf{\color{navyL}(C)}\ h(S)=3, h(A)=1, h(G)=0\\[1pt]\textbf{\color{navyL}(D)}\ h(S)=1, h(A)=1, h(G)=0}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QII.15}\quad Why is random-restart hill climbing complete with probability approaching 1?\hfill\btl{L4}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ It never revisits states\\[1pt]\textbf{\color{navyL}(B)}\ Each restart has a non-zero chance p of success, so failure after k restarts is (1--p)$^k$ $\to$ 0\\[1pt]\textbf{\color{navyL}(C)}\ It accepts worse moves\\[1pt]\textbf{\color{navyL}(D)}\ It keeps a frontier of all neighbours}
+\end{tcolorbox}
+\newpage
+\subsection*{Answer key --- Unit II quiz}
+\begin{longtable}{>{\leavevmode\bfseries\color{navy}}p{1.3cm} c p{13.2cm}}
+\rowcolor{navy}\textcolor{gold}{\textbf{Q.}}&\textcolor{gold}{\textbf{Ans}}&\textcolor{gold}{\textbf{Worked explanation}}\\\endhead
+QII.01&\textbf{\color{leaf}B}&1 + 10 + 100 + 1,000 + 10,000 + 100,000 = 111,111.\\
+\rowcolor{ivory}QII.02&\textbf{\color{leaf}B}&N(IDS) = 6$\cdot$1 + 5$\cdot$10 + 4$\cdot$100 + 3$\cdot$1,000 + 2$\cdot$10,000 + 1$\cdot$100,000 = 123,456, only about 11\% more than BFS.\\
+QII.03&\textbf{\color{leaf}A}&Misplaced: 7, 4, 5, 8, 3, 1 $\to$ 6. Manhattan: 7$\to$2, 2$\to$0, 4$\to$3, 5$\to$1, 6$\to$0, 8$\to$1, 3$\to$3, 1$\to$4, total 14.\\
+\rowcolor{ivory}QII.04&\textbf{\color{leaf}B}&f(A)=6, f(B)=8 $\to$ expand A; f(C)=6, f(G via A)=10 $\to$ expand C; f(G)=6 $\to$ goal. Path S--A--C--G with cost 6.\\
+QII.05&\textbf{\color{leaf}A}&First MIN = 3 so $\alpha$ = 3. In the second MIN, the first leaf 2 $\le$ $\alpha$, so 4 and 6 are pruned. Third MIN = 2. Root = max(3, $\le$2, 2) = 3.\\
+\rowcolor{ivory}QII.06&\textbf{\color{leaf}C}&P = $e^{\Delta E/T}$ = $e^{--2}$ $\approx$ 0.135.\\
+QII.07&\textbf{\color{leaf}A}&Each search goes to depth d/2 = 3: 2 $\times$ 10$^3$ = 2,000 nodes versus about 10$^6$ for one direction.\\
+\rowcolor{ivory}QII.08&\textbf{\color{leaf}B}&Solve N + 1 = 1 + b* + b*$^2$ + \dots{} + b*$^5$ = 53; b* $\approx$ 1.92.\\
+QII.09&\textbf{\color{leaf}B}&With equal step costs, shallowest equals cheapest. Different costs make UCS (cheapest g) and BFS (shallowest) diverge.\\
+\rowcolor{ivory}QII.10&\textbf{\color{leaf}B}&SA neighbours both WA and NT, leaving only blue. One legal value is the minimum, so MRV picks SA = blue.\\
+QII.11&\textbf{\color{leaf}C}&Each arc can be re-queued up to d times and each revision costs O(d$^2$): O(cd$^3$).\\
+\rowcolor{ivory}QII.12&\textbf{\color{leaf}C}&Greedy: 140 + 99 + 211 = 450 km. A*: Arad--Sibiu--Rimnicu--Pitesti--Bucharest = 140 + 80 + 97 + 101 = 418 km. Difference 32 km.\\
+QII.13&\textbf{\color{leaf}C}&There are C(8,2) = 28 pairs of queens; in a solution none attack, so fitness = 28.\\
+\rowcolor{ivory}QII.14&\textbf{\color{leaf}B}&True costs are 2 and 1, so h(S)=2, h(A)=0 never overestimate (admissible), but h(S)=2 > c(S,A) + h(A) = 1 violates consistency. Option C overestimates.\\
+QII.15&\textbf{\color{leaf}B}&Independent restarts each succeed with probability p; expected restarts are 1/p and the failure probability vanishes.\\
+\end{longtable}

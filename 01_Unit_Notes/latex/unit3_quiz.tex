@@ -1,0 +1,82 @@
+\section{Unit Quiz --- test yourself}
+{\small\color{slate}Fifteen multi-step questions. Answer before checking the key on the next page. Self-check notebook: \texttt{11\_Quizzes/Quiz\_SelfCheck.ipynb}.}\par\medskip
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QIII.01}\quad Over symbols P, Q, R, how many models satisfy (P $\vee$ Q) $\wedge$ $\neg$R?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ 2\\[1pt]\textbf{\color{navyL}(B)}\ 3\\[1pt]\textbf{\color{navyL}(C)}\ 4\\[1pt]\textbf{\color{navyL}(D)}\ 6}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QIII.02}\quad Which sentence is valid (a tautology)?\hfill\btl{L4}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ (P $\Rightarrow$ Q) $\Rightarrow$ (Q $\Rightarrow$ P)\\[1pt]\textbf{\color{navyL}(B)}\ (P $\wedge$ (P $\Rightarrow$ Q)) $\Rightarrow$ Q\\[1pt]\textbf{\color{navyL}(C)}\ P $\vee$ Q\\[1pt]\textbf{\color{navyL}(D)}\ (P $\Rightarrow$ Q) $\wedge$ P}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QIII.03}\quad What is the CNF of P $\Leftrightarrow$ Q?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ (P $\vee$ Q) $\wedge$ ($\neg$P $\vee$ $\neg$Q)\\[1pt]\textbf{\color{navyL}(B)}\ ($\neg$P $\vee$ Q) $\wedge$ (P $\vee$ $\neg$Q)\\[1pt]\textbf{\color{navyL}(C)}\ ($\neg$P $\wedge$ Q) $\vee$ (P $\wedge$ $\neg$Q)\\[1pt]\textbf{\color{navyL}(D)}\ (P $\wedge$ Q) $\vee$ ($\neg$P $\wedge$ $\neg$Q)}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QIII.04}\quad What is the most general unifier of P(x, f(y), y) and P(g(z), f(a), z)?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ {x/g(z), y/a}\\[1pt]\textbf{\color{navyL}(B)}\ {x/g(a), y/a, z/a}\\[1pt]\textbf{\color{navyL}(C)}\ {x/g(y), z/y}\\[1pt]\textbf{\color{navyL}(D)}\ No unifier exists}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QIII.05}\quad Why does unifying Knows(John, x) with Knows(x, Elizabeth) fail, and what fixes it?\hfill\btl{L4}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ Occurs check; rename predicates\\[1pt]\textbf{\color{navyL}(B)}\ x cannot be both John and Elizabeth; standardise variables apart\\[1pt]\textbf{\color{navyL}(C)}\ Different arity; add arguments\\[1pt]\textbf{\color{navyL}(D)}\ Constants never unify; use Skolem functions}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QIII.06}\quad Which FOL sentence correctly says 'Every student who takes AI likes some professor'?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ $\forall$x $\exists$y Student(x) $\wedge$ Takes(x, AI) $\wedge$ Professor(y) $\wedge$ Likes(x, y)\\[1pt]\textbf{\color{navyL}(B)}\ $\forall$x [Student(x) $\wedge$ Takes(x, AI) $\Rightarrow$ $\exists$y (Professor(y) $\wedge$ Likes(x, y))]\\[1pt]\textbf{\color{navyL}(C)}\ $\exists$y $\forall$x [Student(x) $\Rightarrow$ Likes(x, y)]\\[1pt]\textbf{\color{navyL}(D)}\ $\forall$x $\exists$y [Student(x) $\wedge$ Takes(x, AI) $\Rightarrow$ Professor(y) $\Rightarrow$ Likes(x, y)]}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QIII.07}\quad Which is equivalent to $\neg$$\forall$x (Student(x) $\Rightarrow$ Smart(x))?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ $\forall$x (Student(x) $\wedge$ $\neg$Smart(x))\\[1pt]\textbf{\color{navyL}(B)}\ $\exists$x (Student(x) $\wedge$ $\neg$Smart(x))\\[1pt]\textbf{\color{navyL}(C)}\ $\exists$x ($\neg$Student(x) $\Rightarrow$ Smart(x))\\[1pt]\textbf{\color{navyL}(D)}\ $\neg$$\exists$x Student(x)}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QIII.08}\quad What does Skolemisation turn $\forall$x $\exists$y Loves(x, y) into?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ Loves(x, C)\\[1pt]\textbf{\color{navyL}(B)}\ Loves(x, F(x))\\[1pt]\textbf{\color{navyL}(C)}\ Loves(F(y), y)\\[1pt]\textbf{\color{navyL}(D)}\ $\exists$y Loves(C, y)}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QIII.09}\quad Forward chaining with Generalised Modus Ponens is sound and complete for which class of KBs?\hfill\btl{L2}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ Any FOL KB\\[1pt]\textbf{\color{navyL}(B)}\ First-order definite clauses\\[1pt]\textbf{\color{navyL}(C)}\ Propositional CNF\\[1pt]\textbf{\color{navyL}(D)}\ KBs with negation as failure}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QIII.10}\quad Resolve (A $\vee$ B $\vee$ $\neg$C) with (C $\vee$ D). What is the resolvent?\hfill\btl{L3}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ A $\vee$ B\\[1pt]\textbf{\color{navyL}(B)}\ A $\vee$ B $\vee$ D\\[1pt]\textbf{\color{navyL}(C)}\ A $\vee$ B $\vee$ C $\vee$ D\\[1pt]\textbf{\color{navyL}(D)}\ $\square$}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QIII.11}\quad KB = {P $\Rightarrow$ Q, $\neg$Q}. Which statement does the KB entail?\hfill\btl{L4}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ P\\[1pt]\textbf{\color{navyL}(B)}\ $\neg$P\\[1pt]\textbf{\color{navyL}(C)}\ Q\\[1pt]\textbf{\color{navyL}(D)}\ Nothing beyond the KB}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QIII.12}\quad Which sentence is satisfiable but not valid?\hfill\btl{L2}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ P $\vee$ $\neg$P\\[1pt]\textbf{\color{navyL}(B)}\ P $\wedge$ $\neg$P\\[1pt]\textbf{\color{navyL}(C)}\ P $\vee$ Q\\[1pt]\textbf{\color{navyL}(D)}\ (P $\Rightarrow$ P)}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QIII.13}\quad A semantic network says Bird ---can$\to$ Fly, Penguin ---is-a$\to$ Bird, Penguin ---can$\to$ $\neg$Fly. How does a typical inheritance reasoner answer 'Can Tweety the penguin fly?'\hfill\btl{L4}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ Yes, from Bird\\[1pt]\textbf{\color{navyL}(B)}\ No, the most specific class overrides the default\\[1pt]\textbf{\color{navyL}(C)}\ Contradiction, no answer\\[1pt]\textbf{\color{navyL}(D)}\ Unknown, nets cannot represent this}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QIII.14}\quad Which clause is a Horn clause?\hfill\btl{L2}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ A $\vee$ B $\vee$ $\neg$C\\[1pt]\textbf{\color{navyL}(B)}\ $\neg$A $\vee$ $\neg$B $\vee$ C\\[1pt]\textbf{\color{navyL}(C)}\ A $\vee$ B\\[1pt]\textbf{\color{navyL}(D)}\ A $\vee$ $\neg$B $\vee$ C}
+\end{tcolorbox}
+\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.7pt,left=3mm,right=3mm,top=2mm,bottom=2mm]
+\textbf{\color{navy}QIII.15}\quad Why can Prolog-style backward chaining fail to terminate on ancestor(X, Y) :- ancestor(X, Z), parent(Z, Y)?\hfill\btl{L5}\par\smallskip
+{\small \textbf{\color{navyL}(A)}\ Unification is undecidable\\[1pt]\textbf{\color{navyL}(B)}\ Depth-first, left-to-right search loops on the left-recursive goal\\[1pt]\textbf{\color{navyL}(C)}\ Resolution is incomplete\\[1pt]\textbf{\color{navyL}(D)}\ The KB is not Horn}
+\end{tcolorbox}
+\newpage
+\subsection*{Answer key --- Unit III quiz}
+\begin{longtable}{>{\leavevmode\bfseries\color{navy}}p{1.3cm} c p{13.2cm}}
+\rowcolor{navy}\textcolor{gold}{\textbf{Q.}}&\textcolor{gold}{\textbf{Ans}}&\textcolor{gold}{\textbf{Worked explanation}}\\\endhead
+QIII.01&\textbf{\color{leaf}B}&P $\vee$ Q is true in 3 of the 4 (P, Q) combinations and $\neg$R fixes R = false: 3 models.\\
+\rowcolor{ivory}QIII.02&\textbf{\color{leaf}B}&This is modus ponens as a sentence and is true in all four models; the others fail in at least one.\\
+QIII.03&\textbf{\color{leaf}B}&P $\Leftrightarrow$ Q $\equiv$ (P $\Rightarrow$ Q) $\wedge$ (Q $\Rightarrow$ P) $\equiv$ ($\neg$P $\vee$ Q) $\wedge$ ($\neg$Q $\vee$ P). Option D is equivalent but in DNF.\\
+\rowcolor{ivory}QIII.04&\textbf{\color{leaf}B}&x/g(z); f(y)=f(a) gives y/a; y=z gives z/a; substituting back gives x/g(a).\\
+QIII.05&\textbf{\color{leaf}B}&The same variable x would need two values. Renaming one sentence's variable (x$_1$) gives {x$_1$/Elizabeth, x/John}.\\
+\rowcolor{ivory}QIII.06&\textbf{\color{leaf}B}&$\forall$ pairs with $\Rightarrow$ and $\exists$ pairs with $\wedge$. Option A wrongly makes everyone an AI student; C makes one professor liked by all.\\
+QIII.07&\textbf{\color{leaf}B}&$\neg$$\forall$x $\varphi$ $\equiv$ $\exists$x $\neg$$\varphi$, and $\neg$(A $\Rightarrow$ B) $\equiv$ A $\wedge$ $\neg$B.\\
+\rowcolor{ivory}QIII.08&\textbf{\color{leaf}B}&The existential y depends on the universal x, so it becomes a Skolem function F(x). A constant would wrongly mean everyone loves the same person.\\
+QIII.09&\textbf{\color{leaf}B}&For definite clauses (exactly one positive literal), forward chaining derives every entailed atomic fact.\\
+\rowcolor{ivory}QIII.10&\textbf{\color{leaf}B}&Cancel the complementary pair $\neg$C / C and keep the remaining literals: A $\vee$ B $\vee$ D.\\
+QIII.11&\textbf{\color{leaf}B}&Modus tollens: the only model with P $\Rightarrow$ Q true and Q false has P false. By resolution, $\neg$P $\vee$ Q with $\neg$Q gives $\neg$P.\\
+\rowcolor{ivory}QIII.12&\textbf{\color{leaf}C}&P $\vee$ Q is true when either holds but false when both are false.\\
+QIII.13&\textbf{\color{leaf}B}&Default inheritance lets the more specific class (Penguin) override the inherited default (Bird). This is non-monotonic reasoning, which pure FOL cannot do.\\
+\rowcolor{ivory}QIII.14&\textbf{\color{leaf}B}&A Horn clause has at most one positive literal; $\neg$A $\vee$ $\neg$B $\vee$ C is the rule A $\wedge$ B $\Rightarrow$ C.\\
+QIII.15&\textbf{\color{leaf}B}&The first subgoal calls ancestor again with no progress, an infinite descent. Reordering the body (parent first) or tabling fixes it.\\
+\end{longtable}
