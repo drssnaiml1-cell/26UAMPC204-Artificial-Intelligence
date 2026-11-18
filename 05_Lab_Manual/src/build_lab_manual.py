@@ -110,7 +110,7 @@ def main():
            r"\rowcolor{navy}\textcolor{gold}{\textbf{No.}}&\textcolor{gold}{\textbf{Title}}&\textcolor{gold}{\textbf{CO}}&\textcolor{gold}{\textbf{Page}}&\textcolor{gold}{\textbf{Date}}&\textcolor{gold}{\textbf{Sign}}\\",
            rows, r"\end{tabular}\end{center}",
            r"\section*{Course Outcomes}",
-           r"\begin{tabularx}{\linewidth}{>{\bfseries\color{navy}}l X}\toprule",
+           r"\begin{tabularx}{\linewidth}{>{\leavevmode\bfseries\color{navy}}l X}\toprule",
            r"CO204.1&Explain the foundations of AI and intelligent agents and formulate problems as state-space search.\\",
            r"CO204.2&Apply uninformed, informed, local and adversarial search, and constraint satisfaction.\\",
            r"CO204.3&Represent knowledge and perform inference in propositional and first-order logic.\\",

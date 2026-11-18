@@ -1,0 +1,138 @@
+{
+ "can_do": [
+  "Turn an open-ended problem into a precise AI specification (PEAS, states, actions, costs, goals).",
+  "Choose and implement the right search, optimisation or game-playing algorithm and analyse its complexity.",
+  "Encode domain knowledge as logic, rules or a knowledge graph and explain every inference.",
+  "Reason with probabilities, build a Bayesian network and plan under uncertainty.",
+  "Train, evaluate and interpret a learning model, and audit it for fairness and safety.",
+  "Build and demo an expert system or chatbot end to end, with documentation on GitHub.",
+  "Pitch an AI solution at a hackathon and turn an idea into a research proposal."
+ ],
+ "skills": [
+  [
+   "Problem formulation (PEAS & state spaces)",
+   90,
+   "Exp 1, Assignment 1"
+  ],
+  [
+   "Search & optimisation algorithms",
+   92,
+   "Exp 2–5, interview coding set"
+  ],
+  [
+   "Game AI & constraint solving",
+   85,
+   "Exp 4–5, Assignment 2"
+  ],
+  [
+   "Logic, knowledge graphs & inference",
+   85,
+   "Exp 6–7, Assignment 3"
+  ],
+  [
+   "Probabilistic reasoning & planning",
+   85,
+   "Exp 8, Assignment 4"
+  ],
+  [
+   "Machine learning & interpretation",
+   88,
+   "Exp 9, Assignment 5"
+  ],
+  [
+   "Expert systems & chatbots",
+   88,
+   "Exp 10 mini-project"
+  ],
+  [
+   "Responsible AI & ethics",
+   80,
+   "Assignment 5, model card"
+  ]
+ ],
+ "products": [
+  [
+   "GitHub portfolio",
+   "10 working lab notebooks + 5 assignment repositories with READMEs"
+  ],
+  [
+   "Mini-project",
+   "Rule-based expert system or chatbot with explanation facility (Exp 10)"
+  ],
+  [
+   "Algorithm library",
+   "Own implementations of BFS, DFS, UCS, A*, Minimax, CSP, unification, Bayes, ID3"
+  ],
+  [
+   "Model card",
+   "A documented, fairness-checked classifier (Assignment 5)"
+  ],
+  [
+   "Hackathon-ready team pitch",
+   "A problem formulation and prototype plan for SIH / Kaggle / Solution Challenge"
+  ],
+  [
+   "Research starter",
+   "One research idea with gap statement and baseline (08_Research_Ideas)"
+  ],
+  [
+   "Interview readiness",
+   "75 practised questions and 10 solved coding problems"
+  ]
+ ],
+ "hackathons": [
+  [
+   "Smart India Hackathon (SIH) — Software Edition",
+   "Internal rounds Aug–Sep; Grand Finale in December (SIH 2025 finale: 8–9 Dec 2025)"
+  ],
+  [
+   "Microsoft Imagine Cup",
+   "Registration from about September; submissions in early January; world final at Microsoft Build (2026 final: 2 June 2026)"
+  ],
+  [
+   "Google Solution Challenge (Build with AI)",
+   "Kick-offs at GDG on Campus chapters around March–April"
+  ],
+  [
+   "Amazon ML Challenge",
+   "Registration around August–September; 72-hour online round; finale in October (2025 finale: 17 Oct 2025)"
+  ],
+  [
+   "Flipkart GRiD",
+   "Registration mid-June to early July; national finals at Flipkart HQ, Bengaluru (GRiD 8.0 in 2026 added three tracks)"
+  ],
+  [
+   "Kaggle Competitions",
+   "Always open; featured, research, playground and community competitions"
+  ]
+ ],
+ "conferences": [
+  "NeurIPS",
+  "ICML",
+  "ICLR",
+  "AAAI",
+  "IJCAI",
+  "AAMAS",
+  "ICAPS",
+  "KR",
+  "ACL / EMNLP",
+  "CVPR / ICCV",
+  "KDD",
+  "UAI",
+  "AISTATS",
+  "ECAI",
+  "CODS-COMAD",
+  "ICON",
+  "ICVGIP"
+ ],
+ "journals": [
+  "Artificial Intelligence (AIJ)",
+  "Journal of Artificial Intelligence Research (JAIR)",
+  "Journal of Machine Learning Research (JMLR)",
+  "Transactions on Machine Learning Research (TMLR)",
+  "IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI)",
+  "IEEE Transactions on Neural Networks and Learning Systems (TNNLS)",
+  "IEEE Transactions on Artificial Intelligence (TAI)",
+  "IEEE Transactions on Fuzzy Systems"
+ ]
+}

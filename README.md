@@ -21,6 +21,8 @@
   <a href="#-assignments"><img src="https://img.shields.io/badge/📝_Assignments-2E7D32?style=flat-square" alt="Assignments"></a>
   <a href="#-research-ideas"><img src="https://img.shields.io/badge/🔬_Research-6B46C1?style=flat-square" alt="Research"></a>
   <a href="#-interview--industry-readiness"><img src="https://img.shields.io/badge/💼_Interview_Prep-C05621?style=flat-square" alt="Interview prep"></a>
+  <a href="#-career-launchpad-hackathons-conferences--journals"><img src="https://img.shields.io/badge/🏆_Hackathons_&_Venues-0B1F4B?style=flat-square" alt="Hackathons and venues"></a>
+  <a href="#-end-of-course-skill-outcome"><img src="https://img.shields.io/badge/🎓_Skill_Outcome-C9A227?style=flat-square" alt="Skill outcome"></a>
 </p>
 
 <p align="center">
@@ -309,6 +311,8 @@ pie showData
 | 💼 | [**Interview & Industry Skills**](07_Interview_Prep) | Skills map, 75 interview Q&A, 10 solved coding problems | `LaTeX` · `PDF` · `MD` · `.ipynb` |
 | 🔬 | [**Research Ideas**](08_Research_Ideas) | 20 research directions, from UG projects to Ph.D. topics | `LaTeX` · `PDF` · `MD` |
 | 📝 | [**Assignments**](09_Assignments) | 5 assignments: think-out-of-the-box + open-ended coding with starter notebooks | `LaTeX` · `PDF` · `MD` · `.ipynb` |
+| 🏆 | [**Career Launchpad**](10_Career_Launchpad) | Skill outcome, skill passport, top AI hackathons, conferences and journals | `LaTeX` · `PDF` · `MD` |
+| 🎓 | [**Course Finale deck**](02_PPT/Course_Finale_Skill_Outcome.pptx) | 9 animated slides for the last class: journey, can-do, competency, end products, hackathons, venues, next 90 days | `PPTX` · `PDF` |
 
 All documents use **Times New Roman**, the **navy-and-gold** colour scheme and the Sanjivani University logo.
 
@@ -360,6 +364,95 @@ Questions are tagged by **round** (Concept · Coding · Design · Scenario), **d
 
 ---
 
+## 🏆 Career launchpad: hackathons, conferences & journals
+
+<details open>
+<summary><b>🏁 Top AI hackathons & competitions</b> &nbsp;(windows checked against the 2025–26 editions; confirm dates on each official site)</summary>
+<br>
+
+| Hackathon | Organiser | Level | Typical window |
+|---|---|:-:|---|
+| [**Smart India Hackathon (SIH) — Software Edition**](https://sih.gov.in) | Ministry of Education Innovation Cell & AICTE | National | Internal rounds Aug–Sep; Grand Finale in December (SIH 2025 finale: 8–9 Dec 2025) |
+| [**Microsoft Imagine Cup**](https://imaginecup.microsoft.com) | Microsoft | Global | Registration from about September; submissions in early January; world final at Microsoft Build (2026 final: 2 June 2026) |
+| [**Google Solution Challenge (Build with AI)**](https://gdg.community.dev) | Google for Developers / GDG on Campus | Global / India | Kick-offs at GDG on Campus chapters around March–April |
+| [**Amazon ML Challenge**](https://unstop.com) | Amazon India (on Unstop) | National | Registration around August–September; 72-hour online round; finale in October (2025 finale: 17 Oct 2025) |
+| [**Flipkart GRiD**](https://unstop.com) | Flipkart | National | Registration mid-June to early July; national finals at Flipkart HQ, Bengaluru (GRiD 8.0 in 2026 added three tracks) |
+| [**Kaggle Competitions**](https://www.kaggle.com/competitions) | Kaggle (Google) | Global, year-round | Always open; featured, research, playground and community competitions |
+| [**NASA International Space Apps Challenge**](https://www.spaceappschallenge.org) | NASA and partner space agencies | Global | Annual, usually a weekend in early October, with local events in India |
+| [**Major League Hacking (MLH) season**](https://mlh.io/seasons) | MLH and member hackathons | Global, year-round | Weekend hackathons all year, many online; Indian college fests join the MLH season |
+
+</details>
+
+<details>
+<summary><b>🎤 Top AI conferences</b> &nbsp;(CORE rank in brackets)</summary>
+<br>
+
+**NeurIPS** `A*` · **ICML** `A*` · **ICLR** `A*` · **AAAI** `A*` · **IJCAI** `A*` · **AAMAS** `A*` · **ICAPS** `A*` · **KR** `A*` · **ACL / EMNLP** `A*` · **CVPR / ICCV** `A*` · **KDD** `A*` · **UAI** `A` · **AISTATS** `A` · **ECAI** `A` · **CODS-COMAD** · **ICON** · **ICVGIP**
+
+</details>
+
+<details>
+<summary><b>📚 Top AI journals</b></summary>
+<br>
+
+Artificial Intelligence · Journal of Artificial Intelligence Research · Journal of Machine Learning Research · Transactions on Machine Learning Research · IEEE Transactions on Pattern Analysis and Machine Intelligence · IEEE Transactions on Neural Networks and Learning Systems · IEEE Transactions on Artificial Intelligence · IEEE Transactions on Fuzzy Systems · Knowledge-Based Systems · Expert Systems with Applications · Engineering Applications of Artificial Intelligence · Neural Networks · Pattern Recognition · International Journal of Approximate Reasoning · Nature Machine Intelligence · IEEE Access
+
+> ⚠️ Check Scopus / Web of Science indexing (or UGC-CARE where required) and avoid pay-to-publish venues without real peer review.
+
+</details>
+
+📄 [Career Launchpad handbook (PDF)](10_Career_Launchpad/AI_Career_Launchpad.pdf) · 📋 [Full tables with units and student entry points](10_Career_Launchpad/README.md)
+
+---
+
+## 🎓 End-of-course skill outcome
+
+<p align="center">
+  <img src="assets/skill_outcome_animated.svg" alt="Animated end-of-course skill outcome: journey from Unit I to job-ready and competency bars" width="100%">
+</p>
+
+### ✅ By the last class you can …
+
+- [x] Turn an open-ended problem into a precise AI specification (PEAS, states, actions, costs, goals).
+- [x] Choose and implement the right search, optimisation or game-playing algorithm and analyse its complexity.
+- [x] Encode domain knowledge as logic, rules or a knowledge graph and explain every inference.
+- [x] Reason with probabilities, build a Bayesian network and plan under uncertainty.
+- [x] Train, evaluate and interpret a learning model, and audit it for fairness and safety.
+- [x] Build and demo an expert system or chatbot end to end, with documentation on GitHub.
+- [x] Pitch an AI solution at a hackathon and turn an idea into a research proposal.
+
+### 📦 End products you walk out with
+
+| Product | What it is |
+|---|---|
+| **GitHub portfolio** | 10 working lab notebooks + 5 assignment repositories with READMEs |
+| **Mini-project** | Rule-based expert system or chatbot with explanation facility (Exp 10) |
+| **Algorithm library** | Own implementations of BFS, DFS, UCS, A*, Minimax, CSP, unification, Bayes, ID3 |
+| **Model card** | A documented, fairness-checked classifier (Assignment 5) |
+| **Hackathon-ready team pitch** | A problem formulation and prototype plan for SIH / Kaggle / Solution Challenge |
+| **Research starter** | One research idea with gap statement and baseline (08_Research_Ideas) |
+| **Interview readiness** | 75 practised questions and 10 solved coding problems |
+
+```mermaid
+journey
+    title Student journey through 26UAMPC204
+    section Foundations
+      Formulate problems with PEAS: 4: Student
+      Code BFS, DFS and A*: 5: Student
+    section Reasoning
+      Build games and CSP solvers: 4: Student
+      Prove with logic and resolution: 3: Student
+      Reason with Bayes and fuzzy logic: 4: Student
+    section Launch
+      Ship expert system or chatbot: 5: Student
+      Enter a hackathon: 5: Student, Team
+      Start a research idea: 4: Student, Faculty
+```
+
+🎞️ Last-class deck: [Course_Finale_Skill_Outcome.pptx](02_PPT/Course_Finale_Skill_Outcome.pptx) ([PDF](02_PPT/pdf/Course_Finale_Skill_Outcome.pdf)) · 🪪 Skill passport for faculty sign-off: [AI_Career_Launchpad.pdf](10_Career_Launchpad/AI_Career_Launchpad.pdf)
+
+---
+
 ## 🚀 Quick start
 
 ```bash
@@ -388,6 +481,7 @@ Open any notebook in Google Colab by replacing `github.com` with `githubtocolab.
 ├── 07_Interview_Prep/      skills, 75 Q&A, coding solutions
 ├── 08_Research_Ideas/      20 research directions
 ├── 09_Assignments/         5 assignments + starter notebooks
+├── 10_Career_Launchpad/    skill outcome, hackathons, conferences, journals
 ├── assets/                 logo, animated banner, figures, GIF animations
 ├── common/ai204.sty        shared LaTeX style (navy & gold, Times)
 ├── build_all.sh            one-command rebuild

@@ -37,7 +37,7 @@ def research_tex():
             L.append(rf"""\begin{{tcolorbox}}[enhanced,breakable,colback=white,colframe={c},arc=2mm,boxrule=0.9pt,
  title={{\textbf{{R{u}.{i}\quad {tex(t)}}}}},fonttitle=\color{{white}},colbacktitle={c}]
 \colorbox{{{c}!15}}{{\scriptsize\bfseries\color{{{c}}} {tex(lvl).upper()}}}\par\smallskip
-\begin{{tabularx}}{{\linewidth}}{{>{{\bfseries\color{{navy}}}}p{{3.0cm}}X}}
+\begin{{tabularx}}{{\linewidth}}{{>{{\leavevmode\bfseries\color{{navy}}}}p{{3.0cm}}X}}
 Research gap & {tex(gap)}\\
 Method & {tex(meth)}\\
 Data \& tools & {tex(tools)}\\

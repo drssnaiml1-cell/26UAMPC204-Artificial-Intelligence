@@ -16,7 +16,7 @@ Obtain consent and institutional approval before collecting data from people; an
 \begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.9pt,
  title={\textbf{RI.1\quad Measuring rationality of LLM-based agents with PEAS-grounded benchmarks}},fonttitle=\color{white},colbacktitle=navyL]
 \colorbox{navyL!15}{\scriptsize\bfseries\color{navyL} M.TECH / MINOR THESIS}\par\smallskip
-\begin{tabularx}{\linewidth}{>{\bfseries\color{navy}}p{3.0cm}X}
+\begin{tabularx}{\linewidth}{>{\leavevmode\bfseries\color{navy}}p{3.0cm}X}
 Research gap & LLM agents are evaluated on task success only; there is no standard way to check whether their behaviour is rational for a declared performance measure.\\
 Method & Define PEAS specifications for 10 tool-using tasks, log agent percept--action traces, score expected-utility regret against an oracle planner, and compare prompting strategies.\\
 Data \& tools & Open-source LLMs, LangGraph / simple tool APIs, Python logging\\
@@ -27,7 +27,7 @@ Target venues & IEEE Access; Expert Systems with Applications; AAMAS workshops\\
 \begin{tcolorbox}[enhanced,breakable,colback=white,colframe=teal,arc=2mm,boxrule=0.9pt,
  title={\textbf{RI.2\quad Environment-property classifier for automatic agent-architecture selection}},fonttitle=\color{white},colbacktitle=teal]
 \colorbox{teal!15}{\scriptsize\bfseries\color{teal} UG PROJECT}\par\smallskip
-\begin{tabularx}{\linewidth}{>{\bfseries\color{navy}}p{3.0cm}X}
+\begin{tabularx}{\linewidth}{>{\leavevmode\bfseries\color{navy}}p{3.0cm}X}
 Research gap & Students and engineers pick agent architectures by intuition; there is no tool that maps a problem description to environment properties.\\
 Method & Build a labelled set of 300 task descriptions, fine-tune a small text classifier for the seven properties, and recommend an architecture with rules.\\
 Data \& tools & Hugging Face transformers, scikit-learn, Streamlit\\
@@ -38,7 +38,7 @@ Target venues & Student conferences; IEEE ICCCNT; Springer LNNS\\
 \begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.9pt,
  title={\textbf{RI.3\quad Reward hacking in campus-scale smart agents}},fonttitle=\color{white},colbacktitle=navyL]
 \colorbox{navyL!15}{\scriptsize\bfseries\color{navyL} M.TECH / MINOR THESIS}\par\smallskip
-\begin{tabularx}{\linewidth}{>{\bfseries\color{navy}}p{3.0cm}X}
+\begin{tabularx}{\linewidth}{>{\leavevmode\bfseries\color{navy}}p{3.0cm}X}
 Research gap & Poorly chosen performance measures make agents optimise the wrong thing (e.g. energy agents that cut comfort).\\
 Method & Simulate a smart-building agent with several reward definitions; quantify side effects; propose constrained or multi-objective reward design.\\
 Data \& tools & Python simulation, Gymnasium, RL baselines\\
@@ -49,7 +49,7 @@ Target venues & Energy and Buildings; IEEE SmartGridComm\\
 \begin{tcolorbox}[enhanced,breakable,colback=white,colframe=crimson,arc=2mm,boxrule=0.9pt,
  title={\textbf{RI.4\quad Human-vs-AI Turing-style evaluation for Indian-language chatbots}},fonttitle=\color{white},colbacktitle=crimson]
 \colorbox{crimson!15}{\scriptsize\bfseries\color{crimson} PH.D. DIRECTION}\par\smallskip
-\begin{tabularx}{\linewidth}{>{\bfseries\color{navy}}p{3.0cm}X}
+\begin{tabularx}{\linewidth}{>{\leavevmode\bfseries\color{navy}}p{3.0cm}X}
 Research gap & Turing-style evaluations are English-centric; Indian languages and code-mixed speech are under-studied.\\
 Method & Run controlled, blinded conversations in Marathi/Hindi/English mixes; analyse detection cues and failure modes; propose an evaluation protocol.\\
 Data \& tools & Open LLMs, survey platform, statistical analysis (R / Python)\\
@@ -62,7 +62,7 @@ Target venues & ACL / EMNLP workshops; Language Resources and Evaluation\\
 \begin{tcolorbox}[enhanced,breakable,colback=white,colframe=crimson,arc=2mm,boxrule=0.9pt,
  title={\textbf{RII.1\quad Learned heuristics for A*: neural guidance with admissibility guarantees}},fonttitle=\color{white},colbacktitle=crimson]
 \colorbox{crimson!15}{\scriptsize\bfseries\color{crimson} PH.D. DIRECTION}\par\smallskip
-\begin{tabularx}{\linewidth}{>{\bfseries\color{navy}}p{3.0cm}X}
+\begin{tabularx}{\linewidth}{>{\leavevmode\bfseries\color{navy}}p{3.0cm}X}
 Research gap & Neural heuristics speed up search but can over-estimate, losing optimality.\\
 Method & Train a GNN to predict cost-to-go, then clip with an admissible bound or use bounded-suboptimal search (weighted A*, focal search) with proven error bounds.\\
 Data \& tools & PyTorch Geometric, 8/15-puzzle and grid-map benchmarks\\
@@ -73,7 +73,7 @@ Target venues & AAAI; IJCAI; SoCS (Symposium on Combinatorial Search)\\
 \begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.9pt,
  title={\textbf{RII.2\quad Exam and lab timetabling for Indian universities as a hybrid CSP + metaheuristic}},fonttitle=\color{white},colbacktitle=navyL]
 \colorbox{navyL!15}{\scriptsize\bfseries\color{navyL} M.TECH / MINOR THESIS}\par\smallskip
-\begin{tabularx}{\linewidth}{>{\bfseries\color{navy}}p{3.0cm}X}
+\begin{tabularx}{\linewidth}{>{\leavevmode\bfseries\color{navy}}p{3.0cm}X}
 Research gap & Manual timetabling causes clashes and poor room use; generic solvers ignore local rules such as practical batches.\\
 Method & Model batches, rooms and faculty as a CSP; solve hard constraints with CP-SAT, optimise soft constraints with simulated annealing; compare with manual timetables.\\
 Data \& tools & Google OR-Tools CP-SAT, Python, real (anonymised) department data\\
@@ -84,7 +84,7 @@ Target venues & Journal of Scheduling; Computers \& Operations Research\\
 \begin{tcolorbox}[enhanced,breakable,colback=white,colframe=teal,arc=2mm,boxrule=0.9pt,
  title={\textbf{RII.3\quad Energy-aware route planning for electric two-wheelers}},fonttitle=\color{white},colbacktitle=teal]
 \colorbox{teal!15}{\scriptsize\bfseries\color{teal} UG PROJECT}\par\smallskip
-\begin{tabularx}{\linewidth}{>{\bfseries\color{navy}}p{3.0cm}X}
+\begin{tabularx}{\linewidth}{>{\leavevmode\bfseries\color{navy}}p{3.0cm}X}
 Research gap & Shortest routes are not lowest-energy routes for EVs because of elevation and traffic.\\
 Method & Build a city road graph with elevation; define an energy cost; compare Dijkstra, A* and multi-objective search for time vs energy.\\
 Data \& tools & OSMnx, SRTM elevation data, NetworkX\\
@@ -95,7 +95,7 @@ Target venues & IEEE ITSC; Transportation Research Part D\\
 \begin{tcolorbox}[enhanced,breakable,colback=white,colframe=teal,arc=2mm,boxrule=0.9pt,
  title={\textbf{RII.4\quad Explainable game-playing agents for teaching}},fonttitle=\color{white},colbacktitle=teal]
 \colorbox{teal!15}{\scriptsize\bfseries\color{teal} UG PROJECT}\par\smallskip
-\begin{tabularx}{\linewidth}{>{\bfseries\color{navy}}p{3.0cm}X}
+\begin{tabularx}{\linewidth}{>{\leavevmode\bfseries\color{navy}}p{3.0cm}X}
 Research gap & Minimax/MCTS agents choose moves without explaining them, so students cannot learn from them.\\
 Method & Add move explanations from the search tree (principal variation, threats, pruned alternatives) and evaluate learning gains in a classroom study.\\
 Data \& tools & Python, Pygame, small user study\\
@@ -108,7 +108,7 @@ Target venues & IEEE Transactions on Learning Technologies; IEEE Conference on G
 \begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.9pt,
  title={\textbf{RIII.1\quad Knowledge-graph-grounded LLM assistant for university regulations}},fonttitle=\color{white},colbacktitle=navyL]
 \colorbox{navyL!15}{\scriptsize\bfseries\color{navyL} M.TECH / MINOR THESIS}\par\smallskip
-\begin{tabularx}{\linewidth}{>{\bfseries\color{navy}}p{3.0cm}X}
+\begin{tabularx}{\linewidth}{>{\leavevmode\bfseries\color{navy}}p{3.0cm}X}
 Research gap & LLM chatbots hallucinate policy details such as fees, attendance and exam rules.\\
 Method & Build a KG from regulation documents, combine retrieval with symbolic rule checking, and measure hallucination against a curated question set.\\
 Data \& tools & Neo4j / rdflib, open LLM, RAG pipeline\\
@@ -119,7 +119,7 @@ Target venues & Knowledge-Based Systems; ISWC workshops\\
 \begin{tcolorbox}[enhanced,breakable,colback=white,colframe=crimson,arc=2mm,boxrule=0.9pt,
  title={\textbf{RIII.2\quad Neuro-symbolic reasoning: learning rules from data and verifying them in logic}},fonttitle=\color{white},colbacktitle=crimson]
 \colorbox{crimson!15}{\scriptsize\bfseries\color{crimson} PH.D. DIRECTION}\par\smallskip
-\begin{tabularx}{\linewidth}{>{\bfseries\color{navy}}p{3.0cm}X}
+\begin{tabularx}{\linewidth}{>{\leavevmode\bfseries\color{navy}}p{3.0cm}X}
 Research gap & Neural models are accurate but not verifiable; logic is verifiable but hand-built.\\
 Method & Learn candidate rules with inductive logic programming or differentiable logic, verify consistency with a theorem prover, and test on relational benchmarks.\\
 Data \& tools & PyTorch, Popper ILP / Scallop, SWI-Prolog\\
@@ -130,7 +130,7 @@ Target venues & NeurIPS / ICLR workshops; Artificial Intelligence (Elsevier)\\
 \begin{tcolorbox}[enhanced,breakable,colback=white,colframe=teal,arc=2mm,boxrule=0.9pt,
  title={\textbf{RIII.3\quad Agricultural ontology for Maharashtra crops and diseases}},fonttitle=\color{white},colbacktitle=teal]
 \colorbox{teal!15}{\scriptsize\bfseries\color{teal} UG PROJECT}\par\smallskip
-\begin{tabularx}{\linewidth}{>{\bfseries\color{navy}}p{3.0cm}X}
+\begin{tabularx}{\linewidth}{>{\leavevmode\bfseries\color{navy}}p{3.0cm}X}
 Research gap & Advisory apps lack a shared vocabulary linking crops, symptoms, diseases and treatments in local languages.\\
 Method & Design an OWL ontology with Marathi labels, populate from extension literature, and answer farmer queries with SPARQL.\\
 Data \& tools & Protégé, OWL, rdflib, SPARQL\\
@@ -141,7 +141,7 @@ Target venues & Computers and Electronics in Agriculture; Semantic Web journal\\
 \begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.9pt,
  title={\textbf{RIII.4\quad Automated legal-rule compliance checking with first-order logic}},fonttitle=\color{white},colbacktitle=navyL]
 \colorbox{navyL!15}{\scriptsize\bfseries\color{navyL} M.TECH / MINOR THESIS}\par\smallskip
-\begin{tabularx}{\linewidth}{>{\bfseries\color{navy}}p{3.0cm}X}
+\begin{tabularx}{\linewidth}{>{\leavevmode\bfseries\color{navy}}p{3.0cm}X}
 Research gap & Compliance checks (e.g. data-protection rules) are manual and error-prone.\\
 Method & Encode selected DPDP Act 2023 obligations in FOL / rules, map system logs to facts, and use forward chaining to flag violations with explanations.\\
 Data \& tools & Python rule engine or Prolog, synthetic audit logs\\
@@ -154,7 +154,7 @@ Target venues & Artificial Intelligence and Law; JURIX\\
 \begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.9pt,
  title={\textbf{RIV.1\quad Bayesian network for early sepsis or dengue risk in primary-care settings}},fonttitle=\color{white},colbacktitle=navyL]
 \colorbox{navyL!15}{\scriptsize\bfseries\color{navyL} M.TECH / MINOR THESIS}\par\smallskip
-\begin{tabularx}{\linewidth}{>{\bfseries\color{navy}}p{3.0cm}X}
+\begin{tabularx}{\linewidth}{>{\leavevmode\bfseries\color{navy}}p{3.0cm}X}
 Research gap & Rural clinics lack lab tests; risk tools built on complete data do not transfer.\\
 Method & Elicit structure with clinicians, learn CPTs from public data, handle missing evidence natively, and compare with logistic regression on calibration.\\
 Data \& tools & pgmpy, public clinical datasets (with permission), calibration metrics\\
@@ -165,7 +165,7 @@ Target venues & Journal of Biomedical Informatics; AIME conference\\
 \begin{tcolorbox}[enhanced,breakable,colback=white,colframe=crimson,arc=2mm,boxrule=0.9pt,
  title={\textbf{RIV.2\quad LLM-generated PDDL: can language models write correct planning domains?}},fonttitle=\color{white},colbacktitle=crimson]
 \colorbox{crimson!15}{\scriptsize\bfseries\color{crimson} PH.D. DIRECTION}\par\smallskip
-\begin{tabularx}{\linewidth}{>{\bfseries\color{navy}}p{3.0cm}X}
+\begin{tabularx}{\linewidth}{>{\leavevmode\bfseries\color{navy}}p{3.0cm}X}
 Research gap & LLMs plan poorly on their own but may help by writing formal models that classical planners solve.\\
 Method & Prompt LLMs to produce PDDL from text, validate with VAL, repair with feedback loops, and measure plan validity across IPC domains.\\
 Data \& tools & PDDL, Fast Downward, VAL, open LLMs\\
@@ -176,7 +176,7 @@ Target venues & ICAPS; AAAI; Journal of Artificial Intelligence Research\\
 \begin{tcolorbox}[enhanced,breakable,colback=white,colframe=teal,arc=2mm,boxrule=0.9pt,
  title={\textbf{RIV.3\quad Fuzzy irrigation controller with IoT sensors}},fonttitle=\color{white},colbacktitle=teal]
 \colorbox{teal!15}{\scriptsize\bfseries\color{teal} UG PROJECT}\par\smallskip
-\begin{tabularx}{\linewidth}{>{\bfseries\color{navy}}p{3.0cm}X}
+\begin{tabularx}{\linewidth}{>{\leavevmode\bfseries\color{navy}}p{3.0cm}X}
 Research gap & Fixed irrigation schedules waste water; farmers need simple, robust controllers.\\
 Method & Design a Mamdani controller using soil moisture, temperature and crop stage; deploy on a microcontroller; compare water use with timer control.\\
 Data \& tools & scikit-fuzzy, ESP32 / Arduino, moisture sensors\\
@@ -187,7 +187,7 @@ Target venues & Smart Agricultural Technology; IEEE Sensors Journal\\
 \begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.9pt,
  title={\textbf{RIV.4\quad Uncertainty-aware fraud detection for UPI transactions}},fonttitle=\color{white},colbacktitle=navyL]
 \colorbox{navyL!15}{\scriptsize\bfseries\color{navyL} M.TECH / MINOR THESIS}\par\smallskip
-\begin{tabularx}{\linewidth}{>{\bfseries\color{navy}}p{3.0cm}X}
+\begin{tabularx}{\linewidth}{>{\leavevmode\bfseries\color{navy}}p{3.0cm}X}
 Research gap & Fraud scores are over-confident and drift as fraud patterns change.\\
 Method & Combine a probabilistic model with conformal prediction to give calibrated risk sets; simulate drift and study alert quality.\\
 Data \& tools & Synthetic transaction generator, scikit-learn, MAPIE (conformal)\\
@@ -200,7 +200,7 @@ Target venues & Expert Systems with Applications; IEEE Transactions on Dependabl
 \begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.9pt,
  title={\textbf{RV.1\quad Explainable crop-disease diagnosis: CNN plus rule-based expert system}},fonttitle=\color{white},colbacktitle=navyL]
 \colorbox{navyL!15}{\scriptsize\bfseries\color{navyL} M.TECH / MINOR THESIS}\par\smallskip
-\begin{tabularx}{\linewidth}{>{\bfseries\color{navy}}p{3.0cm}X}
+\begin{tabularx}{\linewidth}{>{\leavevmode\bfseries\color{navy}}p{3.0cm}X}
 Research gap & Image classifiers detect diseases but give no actionable, trustworthy advice.\\
 Method & Use a CNN for symptom detection and an expert system for diagnosis and treatment with certainty factors; evaluate with agronomists.\\
 Data \& tools & PlantVillage dataset, PyTorch, rule engine\\
@@ -211,7 +211,7 @@ Target venues & Computers and Electronics in Agriculture; Expert Systems with Ap
 \begin{tcolorbox}[enhanced,breakable,colback=white,colframe=teal,arc=2mm,boxrule=0.9pt,
  title={\textbf{RV.2\quad Fairness audit of student-performance prediction models}},fonttitle=\color{white},colbacktitle=teal]
 \colorbox{teal!15}{\scriptsize\bfseries\color{teal} UG PROJECT}\par\smallskip
-\begin{tabularx}{\linewidth}{>{\bfseries\color{navy}}p{3.0cm}X}
+\begin{tabularx}{\linewidth}{>{\leavevmode\bfseries\color{navy}}p{3.0cm}X}
 Research gap & Early-warning models may flag students unfairly by gender, region or school board.\\
 Method & Train decision trees and other models on anonymised data, measure group fairness, apply mitigation and report trade-offs in a model card.\\
 Data \& tools & scikit-learn, Fairlearn, SHAP\\
@@ -222,7 +222,7 @@ Target venues & IEEE Transactions on Education; Educational Data Mining conferen
 \begin{tcolorbox}[enhanced,breakable,colback=white,colframe=navyL,arc=2mm,boxrule=0.9pt,
  title={\textbf{RV.3\quad Low-resource intent detection for Marathi admission chatbots}},fonttitle=\color{white},colbacktitle=navyL]
 \colorbox{navyL!15}{\scriptsize\bfseries\color{navyL} M.TECH / MINOR THESIS}\par\smallskip
-\begin{tabularx}{\linewidth}{>{\bfseries\color{navy}}p{3.0cm}X}
+\begin{tabularx}{\linewidth}{>{\leavevmode\bfseries\color{navy}}p{3.0cm}X}
 Research gap & Few labelled examples exist for Marathi or code-mixed queries.\\
 Method & Compare keyword rules, TF-IDF models and multilingual sentence embeddings with few-shot learning; add confidence-based fallback to humans.\\
 Data \& tools & IndicBERT / LaBSE, scikit-learn, Rasa\\
@@ -233,7 +233,7 @@ Target venues & ACM TALLIP; ICON (Indian NLP conference)\\
 \begin{tcolorbox}[enhanced,breakable,colback=white,colframe=crimson,arc=2mm,boxrule=0.9pt,
  title={\textbf{RV.4\quad Interpretable-by-design models for clinical decision support}},fonttitle=\color{white},colbacktitle=crimson]
 \colorbox{crimson!15}{\scriptsize\bfseries\color{crimson} PH.D. DIRECTION}\par\smallskip
-\begin{tabularx}{\linewidth}{>{\bfseries\color{navy}}p{3.0cm}X}
+\begin{tabularx}{\linewidth}{>{\leavevmode\bfseries\color{navy}}p{3.0cm}X}
 Research gap & Post-hoc explanations can be unfaithful; clinicians need models that are interpretable by construction.\\
 Method & Study optimal sparse decision trees and rule lists vs black-box models plus SHAP on clinical tasks; run clinician user studies on trust and accuracy.\\
 Data \& tools & GOSDT / imodels, SHAP, clinical datasets\\

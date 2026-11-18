@@ -231,4 +231,148 @@ const RENDER = {
   }
 };
 
-(async () => { for (let i = 0; i < units.length; i++) await buildUnit(units[i], i); })();
+
+// ======================================================================= Course finale deck
+async function buildFinale() {
+  const D = require("./finale.json");
+  const pres = new pptxgen();
+  pres.layout = "LAYOUT_WIDE"; pres.author = "Dr. S. Satyanarayana"; pres.company = "Sanjivani University";
+  pres.title = "26UAMPC204 Course Finale: Your AI Skill Outcome";
+  pres.theme = { headFontFace: FONT, bodyFontFace: FONT };
+  const footer = "26UAMPC204 Artificial Intelligence  •  Course Finale  •  Skill Outcome";
+  pres.defineSlideMaster({ title: "CONTENT", background: { color: WHITE }, objects: [
+    { text: { text: footer, options: { x: 0.6, y: 7.0, w: 8, h: 0.3, fontFace: FONT, fontSize: 10, color: SLATE, isTextBox: true, margin: 0 } } },
+    { text: { text: "Sanjivani University  •  Dept. of AI & DS", options: { x: 7.9, y: 7.0, w: 4.2, h: 0.3, fontFace: FONT, fontSize: 10, color: SLATE, align: "right", isTextBox: true, margin: 0 } } },
+    { image: { path: LOGO, x: 12.0, y: 0.3, w: 0.85, h: 0.85, altText: "Sanjivani University logo" } },
+    { placeholder: { options: { name: "title", type: "title", x: 0.6, y: 0.35, w: 11.2, h: 0.9, fontFace: FONT, fontSize: 34, bold: true, color: NAVY, valign: "middle", margin: 0 }, text: "" } } ],
+    slideNumber: { x: 12.3, y: 6.98, w: 0.5, h: 0.32, fontFace: FONT, fontSize: 10, color: NAVY, bold: true, align: "right" } });
+  pres.defineSlideMaster({ title: "COVER", background: { color: NAVY }, objects: [] });
+  pres.addSection({ title: "Finale" });
+
+  // 1. Cover
+  let s = pres.addSlide({ masterName: "COVER", sectionTitle: "Finale" });
+  for (let i = 0; i < 7; i++) s.addShape(pres.shapes.OVAL, { x: 9.2 - i * 0.25, y: -2.2 - i * 0.25, w: 6 + i * 0.5, h: 6 + i * 0.5, fill: { color: NAVY, transparency: 100 }, line: { color: GOLD, width: 0.75, transparency: 55 + i * 5 } });
+  s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x: 0.72, y: 0.52, w: 1.46, h: 1.46, rectRadius: 0.08, fill: { color: WHITE }, line: { color: GOLD, width: 2 } });
+  s.addImage({ path: LOGO, x: 0.8, y: 0.6, w: 1.3, h: 1.3, altText: "Sanjivani University logo" });
+  s.addText([{ text: "SANJIVANI UNIVERSITY", options: { fontSize: 24, bold: true, color: WHITE, breakLine: true } },
+             { text: "Department of Artificial Intelligence & Data Science", options: { fontSize: 15, color: GOLD } }],
+    { x: 2.45, y: 0.75, w: 8, h: 1.0, fontFace: FONT, isTextBox: true, margin: 0, valign: "middle" });
+  s.addText("26UAMPC204  •  ARTIFICIAL INTELLIGENCE  •  COURSE FINALE", { x: 0.8, y: 2.55, w: 11.5, h: 0.45, fontFace: FONT, fontSize: 16, bold: true, color: GOLD, charSpacing: 2, isTextBox: true, margin: 0, objectName: "anim1_a" });
+  s.addText("Your AI Skill Outcome", { x: 0.8, y: 3.05, w: 11.5, h: 1.2, fontFace: FONT, fontSize: 54, bold: true, color: WHITE, isTextBox: true, margin: 0, objectName: "anim2_a" });
+  s.addText("From Unit I to job-ready: what you can do, what you built, and where to take it next", { x: 0.8, y: 4.35, w: 11.5, h: 0.6, fontFace: FONT, fontSize: 20, italic: true, color: "D9E2F3", isTextBox: true, margin: 0, objectName: "anim3_a" });
+  s.addText("Dr. S. Satyanarayana, Ph.D., PDF (AI)  •  Professor & Advisor, AI & Data Science", { x: 0.8, y: 6.3, w: 11, h: 0.4, fontFace: FONT, fontSize: 14, color: GOLD, isTextBox: true, margin: 0 });
+  s.addNotes("Course finale. Celebrate the journey and show students the concrete skills and products they now have.");
+
+  // 2. Journey
+  s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Finale" });
+  s.addText("The journey you completed", { placeholder: "title" });
+  const J = [["I", "Agents", "PEAS, environments, state spaces"], ["II", "Search", "A*, local search, games, CSPs"], ["III", "Logic", "FOL, unification, resolution, KGs"],
+             ["IV", "Uncertainty", "Planning, Bayes, belief nets, fuzzy"], ["V", "Learning", "Trees, perceptron, expert systems, ethics"]];
+  s.addShape(pres.shapes.LINE, { x: 0.9, y: 3.15, w: 11.0, h: 0, line: { color: GOLD, width: 3, dashType: "dash" }, objectName: "anim1_a" });
+  J.forEach(([u, t, d], i) => {
+    const x = 0.6 + i * 2.2;
+    s.addShape(pres.shapes.OVAL, { x: x + 0.35, y: 2.45, w: 1.4, h: 1.4, fill: { color: NAVY }, line: { color: GOLD, width: 3 }, objectName: `anim${i + 2}_a` });
+    s.addText(u, { x: x + 0.35, y: 2.45, w: 1.4, h: 1.4, fontFace: FONT, fontSize: 30, bold: true, color: GOLD, align: "center", valign: "middle", isTextBox: true, margin: 0, objectName: `anim${i + 2}_b` });
+    s.addText(t, { x, y: 4.0, w: 2.1, h: 0.5, fontFace: FONT, fontSize: 19, bold: true, color: NAVY, align: "center", isTextBox: true, margin: 0, objectName: `anim${i + 2}_c` });
+    s.addText(d, { x, y: 4.5, w: 2.1, h: 1.0, fontFace: FONT, fontSize: 14, color: SLATE, align: "center", valign: "top", isTextBox: true, margin: 0, objectName: `anim${i + 2}_d` });
+  });
+  s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x: 11.55, y: 2.45, w: 1.25, h: 1.4, rectRadius: 0.12, fill: { color: LEAF }, line: { color: GOLD, width: 3 }, objectName: "anim7_a" });
+  s.addText("🏆", { x: 11.55, y: 2.45, w: 1.25, h: 1.4, fontSize: 40, align: "center", valign: "middle", isTextBox: true, margin: 0, objectName: "anim7_b" });
+  s.addText("Job-ready", { x: 11.2, y: 4.0, w: 1.95, h: 0.5, fontFace: FONT, fontSize: 19, bold: true, color: LEAF, align: "center", isTextBox: true, margin: 0, objectName: "anim7_c" });
+  s.addText("30 lecture hours  •  30 lab hours  •  10 experiments  •  5 assignments  •  1 mini-project", { x: 0.6, y: 5.9, w: 12.1, h: 0.5, fontFace: FONT, fontSize: 17, italic: true, color: TEAL, align: "center", isTextBox: true, margin: 0, objectName: "anim8_a" });
+  s.addNotes("Recap the five units as one journey ending in job readiness.");
+
+  // 3. Can-do statements
+  s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Finale" });
+  s.addText("You can now …", { placeholder: "title" });
+  D.can_do.forEach((c, i) => {
+    const y = 1.45 + i * 0.75;
+    s.addShape(pres.shapes.OVAL, { x: 0.7, y: y + 0.08, w: 0.5, h: 0.5, fill: { color: i % 2 ? TEAL : GOLD }, line: { color: WHITE }, objectName: `anim${i + 1}_a` });
+    s.addText("✓", { x: 0.7, y: y + 0.08, w: 0.5, h: 0.5, fontFace: FONT, fontSize: 16, bold: true, color: WHITE, align: "center", valign: "middle", isTextBox: true, margin: 0, objectName: `anim${i + 1}_b` });
+    s.addText(c, { x: 1.4, y, w: 11.3, h: 0.66, fontFace: FONT, fontSize: 18, color: INK, valign: "middle", isTextBox: true, margin: 0, objectName: `anim${i + 1}_c` });
+  });
+  s.addNotes("Read the can-do statements aloud; ask students to point to the artefact that proves each one.");
+
+  // 4. Competency chart (native bar chart)
+  s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Finale" });
+  s.addText("Competency reached by the end of the course", { placeholder: "title" });
+  const skills = D.skills.slice().reverse();
+  s.addChart(pres.charts.BAR, [{ name: "Target competency (%)", labels: skills.map(x => x[0]), values: skills.map(x => x[1]) }], {
+    x: 0.6, y: 1.45, w: 8.9, h: 5.3, barDir: "bar", chartColors: [GOLD], showValue: true, dataLabelPosition: "outEnd", dataLabelFormatCode: "0\"%\"",
+    dataLabelColor: NAVY, dataLabelFontFace: "+mn-lt", dataLabelFontSize: 13, catAxisLabelColor: INK, catAxisLabelFontFace: "+mn-lt", catAxisLabelFontSize: 13,
+    valAxisHidden: true, valAxisMinVal: 0, valAxisMaxVal: 100, valGridLine: { style: "none" }, catGridLine: { style: "none" }, showLegend: false, barGapWidthPct: 45, objectName: "anim1_a" });
+  s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x: 9.8, y: 1.6, w: 2.9, h: 4.9, rectRadius: 0.12, fill: { color: NAVY }, line: { color: GOLD, width: 2 }, objectName: "anim2_a" });
+  s.addText("How it is measured", { x: 10.05, y: 1.8, w: 2.4, h: 0.6, fontFace: FONT, fontSize: 19, bold: true, color: GOLD, isTextBox: true, margin: 0, objectName: "anim2_b" });
+  s.addText("Lab performance and viva, assignments, the mini-project demo and CIA results. Each bar is the target for a student who completes every component.", { x: 10.05, y: 2.5, w: 2.4, h: 3.8, fontFace: FONT, fontSize: 16, color: WHITE, valign: "top", isTextBox: true, margin: 0, objectName: "anim2_c" });
+  s.addNotes("Competency targets by skill area.");
+
+  // 5. End products
+  s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Finale" });
+  s.addText("What you walk out with", { placeholder: "title" });
+  D.products.slice(0, 6).forEach(([t, d], i) => {
+    const x = 0.6 + (i % 3) * 4.1, y = 1.5 + Math.floor(i / 3) * 2.6, col = ACC[i % ACC.length];
+    s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x, y, w: 3.85, h: 2.35, rectRadius: 0.1, fill: { color: MIST }, line: { color: "D5DCE8" },
+      shadow: { type: "outer", color: "8A94A6", blur: 6, offset: 2, angle: 90, opacity: 0.25 }, objectName: `anim${i + 1}_a` });
+    s.addShape(pres.shapes.OVAL, { x: x + 0.25, y: y + 0.25, w: 0.6, h: 0.6, fill: { color: col }, line: { color: col }, objectName: `anim${i + 1}_b` });
+    s.addText(String(i + 1), { x: x + 0.25, y: y + 0.25, w: 0.6, h: 0.6, fontFace: FONT, fontSize: 16, bold: true, color: WHITE, align: "center", valign: "middle", isTextBox: true, margin: 0, objectName: `anim${i + 1}_c` });
+    s.addText(t, { x: x + 1.0, y: y + 0.2, w: 2.7, h: 0.7, fontFace: FONT, fontSize: 19, bold: true, color: NAVY, valign: "middle", isTextBox: true, margin: 0, objectName: `anim${i + 1}_d` });
+    s.addText(d, { x: x + 0.25, y: y + 1.0, w: 3.35, h: 1.25, fontFace: FONT, fontSize: 15, color: INK, valign: "top", isTextBox: true, margin: 0, objectName: `anim${i + 1}_e` });
+  });
+  s.addNotes("The concrete end products of the course.");
+
+  // 6. Hackathons
+  s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Finale" });
+  s.addText("Compete: top AI hackathons", { placeholder: "title" });
+  D.hackathons.forEach(([n, w], i) => {
+    const x = 0.6 + (i % 2) * 6.15, y = 1.5 + Math.floor(i / 2) * 1.65;
+    s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x, y, w: 5.95, h: 1.45, rectRadius: 0.1, fill: { color: i % 2 ? MIST : GOLDL }, line: { color: GOLD, width: 1 }, objectName: `anim${i + 1}_a` });
+    s.addText(n, { x: x + 0.25, y: y + 0.1, w: 5.5, h: 0.5, fontFace: FONT, fontSize: 17, bold: true, color: NAVY, isTextBox: true, margin: 0, objectName: `anim${i + 1}_b` });
+    s.addText(w, { x: x + 0.25, y: y + 0.6, w: 5.5, h: 0.8, fontFace: FONT, fontSize: 13, color: SLATE, valign: "top", isTextBox: true, margin: 0, objectName: `anim${i + 1}_c` });
+  });
+  s.addText("Windows checked against the 2025–26 editions; confirm dates on each official site. Full list: 10_Career_Launchpad.", { x: 0.6, y: 6.5, w: 12.1, h: 0.35, fontFace: FONT, fontSize: 12, italic: true, color: TEAL, isTextBox: true, margin: 0 });
+  s.addNotes("Encourage teams to enter at least one hackathon this year.");
+
+  // 7. Publish
+  s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Finale" });
+  s.addText("Publish: where AI research appears", { placeholder: "title" });
+  const col = (title, items, x, k, c) => {
+    s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x, y: 1.5, w: 5.95, h: 5.2, rectRadius: 0.1, fill: { color: c }, line: { color: GOLD, width: 1.5 }, objectName: `anim${k}_a` });
+    s.addText(title, { x: x + 0.3, y: 1.65, w: 5.4, h: 0.6, fontFace: FONT, fontSize: 21, bold: true, color: GOLD, isTextBox: true, margin: 0, objectName: `anim${k}_b` });
+    s.addText(items.map((t, i) => ({ text: t, options: { bullet: { code: "25B8" }, breakLine: i < items.length - 1 } })),
+      { x: x + 0.3, y: 2.35, w: 5.4, h: 4.2, fontFace: FONT, fontSize: 14, color: WHITE, valign: "top", paraSpaceAfter: 3, isTextBox: true, margin: 0, objectName: `anim${k}_c` });
+  };
+  col("Conferences", D.conferences.slice(0, 13), 0.6, 1, NAVY);
+  col("Journals", D.journals, 6.75, 2, NAVY2);
+  s.addNotes("Show a realistic path: course project, student track or workshop, conference, journal.");
+
+  // 8. Next 90 days
+  s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Finale" });
+  s.addText("Your next 90 days", { placeholder: "title" });
+  const steps = [["Days 1–30", "Polish your GitHub: README, results and a demo GIF for the mini-project"], ["Days 31–60", "Enter one hackathon or Kaggle competition with your team"],
+                 ["Days 61–90", "Pick one research idea, reproduce a baseline and write a 2-page abstract"], ["Always", "Practise 2 interview questions a day from 07_Interview_Prep"]];
+  steps.forEach(([h, t], i) => {
+    const x = 0.6 + i * 3.1;
+    s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x, y: 2.0, w: 2.85, h: 3.6, rectRadius: 0.1, fill: { color: i % 2 ? MIST : GOLDL }, line: { color: ACC[i], width: 1.5 }, objectName: `anim${i + 1}_a` });
+    s.addText(h, { x: x + 0.1, y: 2.25, w: 2.65, h: 0.6, fontFace: FONT, fontSize: 21, bold: true, color: ACC[i], align: "center", isTextBox: true, margin: 0, objectName: `anim${i + 1}_b` });
+    s.addText(t, { x: x + 0.2, y: 3.0, w: 2.45, h: 2.4, fontFace: FONT, fontSize: 16, color: INK, align: "center", valign: "top", isTextBox: true, margin: 0, objectName: `anim${i + 1}_c` });
+  });
+  s.addNotes("Close with concrete next steps.");
+
+  // 9. Thank you
+  s = pres.addSlide({ masterName: "COVER", sectionTitle: "Finale" });
+  s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x: 5.79, y: 0.9, w: 1.75, h: 1.75, rectRadius: 0.08, fill: { color: WHITE }, line: { color: GOLD, width: 2 }, objectName: "anim1_a" });
+  s.addImage({ path: LOGO, x: 5.87, y: 0.98, w: 1.6, h: 1.6, altText: "Sanjivani University logo", objectName: "anim1_b" });
+  s.addText("Congratulations!", { x: 0.8, y: 3.0, w: 11.7, h: 1.1, fontFace: FONT, fontSize: 54, bold: true, color: GOLD, align: "center", isTextBox: true, margin: 0, objectName: "anim2_a" });
+  s.addText("You are now ready to build, compete and publish in Artificial Intelligence.", { x: 0.8, y: 4.15, w: 11.7, h: 0.6, fontFace: FONT, fontSize: 22, italic: true, color: WHITE, align: "center", isTextBox: true, margin: 0, objectName: "anim3_a" });
+  s.addText("github.com/drssnaiml1-cell/26UAMPC204-Artificial-Intelligence", { x: 0.8, y: 5.3, w: 11.7, h: 0.5, fontFace: FONT, fontSize: 16, color: GOLD, align: "center", isTextBox: true, margin: 0, objectName: "anim4_a" });
+  s.addNotes("Thank the class.");
+
+  const out = path.join(__dirname, "..", "Course_Finale_Skill_Outcome.pptx");
+  await pres.writeFile({ fileName: out }); await applyTheme(out, THEME); console.log("wrote", out);
+}
+
+(async () => {
+  const only = process.argv[2];
+  if (only !== "finale") for (let i = 0; i < units.length; i++) await buildUnit(units[i], i);
+  await buildFinale();
+})();

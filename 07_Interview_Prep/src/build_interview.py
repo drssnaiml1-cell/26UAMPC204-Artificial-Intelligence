@@ -60,7 +60,7 @@ def skills_block(u, compact=False):
 {items}
 \end{{itemize}}
 \end{{tcolorbox}}
-\begin{{tabularx}}{{\linewidth}}{{>{{\bfseries\color{{navy}}}}p{{3.4cm}}X}}
+\begin{{tabularx}}{{\linewidth}}{{>{{\leavevmode\bfseries\color{{navy}}}}p{{3.4cm}}X}}
 Tools to master & {tex(', '.join(s['tools']))}\\
 Job roles & {tex(', '.join(s['roles']))}\\
 Portfolio output & {tex(s['portfolio'])}\\
@@ -90,7 +90,7 @@ def handbook():
         L[-1] = (r"\rowcolor{ivory}" if k % 2 else "") + rf"{u}&{tex(SKILLS[u]['skills'][0])}&{tex(', '.join(SKILLS[u]['roles']))}\\"
     L += [r"\end{tabularx}\end{center}",
           r"\section*{A 4-week interview-preparation plan}",
-          r"\begin{tabularx}{\linewidth}{>{\bfseries\color{navy}}l X}\toprule",
+          r"\begin{tabularx}{\linewidth}{>{\leavevmode\bfseries\color{navy}}l X}\toprule",
           r"Week 1&Units I--II concept questions; code BFS, DFS, UCS and A* from memory; 2 grid/graph problems daily.\\",
           r"Week 2&Units III--IV; implement unification and Naïve Bayes from scratch; practise Bayes' rule numericals aloud.\\",
           r"Week 3&Unit V; build one end-to-end ML project with a model card; practise two design questions per day.\\",

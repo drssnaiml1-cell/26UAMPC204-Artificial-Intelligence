@@ -49,7 +49,7 @@ def qb_tex():
     L += [r"\end{tikzpicture}\\{\small\color{slate}Course-wide distribution: 25 questions at each BTL level (150 total).}\end{center}", r"\newpage"]
     for u, (title, co, qs) in UNITS.items():
         L.append(rf"\unitbanner{{{u}}}{{{tex(title)}}}{{30 Questions \textbullet\ {co}}}")
-        L += [r"\begin{longtable}{>{\bfseries\color{navy}}p{0.8cm}p{11.6cm}ccc}",
+        L += [r"\begin{longtable}{>{\leavevmode\bfseries\color{navy}}p{0.8cm}p{11.6cm}ccc}",
               r"\rowcolor{navy}\color{gold}Q.&\color{gold}Question&\color{gold}BTL&\color{gold}CO&\color{gold}M\\\endhead"]
         for i, (lv, mk, q) in enumerate(qs, 1):
             row = rf"{i}&{tex(q)}&\btl{{{lv}}}&\co{{{co}}}&{mk}\\"
