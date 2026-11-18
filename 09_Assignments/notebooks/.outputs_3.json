@@ -1,0 +1,1 @@
+["derived ('can_register', 'asha', 'AI')\n", "n= 4: satisfiable=True  truth-table time=0.000s\nn= 8: satisfiable=True  truth-table time=0.000s\nn=12: satisfiable=False  truth-table time=0.011s\nn=16: satisfiable=True  truth-table time=0.043s\n", "Prerequisites of AI: ['DSA']\n"]

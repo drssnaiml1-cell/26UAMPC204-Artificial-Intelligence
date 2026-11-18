@@ -1,0 +1,1 @@
+["P(Rain | Slip) = {True: 0.6222, False: 0.3778}\n", "12 °C -> fan speed 17.0%\n24 °C -> fan speed 50.0%\n31 °C -> fan speed 59.0%\n38 °C -> fan speed 83.0%\n", "['move(B,A)', 'pick(A)', 'move(A,B)', 'move(B,C)', 'drop(C)']\n"]

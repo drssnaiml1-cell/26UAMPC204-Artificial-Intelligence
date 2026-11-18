@@ -1,0 +1,1 @@
+["Decision tree (depth 3)  5-fold accuracy = 0.917\nRandom forest            5-fold accuracy = 0.960\n", "Perceptron predictions on XOR: [1, 1, 0, 0] target: [0, 1, 1, 0]\n", "group 0: accuracy=0.777  selection rate=0.343\ngroup 1: accuracy=0.769  selection rate=0.646\n"]

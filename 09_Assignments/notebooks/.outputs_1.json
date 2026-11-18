@@ -1,0 +1,1 @@
+["Random agent mean score: 439.1\n", "Solved in 7 crossings: [(0, 0, 0, 0), (1, 0, 1, 0), (0, 0, 1, 0), (1, 1, 1, 0), (0, 1, 0, 0), (1, 1, 0, 1), (0, 1, 0, 1), (1, 1, 1, 1)]\n", "nearest-first (mean wait, max wait): (4.331460674157303, 20)\noldest-first  (mean wait, max wait): (4.936781609195402, 16)\n"]
